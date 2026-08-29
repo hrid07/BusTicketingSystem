@@ -19,7 +19,7 @@ namespace BusTicketingSystem.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,69 +63,9 @@ namespace BusTicketingSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap e78a3b4c_0d51_4a1d_9720_cdd7a63978a8 {
+        internal static System.Drawing.Bitmap _2cec0fbe_212d_4597_a7b5_15f2085ac243 {
             get {
-                object obj = ResourceManager.GetObject("e78a3b4c-0d51-4a1d-9720-cdd7a63978a8", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Gemini_Generated_Image_ur54fyur54fyur54 {
-            get {
-                object obj = ResourceManager.GetObject("Gemini_Generated_Image_ur54fyur54fyur54", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image__2_ {
-            get {
-                object obj = ResourceManager.GetObject("image (2)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap image__3_ {
-            get {
-                object obj = ResourceManager.GetObject("image (3)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Untitled_design__5_ {
-            get {
-                object obj = ResourceManager.GetObject("Untitled design (5)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Untitled_design__6_ {
-            get {
-                object obj = ResourceManager.GetObject("Untitled design (6)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Untitled_design2 {
-            get {
-                object obj = ResourceManager.GetObject("Untitled_design2", resourceCulture);
+                object obj = ResourceManager.GetObject("2cec0fbe-212d-4597-a7b5-15f2085ac243", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

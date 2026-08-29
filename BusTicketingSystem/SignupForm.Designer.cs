@@ -52,6 +52,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(315, 22);
             this.textBox1.TabIndex = 0;
+            this.textBox1.UseSystemPasswordChar = true;
             // 
             // textBox2
             // 
@@ -78,6 +79,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(315, 22);
             this.textBox4.TabIndex = 3;
+            this.textBox4.UseSystemPasswordChar = true;
             // 
             // textBox5
             // 
@@ -177,11 +179,12 @@
             this.buttonSign.TabIndex = 13;
             this.buttonSign.Text = "SIGN UP";
             this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::BusTicketingSystem.Properties.Resources.Untitled_design__6_;
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.BackgroundImage = global::BusTicketingSystem.Properties.Resources._2cec0fbe_212d_4597_a7b5_15f2085ac243;
             this.panel1.Controls.Add(this.labelSignup);
             this.panel1.Controls.Add(this.labelSub);
             this.panel1.Controls.Add(this.labelSname);
