@@ -17,20 +17,23 @@ namespace BusTicketingSystem
         private readonly string searchTo;
         private readonly DateTime searchDate;
         private readonly bool hasSearch;
+        private readonly int userId;
 
-        public AvailableJourney()
+        public AvailableJourney(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
             hasSearch = false;
             WireEvents();
         }
 
-        public AvailableJourney(string from, string to, DateTime date)
+        public AvailableJourney(string from, string to, DateTime date, int userId)
         {
             InitializeComponent();
             searchFrom = from;
             searchTo = to;
             searchDate = date;
+            this.userId = userId;
             hasSearch = true;
             WireEvents();
         }
@@ -152,14 +155,14 @@ namespace BusTicketingSystem
         {
             Button btn = sender as Button;
             int scheduleId = Convert.ToInt32(btn.Tag);
-            SelectSeat selectSeat = new SelectSeat(scheduleId);
+            SelectSeat selectSeat = new SelectSeat(scheduleId, userId);
             selectSeat.ShowDialog();
             LoadJourneys(); // refresh seat counts after returning
         }
 
         private void GoToDashboard_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new Dashboard(userId);
             dashboard.Show();
             this.Hide();
         }

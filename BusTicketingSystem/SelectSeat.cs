@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace BusTicketingSystem
@@ -8,20 +11,58 @@ namespace BusTicketingSystem
     public partial class SelectSeat : Form
     {
         private readonly int scheduleId;
+        private readonly int userId; // 0 = not logged in / not passed through yet
         private decimal farePerSeat;
-        private int availableSeats;
 
-        public SelectSeat(int scheduleId)
+        // Match the legend swatches already on the form (buttonFalse1/2/3)
+        private static readonly Color AvailableColor = Color.DarkSeaGreen;
+        private static readonly Color BookedColor = Color.SaddleBrown;
+        private static readonly Color SelectedColor = Color.DimGray;
+
+        private readonly Dictionary<string, Button> seatButtons = new Dictionary<string, Button>();
+        private readonly List<string> selectedSeats = new List<string>();
+
+        public SelectSeat(int scheduleId) : this(scheduleId, 0) { }
+
+        public SelectSeat(int scheduleId, int userId)
         {
             InitializeComponent();
             this.scheduleId = scheduleId;
+            this.userId = userId;
+            CollectSeatButtons();
             WireEvents();
+        }
+
+        // Finds every button on the form whose Text looks like a seat code (A1, B2, H3, ...)
+        // and wires it up. This works regardless of which designer field name it has,
+        // so buttonFalse1/2/3 (the legend swatches, which have no seat text) are skipped automatically.
+        private void CollectSeatButtons()
+        {
+            Regex seatPattern = new Regex(@"^[A-H][1-3]$");
+            foreach (Control c in GetAllControls(this))
+            {
+                if (c is Button btn && seatPattern.IsMatch(btn.Text))
+                {
+                    seatButtons[btn.Text] = btn;
+                    btn.Click += SeatButton_Click;
+                }
+            }
+        }
+
+        private IEnumerable<Control> GetAllControls(Control root)
+        {
+            foreach (Control child in root.Controls)
+            {
+                yield return child;
+                foreach (Control grandchild in GetAllControls(child))
+                    yield return grandchild;
+            }
         }
 
         private void WireEvents()
         {
-            this.Load += SelectSeat_Load;
-            numberSeats.ValueChanged += numberSeats_ValueChanged;
+            // NOTE: SelectSeat.Designer.cs already wires this.Load to SelectSeat_Load,
+            // so it is NOT re-wired here (that would run it twice on every open).
             buttonConfirmbooking.Click += buttonConfirmbooking_Click;
             buttonBack.Click += buttonBack_Click;
         }
@@ -29,6 +70,7 @@ namespace BusTicketingSystem
         private void SelectSeat_Load(object sender, EventArgs e)
         {
             LoadScheduleDetails();
+            LoadSeatMap();
         }
 
         private void LoadScheduleDetails()
@@ -55,7 +97,6 @@ namespace BusTicketingSystem
 
                         DataRow row = rows[0];
                         farePerSeat = Convert.ToDecimal(row["Fare"]);
-                        availableSeats = Convert.ToInt32(row["AvailableSeats"]);
 
                         labelBus.Text = row["BusName"].ToString() + " (" + row["BusType"].ToString() + ")";
                         labelRoute.Text = row["Source"].ToString() + " -> " + row["Destination"].ToString();
@@ -63,10 +104,7 @@ namespace BusTicketingSystem
                         DateTime dep = Convert.ToDateTime(row["DepartureTime"]);
                         labelDataTime.Text = dep.ToString("dd MMM yyyy, hh:mm tt");
 
-                        labelFare.Text = "TK " + farePerSeat.ToString("0") + " per seat";
-
-                        numberSeats.Minimum = 1;
-                        numberSeats.Maximum = availableSeats > 0 ? availableSeats : 1;
+                        labelFare.Text = "Base Fare: " + farePerSeat.ToString("0") + " BDT";
 
                         UpdateTotal();
                     }
@@ -79,32 +117,100 @@ namespace BusTicketingSystem
             }
         }
 
-        private void numberSeats_ValueChanged(object sender, EventArgs e)
+        private void LoadSeatMap()
         {
+            selectedSeats.Clear();
+
+            try
+            {
+                using (SqlConnection conn = DBConnection.GetConnection())
+                using (SqlCommand cmd = new SqlCommand("sp_GetSeatsForSchedule", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var statusBySeat = new Dictionary<string, string>();
+                        while (reader.Read())
+                        {
+                            statusBySeat[reader["SeatNumber"].ToString()] = reader["Status"].ToString();
+                        }
+
+                        foreach (var kvp in seatButtons)
+                        {
+                            string seatNumber = kvp.Key;
+                            Button btn = kvp.Value;
+
+                            bool isBooked = statusBySeat.TryGetValue(seatNumber, out string status)
+                                            && status == "Booked";
+
+                            btn.BackColor = isBooked ? BookedColor : AvailableColor;
+                            btn.Enabled = !isBooked;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading seat map:\n" + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            UpdateTotal();
+        }
+
+        private void SeatButton_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            string seatNumber = btn.Text;
+
+            if (selectedSeats.Contains(seatNumber))
+            {
+                selectedSeats.Remove(seatNumber);
+                btn.BackColor = AvailableColor;
+            }
+            else
+            {
+                selectedSeats.Add(seatNumber);
+                btn.BackColor = SelectedColor;
+            }
+
             UpdateTotal();
         }
 
         private void UpdateTotal()
         {
-            decimal total = farePerSeat * numberSeats.Value;
-            labelTotalPrice.Text = "Total: TK " + total.ToString("0");
+            decimal total = selectedSeats.Count * farePerSeat;
+            labelTotalPrice.Text = "TOTAL PRICE: " + total.ToString("0") + " BDT ("
+                + selectedSeats.Count + (selectedSeats.Count == 1 ? " seat)" : " seats)");
         }
 
         private void buttonConfirmbooking_Click(object sender, EventArgs e)
         {
-            int seatsRequested = (int)numberSeats.Value;
+            if (selectedSeats.Count == 0)
+            {
+                MessageBox.Show("Please select at least one seat first.", "No Seats Selected",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
                 using (SqlConnection conn = DBConnection.GetConnection())
-                using (SqlCommand cmd = new SqlCommand("sp_BookSeats", conn))
+                using (SqlCommand cmd = new SqlCommand("sp_ConfirmBooking", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
-                    cmd.Parameters.AddWithValue("@SeatsRequested", seatsRequested);
+                    cmd.Parameters.AddWithValue("@UserID", userId == 0 ? (object)DBNull.Value : userId);
+                    cmd.Parameters.AddWithValue("@SeatNumbers", string.Join(",", selectedSeats));
 
-                    SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Bit);
-                    successParam.Direction = ParameterDirection.Output;
+                    SqlParameter bookingIdParam = new SqlParameter("@BookingID", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                    SqlParameter pnrParam = new SqlParameter("@PNR", SqlDbType.VarChar, 20) { Direction = ParameterDirection.Output };
+                    SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Bit) { Direction = ParameterDirection.Output };
+                    cmd.Parameters.Add(bookingIdParam);
+                    cmd.Parameters.Add(pnrParam);
                     cmd.Parameters.Add(successParam);
 
                     conn.Open();
@@ -114,15 +220,22 @@ namespace BusTicketingSystem
 
                     if (success)
                     {
-                        MessageBox.Show("Seats booked successfully! (Booking record + Payment page come next.)",
+                        string pnr = pnrParam.Value.ToString();
+                        MessageBox.Show(
+                            "Seats booked: " + string.Join(", ", selectedSeats) +
+                            "\nPNR: " + pnr +
+                            "\nStatus: Pending payment." +
+                            "\n\n(Payment page comes next — this booking is saved as Pending.)",
                             "Booking Confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Not enough seats available. Please choose a lower seat count.",
+                        MessageBox.Show(
+                            "One or more of your selected seats were just booked by someone else. " +
+                            "The seat map has been refreshed — please choose again.",
                             "Booking Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        LoadScheduleDetails();
+                        LoadSeatMap();
                     }
                 }
             }
@@ -140,7 +253,6 @@ namespace BusTicketingSystem
 
         private void labelTotalPrice_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

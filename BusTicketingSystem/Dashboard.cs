@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -12,9 +11,14 @@ namespace BusTicketingSystem
 {
     public partial class Dashboard : Form
     {
-        public Dashboard()
+        private readonly int userId;
+
+        public Dashboard() : this(0) { }
+
+        public Dashboard(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
             WireEvents();
         }
 
@@ -53,14 +57,14 @@ namespace BusTicketingSystem
                 return;
             }
 
-            AvailableJourney journey = new AvailableJourney(from, to, date);
+            AvailableJourney journey = new AvailableJourney(from, to, date, userId);
             journey.Show();
             this.Hide();
         }
 
         private void btnAvailableJourney_Click(object sender, EventArgs e)
         {
-            AvailableJourney journey = new AvailableJourney();
+            AvailableJourney journey = new AvailableJourney(userId);
             journey.Show();
             this.Hide();
         }

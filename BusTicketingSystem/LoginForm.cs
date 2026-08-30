@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -59,7 +58,9 @@ namespace BusTicketingSystem
                     {
                         if (reader.Read())
                         {
-                            Dashboard dashboard = new Dashboard();
+                            int userId = Convert.ToInt32(reader["UserID"]);
+
+                            Dashboard dashboard = new Dashboard(userId);
                             dashboard.Show();
                             this.Hide();
                         }
