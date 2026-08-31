@@ -1,4 +1,4 @@
-﻿namespace BusTicketingSystem
+﻿Snamespace BusTicketingSystem
 {
     partial class SelectSeat
     {
