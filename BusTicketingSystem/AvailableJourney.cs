@@ -1,60 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BusTicketingSystem
 {
     public partial class AvailableJourney : Form
     {
-        private readonly string searchFrom;
-        private readonly string searchTo;
-        private readonly DateTime searchDate;
-        private readonly bool hasSearch;
         private readonly int userId;
+        private readonly string from;
+        private readonly string to;
+        private readonly DateTime date;
+        private readonly bool isSearch;
 
         public AvailableJourney(int userId)
         {
             InitializeComponent();
+
             this.userId = userId;
-            hasSearch = false;
-            WireEvents();
+
+            ConnectButtons();
         }
 
         public AvailableJourney(string from, string to, DateTime date, int userId)
         {
             InitializeComponent();
-            searchFrom = from;
-            searchTo = to;
-            searchDate = date;
+
+            this.from = from;
+            this.to = to;
+            this.date = date.Date;
             this.userId = userId;
-            hasSearch = true;
-            WireEvents();
+            isSearch = true;
+
+            ConnectButtons();
         }
 
-        private void WireEvents()
+        private void ConnectButtons()
         {
-            this.Load += AvailableJourney_Load;
+            // Remove first so there is never a duplicate event
+            btnSelect1.Click -= btnSelect_Click;
+            btnSelect2.Click -= btnSelect_Click;
+            btnSelect3.Click -= btnSelect_Click;
 
+            buttonDashboard.Click -= buttonDashboard_Click;
+            buttonBack.Click -= buttonBack_Click;
+
+            buttonSelectSeat.Click -= buttonSelectSeat_Click;
+            buttonPayment.Click -= buttonPayment_Click;
+            buttonConfirmation.Click -= buttonConfirmation_Click;
+
+            buttonLogout.Click -= buttonLogout_Click;
+
+            // Connect buttons
             btnSelect1.Click += btnSelect_Click;
             btnSelect2.Click += btnSelect_Click;
             btnSelect3.Click += btnSelect_Click;
 
-            buttonDashboard.Click += GoToDashboard_Click;
-            buttonBack.Click += GoToDashboard_Click;
-            butotnAvailableJourney.Click += (s, e) => LoadJourneys();
+            buttonDashboard.Click += buttonDashboard_Click;
+            buttonBack.Click += buttonBack_Click;
 
-            buttonSelectSeat.Click += ComingSoon_Click;
-            buttonPayment.Click += ComingSoon_Click;
-            buttonConfirmation.Click += ComingSoon_Click;
+            buttonSelectSeat.Click += buttonSelectSeat_Click;
+            buttonPayment.Click += buttonPayment_Click;
+            buttonConfirmation.Click += buttonConfirmation_Click;
 
-            buttonLogout.Click += btnLogout_Click;
+            buttonLogout.Click += buttonLogout_Click;
         }
 
         private void AvailableJourney_Load(object sender, EventArgs e)
@@ -64,22 +73,23 @@ namespace BusTicketingSystem
 
         private void LoadJourneys()
         {
-            DataTable dt = new DataTable();
-
             try
             {
-                using (SqlConnection conn = DBConnection.GetConnection())
+                DataTable dt = new DataTable();
+
+                using (SqlConnection con = DBConnection.GetConnection())
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.Connection = conn;
+                    cmd.Connection = con;
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    if (hasSearch)
+                    if (isSearch)
                     {
                         cmd.CommandText = "sp_SearchSchedules";
-                        cmd.Parameters.AddWithValue("@Source", searchFrom);
-                        cmd.Parameters.AddWithValue("@Destination", searchTo);
-                        cmd.Parameters.AddWithValue("@TravelDate", searchDate.Date);
+
+                        cmd.Parameters.Add("@Source", SqlDbType.VarChar, 100).Value = from;
+                        cmd.Parameters.Add("@Destination", SqlDbType.VarChar, 100).Value = to;
+                        cmd.Parameters.Add("@TravelDate", SqlDbType.Date).Value = date;
                     }
                     else
                     {
@@ -87,162 +97,197 @@ namespace BusTicketingSystem
                     }
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
                         da.Fill(dt);
+                }
+
+                labelTotalJourneys.Text = dt.Rows.Count.ToString();
+
+                Panel[] panels = { pnlJourney1, pnlJourney2, pnlJourney3 };
+                Button[] buttons = { btnSelect1, btnSelect2, btnSelect3 };
+
+                Label[] names = { lblBusName1, lblBusName2, lblBusName3 };
+                Label[] types = { lblBusType1, lblBusType2, lblBusType3 };
+                Label[] prices = { lblPrice1, lblPrice2, lblPrice3 };
+                Label[] seats = { lblSeats1, lblSeats2, lblSeats3 };
+                Label[] locations =
+                {
+                    lblDepartureLocation1,
+                    lblDepartureLocation2,
+                    lblDepartureLocation3
+                };
+                Label[] departures =
+                {
+                    lblDeparture1,
+                    lblDeparture2,
+                    lblDeparture3
+                };
+                Label[] arrivals =
+                {
+                    lblArrival1,
+                    lblArrival2,
+                    lblArrival3
+                };
+                Label[] durations =
+                {
+                    lblDuration1,
+                    lblDuration2,
+                    lblDuration3
+                };
+
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i >= dt.Rows.Count)
+                    {
+                        panels[i].Visible = false;
+                        continue;
                     }
+
+                    DataRow r = dt.Rows[i];
+
+                    panels[i].Visible = true;
+
+                    names[i].Text = r["BusName"].ToString();
+                    types[i].Text = r["BusType"].ToString();
+                    prices[i].Text = "TK " + Convert.ToDecimal(r["Fare"]).ToString("0");
+                    seats[i].Text = r["AvailableSeats"] + " seats left";
+                    locations[i].Text = r["Source"].ToString();
+
+                    DateTime departure = Convert.ToDateTime(r["DepartureTime"]);
+                    DateTime arrival = Convert.ToDateTime(r["ArrivalTime"]);
+
+                    departures[i].Text = departure.ToString("hh:mm tt");
+                    arrivals[i].Text = arrival.ToString("hh:mm tt");
+
+                    TimeSpan duration = arrival - departure;
+
+                    if (duration.TotalMinutes < 0)
+                        duration = duration.Add(TimeSpan.FromDays(1));
+
+                    durations[i].Text =
+                        $"{(int)duration.TotalHours}h {duration.Minutes}m";
+
+                    buttons[i].Tag = Convert.ToInt32(r["ScheduleID"]);
+                    buttons[i].Enabled =
+                        Convert.ToInt32(r["AvailableSeats"]) > 0;
+                }
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "No journeys found.",
+                        "Available Journey",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading journeys:\n" + ex.Message, "Database Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                MessageBox.Show(
+                    "Error loading journeys:\n" + ex.Message,
+                    "Error",
 
-            labelFromCity.Text = hasSearch ? searchFrom : "ALL";
-            labelToCity.Text = hasSearch ? searchTo : "ALL";
-            labelDate.Text = (hasSearch ? searchDate : DateTime.Today).ToString("dd MMM yyyy");
-            labelTotalJourneys.Text = dt.Rows.Count.ToString();
-
-            Panel[] cardPanels = { pnlJourney1, pnlJourney2, pnlJourney3 };
-            Label[] busName = { lblBusName1, lblBusName2, lblBusName3 };
-            Label[] busType = { lblBusType1, lblBusType2, lblBusType3 };
-            Label[] price = { lblPrice1, lblPrice2, lblPrice3 };
-            Label[] seats = { lblSeats1, lblSeats2, lblSeats3 };
-            Label[] departureLoc = { lblDepartureLocation1, lblDepartureLocation2, lblDepartureLocation3 };
-            Label[] departureTime = { lblDeparture1, lblDeparture2, lblDeparture3 };
-            Label[] arrivalTime = { lblArrival1, lblArrival2, lblArrival3 };
-            Label[] duration = { lblDuration1, lblDuration2, lblDuration3 };
-            Button[] selectBtn = { btnSelect1, btnSelect2, btnSelect3 };
-
-            for (int i = 0; i < cardPanels.Length; i++)
-            {
-                if (i < dt.Rows.Count)
-                {
-                    DataRow row = dt.Rows[i];
-                    cardPanels[i].Visible = true;
-
-                    busName[i].Text = row["BusName"].ToString();
-                    busType[i].Text = row["BusType"].ToString();
-                    price[i].Text = "TK " + Convert.ToDecimal(row["Fare"]).ToString("0");
-                    seats[i].Text = row["AvailableSeats"].ToString() + " seats left";
-                    departureLoc[i].Text = row["Source"].ToString();
-
-                    DateTime dep = Convert.ToDateTime(row["DepartureTime"]);
-                    DateTime arr = Convert.ToDateTime(row["ArrivalTime"]);
-                    departureTime[i].Text = dep.ToString("hh:mm tt");
-                    arrivalTime[i].Text = arr.ToString("hh:mm tt");
-
-                    TimeSpan dur = arr - dep;
-                    duration[i].Text = (int)dur.TotalHours + "h " + dur.Minutes + "m";
-
-                    selectBtn[i].Tag = row["ScheduleID"];
-                }
-                else
-                {
-                    cardPanels[i].Visible = false;
-                }
-            }
-
-            if (dt.Rows.Count == 0)
-            {
-                MessageBox.Show("No journeys found for this route and date.", "Available Journey",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
+            Button btn = (Button)sender;
             int scheduleId = Convert.ToInt32(btn.Tag);
-            SelectSeat selectSeat = new SelectSeat(scheduleId, userId);
-            selectSeat.ShowDialog();
-            LoadJourneys(); // refresh seat counts after returning
+
+            SelectSeat seat = new SelectSeat(scheduleId, userId);
+            seat.ShowDialog();
+
+            LoadJourneys();
         }
 
-        private void GoToDashboard_Click(object sender, EventArgs e)
+        private void buttonDashboard_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard(userId);
-            dashboard.Show();
-            this.Hide();
+            new Dashboard(userId).Show();
+            Hide();
         }
 
-        private void ComingSoon_Click(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This page isn't built yet - coming in a later phase.",
-                "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            new Dashboard(userId).Show();
+            Hide();
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void buttonSelectSeat_Click(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
-            login.Show();
-            this.Hide();
+            MessageBox.Show("Please select a journey first.");
         }
 
-        private void lblSeatsTitle2_Click(object sender, EventArgs e)
+        private void buttonPayment_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Payment is available after booking a seat.");
         }
 
-        private void lblSeats2_Click(object sender, EventArgs e)
+        private void buttonConfirmation_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Confirmation is available after successful payment.");
         }
 
-        private void pictureBox12_Click(object sender, EventArgs e)
+        private void buttonLogout_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                new LoginForm().Show();
+                Hide();
+            }
         }
-
-        private void lblDeparture1_Click(object sender, EventArgs e)
+    
+            private void pnlJourney1_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void lblDepartureLocation1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblDepartureTitle1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSelectSeat_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnlJourney1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void pnlJourney2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void pnlJourney3_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
-        private void AvailableJourney_Load_1(object sender, EventArgs e)
+        private void panel4_Paint(object sender, PaintEventArgs e)
         {
+        }
 
+        private void pictureBox12_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblSeats2_Click(object sender, EventArgs e)
+        {
         }
 
         private void lblSeats3_Click(object sender, EventArgs e)
         {
+        }
 
+        private void lblSeatsTitle2_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblDepartureLocation1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblDeparture1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblDepartureTitle1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void AvailableJourney_Load_1(object sender, EventArgs e)
+        {
         }
     }
 }

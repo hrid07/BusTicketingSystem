@@ -1,10 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BusTicketingSystem
@@ -13,12 +7,12 @@ namespace BusTicketingSystem
     {
         private readonly int userId;
 
-        public Dashboard() : this(0) { }
-
         public Dashboard(int userId)
         {
             InitializeComponent();
+
             this.userId = userId;
+
             WireEvents();
         }
 
@@ -26,16 +20,26 @@ namespace BusTicketingSystem
         {
             btnSearch.Click += btnSearch_Click;
             btnAvailableJourney.Click += btnAvailableJourney_Click;
-            btnSelectSeat.Click += ComingSoon_Click;
-            btnPayment.Click += ComingSoon_Click;
-            btnConfirmation.Click += ComingSoon_Click;
+
+            btnSelectSeat.Click += btnSelectSeat_Click;
+            btnPayment.Click += btnPayment_Click;
+            btnConfirmation.Click += btnConfirmation_Click;
+
             btnLogout.Click += btnLogout_Click;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            // Prevent selecting a past date
+            dateTimePicker1.MinDate = DateTime.Today;
 
+            // Default date
+            dateTimePicker1.Value = DateTime.Today;
         }
+
+        // =========================
+        // SEARCH JOURNEY
+        // =========================
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -43,63 +47,133 @@ namespace BusTicketingSystem
             string to = cmbTo.SelectedItem?.ToString();
             DateTime date = dateTimePicker1.Value.Date;
 
-            if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
+            if (string.IsNullOrWhiteSpace(from) ||
+                string.IsNullOrWhiteSpace(to))
             {
-                MessageBox.Show("Please select both From and To cities.", "Search",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Please select both From and To cities.",
+                    "Search",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
-            if (from == to)
+            if (from.Equals(to, StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("From and To cities cannot be the same.", "Search",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "From and To cities cannot be the same.",
+                    "Search",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
-            AvailableJourney journey = new AvailableJourney(from, to, date, userId);
+            if (date < DateTime.Today)
+            {
+                MessageBox.Show(
+                    "Please select today or a future date.",
+                    "Invalid Date",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            AvailableJourney journey =
+                new AvailableJourney(from, to, date, userId);
+
             journey.Show();
+
             this.Hide();
         }
+
+        // =========================
+        // ALL AVAILABLE JOURNEYS
+        // =========================
 
         private void btnAvailableJourney_Click(object sender, EventArgs e)
         {
-            AvailableJourney journey = new AvailableJourney(userId);
+            AvailableJourney journey =
+                new AvailableJourney(userId);
+
             journey.Show();
+
             this.Hide();
         }
 
-        private void ComingSoon_Click(object sender, EventArgs e)
+        // =========================
+        // SELECT SEAT
+        // =========================
+
+        private void btnSelectSeat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This page isn't built yet - coming in a later phase.",
-                "Coming Soon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                "Please select a journey first, then choose your seat.",
+                "Select Seat",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        // =========================
+        // PAYMENT
+        // =========================
+
+        private void btnPayment_Click(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
-            login.Show();
-            this.Hide();
+            MessageBox.Show(
+                "Payment becomes available after you select your seat and create a booking.",
+                "Payment",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
-        private void btnLogout_Click_1(object sender, EventArgs e)
-        {
-
-        }
+        // =========================
+        // CONFIRMATION
+        // =========================
 
         private void btnConfirmation_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(
+                "Your booking confirmation will appear after successful payment.",
+                "Confirmation",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
+
+        // =========================
+        // LOGOUT
+        // =========================
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            LoginForm login = new LoginForm();
+
+            login.Show();
+
+            this.Hide();
+        }
+
+        // =========================
+        // UNUSED DESIGNER EVENTS
+        // =========================
 
         private void pnlSideBar_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

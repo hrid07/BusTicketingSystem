@@ -213,7 +213,7 @@
             this.btnConfirmation.TabIndex = 7;
             this.btnConfirmation.Text = "CONFIRMATION";
             this.btnConfirmation.UseVisualStyleBackColor = false;
-            this.btnConfirmation.Click += new System.EventHandler(this.btnConfirmation_Click);
+      
             // 
             // btnLogout
             // 
@@ -227,7 +227,7 @@
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click_1);
+           
             // 
             // btnPayment
             // 

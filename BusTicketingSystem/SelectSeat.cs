@@ -11,244 +11,448 @@ namespace BusTicketingSystem
     public partial class SelectSeat : Form
     {
         private readonly int scheduleId;
-        private readonly int userId; // 0 = not logged in / not passed through yet
+        private readonly int userId;
         private decimal farePerSeat;
 
-        // Match the legend swatches already on the form (buttonFalse1/2/3)
-        private static readonly Color AvailableColor = Color.DarkSeaGreen;
-        private static readonly Color BookedColor = Color.SaddleBrown;
-        private static readonly Color SelectedColor = Color.DimGray;
+        private readonly List<string> selectedSeats =
+            new List<string>();
 
-        private readonly Dictionary<string, Button> seatButtons = new Dictionary<string, Button>();
-        private readonly List<string> selectedSeats = new List<string>();
+        private readonly Dictionary<string, Button> seatButtons =
+            new Dictionary<string, Button>();
 
-        public SelectSeat(int scheduleId) : this(scheduleId, 0) { }
+        private static readonly Color AvailableColor =
+            Color.DarkSeaGreen;
+
+        private static readonly Color BookedColor =
+            Color.SaddleBrown;
+
+        private static readonly Color SelectedColor =
+            Color.DimGray;
+
+        public SelectSeat(int scheduleId)
+            : this(scheduleId, 0)
+        {
+        }
 
         public SelectSeat(int scheduleId, int userId)
         {
             InitializeComponent();
+
             this.scheduleId = scheduleId;
             this.userId = userId;
-            CollectSeatButtons();
-            WireEvents();
+
+            FindSeatButtons();
+
+            buttonConfirmbooking.Click +=
+                buttonConfirmbooking_Click;
+
+            buttonBack.Click +=
+                buttonBack_Click;
         }
 
-        // Finds every button on the form whose Text looks like a seat code (A1, B2, H3, ...)
-        // and wires it up. This works regardless of which designer field name it has,
-        // so buttonFalse1/2/3 (the legend swatches, which have no seat text) are skipped automatically.
-        private void CollectSeatButtons()
+        // =========================
+        // FORM LOAD
+        // =========================
+
+        private void SelectSeat_Load(object sender, EventArgs e)
         {
-            Regex seatPattern = new Regex(@"^[A-H][1-3]$");
-            foreach (Control c in GetAllControls(this))
+            LoadSchedule();
+            LoadSeats();
+        }
+
+        // =========================
+        // FIND SEAT BUTTONS
+        // =========================
+
+        private void FindSeatButtons()
+        {
+            Regex pattern =
+                new Regex(@"^[A-H][1-3]$");
+
+            foreach (Control control in GetControls(this))
             {
-                if (c is Button btn && seatPattern.IsMatch(btn.Text))
+                if (control is Button button &&
+                    pattern.IsMatch(button.Text))
                 {
-                    seatButtons[btn.Text] = btn;
-                    btn.Click += SeatButton_Click;
+                    seatButtons[button.Text] = button;
+
+                    button.Click += SeatButton_Click;
                 }
             }
         }
 
-        private IEnumerable<Control> GetAllControls(Control root)
+        private IEnumerable<Control> GetControls(Control parent)
         {
-            foreach (Control child in root.Controls)
+            foreach (Control control in parent.Controls)
             {
-                yield return child;
-                foreach (Control grandchild in GetAllControls(child))
-                    yield return grandchild;
+                yield return control;
+
+                foreach (Control child in GetControls(control))
+                    yield return child;
             }
         }
 
-        private void WireEvents()
-        {
-            // NOTE: SelectSeat.Designer.cs already wires this.Load to SelectSeat_Load,
-            // so it is NOT re-wired here (that would run it twice on every open).
-            buttonConfirmbooking.Click += buttonConfirmbooking_Click;
-            buttonBack.Click += buttonBack_Click;
-        }
+        // =========================
+        // LOAD SCHEDULE
+        // =========================
 
-        private void SelectSeat_Load(object sender, EventArgs e)
-        {
-            LoadScheduleDetails();
-            LoadSeatMap();
-        }
-
-        private void LoadScheduleDetails()
+        private void LoadSchedule()
         {
             try
             {
-                using (SqlConnection conn = DBConnection.GetConnection())
-                using (SqlCommand cmd = new SqlCommand("sp_GetAllSchedules", conn))
+                using (SqlConnection con =
+                       DBConnection.GetConnection())
+                using (SqlCommand cmd =
+                       new SqlCommand("sp_GetAllSchedules", con))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
+
+                    DataTable table = new DataTable();
+
+                    using (SqlDataAdapter adapter =
+                           new SqlDataAdapter(cmd))
                     {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        DataRow[] rows = dt.Select("ScheduleID = " + scheduleId);
-                        if (rows.Length == 0)
-                        {
-                            MessageBox.Show("Schedule not found.", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            this.Close();
-                            return;
-                        }
-
-                        DataRow row = rows[0];
-                        farePerSeat = Convert.ToDecimal(row["Fare"]);
-
-                        labelBus.Text = row["BusName"].ToString() + " (" + row["BusType"].ToString() + ")";
-                        labelRoute.Text = row["Source"].ToString() + " -> " + row["Destination"].ToString();
-
-                        DateTime dep = Convert.ToDateTime(row["DepartureTime"]);
-                        labelDataTime.Text = dep.ToString("dd MMM yyyy, hh:mm tt");
-
-                        labelFare.Text = "Base Fare: " + farePerSeat.ToString("0") + " BDT";
-
-                        UpdateTotal();
+                        adapter.Fill(table);
                     }
+
+                    DataRow[] rows =
+                        table.Select(
+                            "ScheduleID = " + scheduleId);
+
+                    if (rows.Length == 0)
+                    {
+                        MessageBox.Show(
+                            "The selected journey could not be found.",
+                            "Journey Not Found",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+
+                        Close();
+                        return;
+                    }
+
+                    DataRow row = rows[0];
+
+                    farePerSeat =
+                        Convert.ToDecimal(row["Fare"]);
+
+                    labelBus.Text =
+                        row["BusName"] +
+                        " (" +
+                        row["BusType"] +
+                        ")";
+
+                    labelRoute.Text =
+                        row["Source"] +
+                        " → " +
+                        row["Destination"];
+
+                    DateTime departure =
+                        Convert.ToDateTime(
+                            row["DepartureTime"]);
+
+                    labelDataTime.Text =
+                        departure.ToString(
+                            "dd MMM yyyy, hh:mm tt");
+
+                    labelFare.Text =
+                        "Base Fare: " +
+                        farePerSeat.ToString("0") +
+                        " BDT";
+
+                    UpdateTotal();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading schedule:\n" + ex.Message, "Database Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Unable to load journey:\n\n" +
+                    ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
-        private void LoadSeatMap()
+        // =========================
+        // LOAD SEATS
+        // =========================
+
+        private void LoadSeats()
         {
             selectedSeats.Clear();
 
             try
             {
-                using (SqlConnection conn = DBConnection.GetConnection())
-                using (SqlCommand cmd = new SqlCommand("sp_GetSeatsForSchedule", conn))
+                using (SqlConnection con =
+                       DBConnection.GetConnection())
+                using (SqlCommand cmd =
+                       new SqlCommand(
+                           "sp_GetSeatsForSchedule",
+                           con))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    conn.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    cmd.Parameters.Add(
+                        "@ScheduleID",
+                        SqlDbType.Int).Value =
+                        scheduleId;
+
+                    con.Open();
+
+                    Dictionary<string, string> statuses =
+                        new Dictionary<string, string>();
+
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
                     {
-                        var statusBySeat = new Dictionary<string, string>();
                         while (reader.Read())
                         {
-                            statusBySeat[reader["SeatNumber"].ToString()] = reader["Status"].ToString();
+                            string seat =
+                                reader["SeatNumber"].ToString();
+
+                            string status =
+                                reader["Status"].ToString();
+
+                            statuses[seat] = status;
                         }
+                    }
 
-                        foreach (var kvp in seatButtons)
-                        {
-                            string seatNumber = kvp.Key;
-                            Button btn = kvp.Value;
+                    foreach (var item in seatButtons)
+                    {
+                        string seat = item.Key;
+                        Button button = item.Value;
 
-                            bool isBooked = statusBySeat.TryGetValue(seatNumber, out string status)
-                                            && status == "Booked";
+                        bool booked =
+                            statuses.ContainsKey(seat) &&
+                            statuses[seat]
+                                .Equals(
+                                    "Booked",
+                                    StringComparison.OrdinalIgnoreCase);
 
-                            btn.BackColor = isBooked ? BookedColor : AvailableColor;
-                            btn.Enabled = !isBooked;
-                        }
+                        button.BackColor =
+                            booked
+                            ? BookedColor
+                            : AvailableColor;
+
+                        button.Enabled = !booked;
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading seat map:\n" + ex.Message, "Database Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Unable to load seats:\n\n" +
+                    ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
 
             UpdateTotal();
         }
 
-        private void SeatButton_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            string seatNumber = btn.Text;
+        // =========================
+        // SELECT / UNSELECT SEAT
+        // =========================
 
-            if (selectedSeats.Contains(seatNumber))
+        private void SeatButton_Click(
+            object sender,
+            EventArgs e)
+        {
+            Button button = (Button)sender;
+
+            string seat = button.Text;
+
+            if (selectedSeats.Contains(seat))
             {
-                selectedSeats.Remove(seatNumber);
-                btn.BackColor = AvailableColor;
+                selectedSeats.Remove(seat);
+
+                button.BackColor =
+                    AvailableColor;
             }
             else
             {
-                selectedSeats.Add(seatNumber);
-                btn.BackColor = SelectedColor;
+                selectedSeats.Add(seat);
+
+                button.BackColor =
+                    SelectedColor;
             }
 
             UpdateTotal();
         }
 
+        // =========================
+        // TOTAL FARE
+        // =========================
+
         private void UpdateTotal()
         {
-            decimal total = selectedSeats.Count * farePerSeat;
-            labelTotalPrice.Text = "TOTAL PRICE: " + total.ToString("0") + " BDT ("
-                + selectedSeats.Count + (selectedSeats.Count == 1 ? " seat)" : " seats)");
+            decimal total =
+                selectedSeats.Count * farePerSeat;
+
+            string seatText =
+                selectedSeats.Count == 1
+                ? "seat"
+                : "seats";
+
+            labelTotalPrice.Text =
+                "TOTAL PRICE: " +
+                total.ToString("0") +
+                " BDT (" +
+                selectedSeats.Count +
+                " " +
+                seatText +
+                ")";
         }
 
-        private void buttonConfirmbooking_Click(object sender, EventArgs e)
+        // =========================
+        // CONFIRM BOOKING
+        // =========================
+
+        private void buttonConfirmbooking_Click(
+            object sender,
+            EventArgs e)
         {
             if (selectedSeats.Count == 0)
             {
-                MessageBox.Show("Please select at least one seat first.", "No Seats Selected",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Please select at least one seat.",
+                    "No Seat Selected",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
                 return;
             }
 
             try
             {
-                using (SqlConnection conn = DBConnection.GetConnection())
-                using (SqlCommand cmd = new SqlCommand("sp_ConfirmBooking", conn))
+                using (SqlConnection con =
+                       DBConnection.GetConnection())
+                using (SqlCommand cmd =
+                       new SqlCommand(
+                           "sp_ConfirmBooking",
+                           con))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ScheduleID", scheduleId);
-                    cmd.Parameters.AddWithValue("@UserID", userId == 0 ? (object)DBNull.Value : userId);
-                    cmd.Parameters.AddWithValue("@SeatNumbers", string.Join(",", selectedSeats));
+                    cmd.CommandType =
+                        CommandType.StoredProcedure;
 
-                    SqlParameter bookingIdParam = new SqlParameter("@BookingID", SqlDbType.Int) { Direction = ParameterDirection.Output };
-                    SqlParameter pnrParam = new SqlParameter("@PNR", SqlDbType.VarChar, 20) { Direction = ParameterDirection.Output };
-                    SqlParameter successParam = new SqlParameter("@Success", SqlDbType.Bit) { Direction = ParameterDirection.Output };
-                    cmd.Parameters.Add(bookingIdParam);
-                    cmd.Parameters.Add(pnrParam);
-                    cmd.Parameters.Add(successParam);
+                    cmd.Parameters.Add(
+                        "@ScheduleID",
+                        SqlDbType.Int).Value =
+                        scheduleId;
 
-                    conn.Open();
+                    cmd.Parameters.Add(
+                        "@UserID",
+                        SqlDbType.Int).Value =
+                        userId == 0
+                        ? (object)DBNull.Value
+                        : userId;
+
+                    cmd.Parameters.Add(
+                        "@SeatNumbers",
+                        SqlDbType.VarChar,
+                        200).Value =
+                        string.Join(
+                            ",",
+                            selectedSeats);
+
+                    SqlParameter bookingId =
+                        cmd.Parameters.Add(
+                            "@BookingID",
+                            SqlDbType.Int);
+
+                    bookingId.Direction =
+                        ParameterDirection.Output;
+
+                    SqlParameter pnr =
+                        cmd.Parameters.Add(
+                            "@PNR",
+                            SqlDbType.VarChar,
+                            20);
+
+                    pnr.Direction =
+                        ParameterDirection.Output;
+
+                    SqlParameter success =
+                        cmd.Parameters.Add(
+                            "@Success",
+                            SqlDbType.Bit);
+
+                    success.Direction =
+                        ParameterDirection.Output;
+
+                    con.Open();
+
                     cmd.ExecuteNonQuery();
 
-                    bool success = Convert.ToBoolean(successParam.Value);
+                    bool isSuccess =
+                        success.Value != DBNull.Value &&
+                        Convert.ToBoolean(
+                            success.Value);
 
-                    if (success)
-                    {
-                        int bookingId = Convert.ToInt32(bookingIdParam.Value);
-
-                        Payment payment = new Payment(bookingId, userId);
-                        payment.Show();
-                        this.Close();
-                    }
-                    else
+                    if (!isSuccess)
                     {
                         MessageBox.Show(
-                            "One or more of your selected seats were just booked by someone else. " +
-                            "The seat map has been refreshed — please choose again.",
-                            "Booking Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        LoadSeatMap();
+                            "One or more selected seats are no longer available.",
+                            "Booking Failed",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+
+                        LoadSeats();
+                        return;
                     }
+
+                    int id =
+                        Convert.ToInt32(
+                            bookingId.Value);
+
+                    decimal total =
+                        selectedSeats.Count *
+                        farePerSeat;
+
+                    Payment payment =
+                        new Payment(
+                            id,
+                            userId,
+                            total);
+
+                    payment.Show();
+
+                    Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error confirming booking:\n" + ex.Message, "Database Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Unable to create booking:\n\n" +
+                    ex.Message,
+                    "Booking Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
-        private void buttonBack_Click(object sender, EventArgs e)
+        // =========================
+        // BACK
+        // =========================
+
+        private void buttonBack_Click(
+            object sender,
+            EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        private void labelTotalPrice_Click(object sender, EventArgs e)
+        // =========================
+        // DESIGNER EVENT
+        // =========================
+
+        private void labelTotalPrice_Click(
+            object sender,
+            EventArgs e)
         {
         }
     }
