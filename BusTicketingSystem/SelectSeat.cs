@@ -220,13 +220,10 @@ namespace BusTicketingSystem
 
                     if (success)
                     {
-                        string pnr = pnrParam.Value.ToString();
-                        MessageBox.Show(
-                            "Seats booked: " + string.Join(", ", selectedSeats) +
-                            "\nPNR: " + pnr +
-                            "\nStatus: Pending payment." +
-                            "\n\n(Payment page comes next — this booking is saved as Pending.)",
-                            "Booking Confirmed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        int bookingId = Convert.ToInt32(bookingIdParam.Value);
+
+                        Payment payment = new Payment(bookingId, userId);
+                        payment.Show();
                         this.Close();
                     }
                     else
