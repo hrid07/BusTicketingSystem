@@ -55,6 +55,12 @@
     <Compile Include="AvailableJourney.Designer.cs">
       <DependentUpon>AvailableJourney.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusManagement.Designer.cs">
+      <DependentUpon>BusManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <EmbeddedResource Include="AvailableJourney.resx">
       <DependentUpon>AvailableJourney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusManagement.resx">
+      <DependentUpon>BusManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
