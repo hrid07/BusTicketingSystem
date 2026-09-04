@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlMainContent = new System.Windows.Forms.Panel();
             this.btnAddNewBus = new System.Windows.Forms.Button();
             this.dgvBuses = new System.Windows.Forms.DataGridView();
@@ -44,8 +44,6 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBusManagement = new System.Windows.Forms.Label();
             this.pnlAddEditBus = new System.Windows.Forms.Panel();
             this.nudRouteNumber = new System.Windows.Forms.NumericUpDown();
@@ -69,13 +67,13 @@
             this.btnBuses = new System.Windows.Forms.Button();
             this.btnRoutes = new System.Windows.Forms.Button();
             this.btnBookings = new System.Windows.Forms.Button();
-            this.btnDownloads = new System.Windows.Forms.Button();
+            this.hScrollBarBuses = new System.Windows.Forms.HScrollBar();
+            this.vScrollBarBuses = new System.Windows.Forms.VScrollBar();
+            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
             this.pnlMainContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuses)).BeginInit();
             this.pnlPagination.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlAddEditBus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRouteNumber)).BeginInit();
             this.pnlBusHeader.SuspendLayout();
@@ -85,6 +83,9 @@
             // 
             // pnlMainContent
             // 
+            this.pnlMainContent.Controls.Add(this.vScrollBar2);
+            this.pnlMainContent.Controls.Add(this.vScrollBarBuses);
+            this.pnlMainContent.Controls.Add(this.hScrollBarBuses);
             this.pnlMainContent.Controls.Add(this.btnAddNewBus);
             this.pnlMainContent.Controls.Add(this.dgvBuses);
             this.pnlMainContent.Location = new System.Drawing.Point(232, 144);
@@ -102,7 +103,7 @@
             this.btnAddNewBus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(74)))), ((int)(((byte)(18)))));
             this.btnAddNewBus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewBus.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewBus.Location = new System.Drawing.Point(456, 1);
+            this.btnAddNewBus.Location = new System.Drawing.Point(436, 0);
             this.btnAddNewBus.Name = "btnAddNewBus";
             this.btnAddNewBus.Size = new System.Drawing.Size(136, 34);
             this.btnAddNewBus.TabIndex = 4;
@@ -121,14 +122,14 @@
             this.dgvBuses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBuses.BackgroundColor = System.Drawing.Color.White;
             this.dgvBuses.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(62)))), ((int)(((byte)(8)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(59)))), ((int)(((byte)(8)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBuses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(62)))), ((int)(((byte)(8)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(59)))), ((int)(((byte)(8)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBuses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBuses.ColumnHeadersHeight = 55;
             this.dgvBuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvBuses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -138,14 +139,14 @@
             this.colStatus,
             this.colEdit,
             this.colDelete});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(228)))), ((int)(((byte)(213)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBuses.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(228)))), ((int)(((byte)(213)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBuses.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBuses.EnableHeadersVisualStyles = false;
             this.dgvBuses.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgvBuses.Location = new System.Drawing.Point(0, 30);
@@ -153,8 +154,9 @@
             this.dgvBuses.Name = "dgvBuses";
             this.dgvBuses.ReadOnly = true;
             this.dgvBuses.RowHeadersVisible = false;
+            this.dgvBuses.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvBuses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBuses.Size = new System.Drawing.Size(580, 300);
+            this.dgvBuses.Size = new System.Drawing.Size(572, 300);
             this.dgvBuses.TabIndex = 0;
             // 
             // colBusID
@@ -251,8 +253,6 @@
             // pnlTopBar
             // 
             this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(62)))), ((int)(((byte)(8)))));
-            this.pnlTopBar.Controls.Add(this.pictureBox2);
-            this.pnlTopBar.Controls.Add(this.pictureBox1);
             this.pnlTopBar.Controls.Add(this.lblBusManagement);
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.ForeColor = System.Drawing.Color.Transparent;
@@ -260,22 +260,6 @@
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(984, 100);
             this.pnlTopBar.TabIndex = 4;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(1072, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(659, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // lblBusManagement
             // 
@@ -544,7 +528,6 @@
             this.pnlSidebar.Controls.Add(this.btnBuses);
             this.pnlSidebar.Controls.Add(this.btnRoutes);
             this.pnlSidebar.Controls.Add(this.btnBookings);
-            this.pnlSidebar.Controls.Add(this.btnDownloads);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
@@ -569,7 +552,7 @@
             this.btnRoutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(241)))), ((int)(((byte)(232)))));
             this.btnRoutes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoutes.ForeColor = System.Drawing.Color.Black;
-            this.btnRoutes.Location = new System.Drawing.Point(0, 223);
+            this.btnRoutes.Location = new System.Drawing.Point(0, 266);
             this.btnRoutes.Name = "btnRoutes";
             this.btnRoutes.Size = new System.Drawing.Size(200, 60);
             this.btnRoutes.TabIndex = 1;
@@ -579,22 +562,33 @@
             // btnBookings
             // 
             this.btnBookings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBookings.Location = new System.Drawing.Point(0, 353);
+            this.btnBookings.Location = new System.Drawing.Point(0, 414);
             this.btnBookings.Name = "btnBookings";
             this.btnBookings.Size = new System.Drawing.Size(200, 60);
             this.btnBookings.TabIndex = 2;
             this.btnBookings.Text = "BOOKINGS";
             this.btnBookings.UseVisualStyleBackColor = true;
             // 
-            // btnDownloads
+            // hScrollBarBuses
             // 
-            this.btnDownloads.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDownloads.Location = new System.Drawing.Point(0, 469);
-            this.btnDownloads.Name = "btnDownloads";
-            this.btnDownloads.Size = new System.Drawing.Size(200, 60);
-            this.btnDownloads.TabIndex = 3;
-            this.btnDownloads.Text = "DOWNLOADS";
-            this.btnDownloads.UseVisualStyleBackColor = true;
+            this.hScrollBarBuses.Location = new System.Drawing.Point(0, 408);
+            this.hScrollBarBuses.Name = "hScrollBarBuses";
+            this.hScrollBarBuses.Size = new System.Drawing.Size(572, 17);
+            this.hScrollBarBuses.TabIndex = 5;
+            // 
+            // vScrollBarBuses
+            // 
+            this.vScrollBarBuses.Location = new System.Drawing.Point(575, 30);
+            this.vScrollBarBuses.Name = "vScrollBarBuses";
+            this.vScrollBarBuses.Size = new System.Drawing.Size(17, 368);
+            this.vScrollBarBuses.TabIndex = 6;
+            // 
+            // vScrollBar2
+            // 
+            this.vScrollBar2.Location = new System.Drawing.Point(10, 46);
+            this.vScrollBar2.Name = "vScrollBar2";
+            this.vScrollBar2.Size = new System.Drawing.Size(8, 8);
+            this.vScrollBar2.TabIndex = 7;
             // 
             // BusManagement
             // 
@@ -614,8 +608,6 @@
             this.pnlPagination.PerformLayout();
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlAddEditBus.ResumeLayout(false);
             this.pnlAddEditBus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRouteNumber)).EndInit();
@@ -643,8 +635,6 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Panel pnlTopBar;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblBusManagement;
         private System.Windows.Forms.Panel pnlAddEditBus;
         private System.Windows.Forms.NumericUpDown nudRouteNumber;
@@ -668,6 +658,8 @@
         private System.Windows.Forms.Button btnBuses;
         private System.Windows.Forms.Button btnRoutes;
         private System.Windows.Forms.Button btnBookings;
-        private System.Windows.Forms.Button btnDownloads;
+        private System.Windows.Forms.VScrollBar vScrollBar2;
+        private System.Windows.Forms.VScrollBar vScrollBarBuses;
+        private System.Windows.Forms.HScrollBar hScrollBarBuses;
     }
 }
