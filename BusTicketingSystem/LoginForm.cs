@@ -17,6 +17,21 @@ namespace BusTicketingSystem
             string username = textName.Text.Trim();
             string password = textPass.Text;
 
+            // ADMIN LOGIN
+            if (username.Equals("admin",
+                StringComparison.OrdinalIgnoreCase)
+                && password == "admin123")
+            {
+                BusManagement adminPanel =
+                    new BusManagement();
+
+                adminPanel.Show();
+
+                this.Hide();
+
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(username))
             {
                 MessageBox.Show(

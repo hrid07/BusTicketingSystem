@@ -288,6 +288,7 @@ namespace BusTicketingSystem
 
         private void AvailableJourney_Load_1(object sender, EventArgs e)
         {
+            LoadJourneys();
         }
     }
 }

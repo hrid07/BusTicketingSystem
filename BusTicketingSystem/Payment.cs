@@ -19,7 +19,8 @@ namespace BusTicketingSystem
             this.userId = userId;
             this.totalAmount = totalAmount;
 
-            Paymentlabel6.Text = "Amount: " + totalAmount.ToString("0.00") + " BDT";
+            Paymentlabel6.Text =
+                "Amount: " + totalAmount.ToString("0.00") + " BDT";
         }
 
         private void Payment_Load(object sender, EventArgs e)
@@ -31,17 +32,11 @@ namespace BusTicketingSystem
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (PaymentButton1.Checked)
-            {
                 Paymentlabel9.Text = "bKash Number:";
-            }
             else if (PaymentButton2.Checked)
-            {
                 Paymentlabel9.Text = "Nagad Number:";
-            }
-            else if (PaymentButton3.Checked)
-            {
+            else
                 Paymentlabel9.Text = "Card Number:";
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,32 +46,20 @@ namespace BusTicketingSystem
 
             string paymentMethod = GetPaymentMethod();
 
-            if (paymentMethod == "")
-            {
-                MessageBox.Show(
-                    "Please select a payment method.",
-                    "Payment Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
-            if (accountNumber == "" || pin == "")
+            if (string.IsNullOrEmpty(accountNumber) ||
+                string.IsNullOrEmpty(pin))
             {
                 MessageBox.Show(
                     "Please enter all payment information.",
-                    "Input Error",
+                    "Payment",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
                 return;
             }
 
-            if (!IsValidPaymentInformation(paymentMethod, accountNumber, pin))
-            {
+            if (!ValidatePayment(paymentMethod, accountNumber, pin))
                 return;
-            }
 
             try
             {
@@ -85,7 +68,7 @@ namespace BusTicketingSystem
             catch (SqlException ex)
             {
                 MessageBox.Show(
-                    "Database error while processing payment.\n\n" + ex.Message,
+                    "Database error:\n\n" + ex.Message,
                     "Payment Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -93,7 +76,7 @@ namespace BusTicketingSystem
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Payment failed.\n\n" + ex.Message,
+                    "Payment failed:\n\n" + ex.Message,
                     "Payment Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -114,56 +97,56 @@ namespace BusTicketingSystem
             return "";
         }
 
-        private bool IsValidPaymentInformation(
-            string paymentMethod,
+        private bool ValidatePayment(
+            string method,
             string accountNumber,
             string pin)
         {
-            if (paymentMethod == "bKash" || paymentMethod == "Nagad")
+            if (method == "bKash" || method == "Nagad")
             {
-                if (!IsDigitsOnly(accountNumber) || accountNumber.Length != 11)
+                if (!IsDigits(accountNumber) ||
+                    accountNumber.Length != 11)
                 {
                     MessageBox.Show(
-                        "Please enter a valid 11 digit mobile number.",
-                        "Input Error",
+                        "Enter a valid 11 digit mobile number.",
+                        "Payment",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
 
                     return false;
                 }
 
-                if (!IsDigitsOnly(pin) || pin.Length != 5)
+                if (!IsDigits(pin) || pin.Length != 5)
                 {
                     MessageBox.Show(
-                        "Please enter a valid 5 digit PIN.",
-                        "Input Error",
+                        "Enter a valid 5 digit PIN.",
+                        "Payment",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
 
                     return false;
                 }
             }
-
-            if (paymentMethod == "Card")
+            else if (method == "Card")
             {
-                if (!IsDigitsOnly(accountNumber) ||
-                    (accountNumber.Length != 16 &&
-                     accountNumber.Length != 15))
+                if (!IsDigits(accountNumber) ||
+                    (accountNumber.Length != 15 &&
+                     accountNumber.Length != 16))
                 {
                     MessageBox.Show(
-                        "Please enter a valid card number.",
-                        "Input Error",
+                        "Enter a valid card number.",
+                        "Payment",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
 
                     return false;
                 }
 
-                if (!IsDigitsOnly(pin) || pin.Length != 4)
+                if (!IsDigits(pin) || pin.Length != 4)
                 {
                     MessageBox.Show(
-                        "Please enter a valid 4 digit PIN.",
-                        "Input Error",
+                        "Enter a valid 4 digit PIN.",
+                        "Payment",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
 
@@ -174,7 +157,7 @@ namespace BusTicketingSystem
             return true;
         }
 
-        private bool IsDigitsOnly(string value)
+        private bool IsDigits(string value)
         {
             foreach (char c in value)
             {
@@ -193,167 +176,164 @@ namespace BusTicketingSystem
             {
                 con.Open();
 
-                using (SqlTransaction transaction = con.BeginTransaction())
+                using (SqlTransaction transaction =
+                       con.BeginTransaction())
                 {
                     try
                     {
-                        // 1. Make sure the booking exists.
-                        string bookingQuery = @"
+                        // Check booking
+                        string checkBooking = @"
                             SELECT COUNT(*)
                             FROM Bookings
                             WHERE BookingID = @BookingID";
 
-                        using (SqlCommand bookingCmd =
-                            new SqlCommand(bookingQuery, con, transaction))
+                        using (SqlCommand cmd =
+                               new SqlCommand(
+                                   checkBooking,
+                                   con,
+                                   transaction))
                         {
-                            bookingCmd.Parameters.Add(
+                            cmd.Parameters.Add(
                                 "@BookingID",
                                 SqlDbType.Int).Value = bookingId;
 
-                            int bookingExists =
-                                Convert.ToInt32(bookingCmd.ExecuteScalar());
-
-                            if (bookingExists == 0)
+                            if (Convert.ToInt32(
+                                cmd.ExecuteScalar()) == 0)
                             {
-                                transaction.Rollback();
-
-                                MessageBox.Show(
-                                    "The booking could not be found.",
-                                    "Payment Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Error);
-
-                                return;
+                                throw new Exception(
+                                    "Booking was not found.");
                             }
                         }
 
-                        // 2. Prevent duplicate payment.
-                        string paymentCheckQuery = @"
+                        // Prevent duplicate payment
+                        string checkPayment = @"
                             SELECT COUNT(*)
                             FROM Payments
                             WHERE BookingID = @BookingID";
 
-                        using (SqlCommand checkCmd =
-                            new SqlCommand(paymentCheckQuery, con, transaction))
+                        using (SqlCommand cmd =
+                               new SqlCommand(
+                                   checkPayment,
+                                   con,
+                                   transaction))
                         {
-                            checkCmd.Parameters.Add(
+                            cmd.Parameters.Add(
                                 "@BookingID",
                                 SqlDbType.Int).Value = bookingId;
 
-                            int paymentExists =
-                                Convert.ToInt32(checkCmd.ExecuteScalar());
-
-                            if (paymentExists > 0)
+                            if (Convert.ToInt32(
+                                cmd.ExecuteScalar()) > 0)
                             {
-                                transaction.Rollback();
-
-                                MessageBox.Show(
-                                    "This booking has already been paid.",
-                                    "Payment Error",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
-
-                                return;
+                                throw new Exception(
+                                    "This booking has already been paid.");
                             }
                         }
 
-                        // 3. Generate transaction ID.
-                        string transactionId =
+                        string transactionRef =
                             "TXN" +
-                            DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                            DateTime.Now.ToString(
+                                "yyyyMMddHHmmssfff");
 
-                        // 4. Mask account/card number.
                         string maskedNumber =
-                            MaskAccountNumber(accountNumber);
+                            MaskNumber(accountNumber);
 
-                        // 5. Insert payment.
-                        string insertQuery = @"
+                        // IMPORTANT:
+                        // These are the actual database columns.
+                        string insertPayment = @"
                             INSERT INTO Payments
                             (
                                 BookingID,
-                                UserID,
-                                PaymentMethod,
-                                AccountNumber,
                                 Amount,
-                                PaymentDate,
-                                TransactionID
+                                Method,
+                                TransactionRef,
+                                Status,
+                                PaidAt
                             )
                             VALUES
                             (
                                 @BookingID,
-                                @UserID,
-                                @PaymentMethod,
-                                @AccountNumber,
                                 @Amount,
-                                GETDATE(),
-                                @TransactionID
+                                @Method,
+                                @TransactionRef,
+                                'Paid',
+                                GETDATE()
                             )";
 
-                        using (SqlCommand insertCmd =
-                            new SqlCommand(insertQuery, con, transaction))
+                        using (SqlCommand cmd =
+                               new SqlCommand(
+                                   insertPayment,
+                                   con,
+                                   transaction))
                         {
-                            insertCmd.Parameters.Add(
+                            cmd.Parameters.Add(
                                 "@BookingID",
                                 SqlDbType.Int).Value = bookingId;
 
-                            if (userId == 0)
-                            {
-                                insertCmd.Parameters.Add(
-                                    "@UserID",
-                                    SqlDbType.Int).Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                insertCmd.Parameters.Add(
-                                    "@UserID",
-                                    SqlDbType.Int).Value = userId;
-                            }
-
-                            insertCmd.Parameters.Add(
-                                "@PaymentMethod",
-                                SqlDbType.VarChar, 20).Value =
-                                paymentMethod;
-
-                            insertCmd.Parameters.Add(
-                                "@AccountNumber",
-                                SqlDbType.VarChar, 50).Value =
-                                maskedNumber;
-
-                            SqlParameter amountParameter =
-                                insertCmd.Parameters.Add(
+                            SqlParameter amount =
+                                cmd.Parameters.Add(
                                     "@Amount",
                                     SqlDbType.Decimal);
 
-                            amountParameter.Precision = 10;
-                            amountParameter.Scale = 2;
-                            amountParameter.Value = totalAmount;
+                            amount.Precision = 10;
+                            amount.Scale = 2;
+                            amount.Value = totalAmount;
 
-                            insertCmd.Parameters.Add(
-                                "@TransactionID",
-                                SqlDbType.VarChar, 50).Value =
-                                transactionId;
+                            cmd.Parameters.Add(
+                                "@Method",
+                                SqlDbType.VarChar,
+                                20).Value = paymentMethod;
 
-                            insertCmd.ExecuteNonQuery();
+                            cmd.Parameters.Add(
+                                "@TransactionRef",
+                                SqlDbType.VarChar,
+                                50).Value = transactionRef;
+
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        // Confirm booking
+                        string updateBooking = @"
+                            UPDATE Bookings
+                            SET Status = 'Confirmed'
+                            WHERE BookingID = @BookingID";
+
+                        using (SqlCommand cmd =
+                               new SqlCommand(
+                                   updateBooking,
+                                   con,
+                                   transaction))
+                        {
+                            cmd.Parameters.Add(
+                                "@BookingID",
+                                SqlDbType.Int).Value = bookingId;
+
+                            cmd.ExecuteNonQuery();
                         }
 
                         transaction.Commit();
 
                         MessageBox.Show(
                             "Payment successful!\n\n" +
-                            "Payment Method: " + paymentMethod +
+                            "Method: " + paymentMethod +
                             "\nAmount: " +
                             totalAmount.ToString("0.00") +
                             " BDT" +
-                            "\nTransaction ID: " +
-                            transactionId,
+                            "\nTransaction: " +
+                            transactionRef,
                             "Payment Successful",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
 
                         ClearFields();
 
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
+                        TicketConfirmation ticket =
+                            new TicketConfirmation(
+                                bookingId,
+                                userId);
+
+                        ticket.Show();
+
+                        Close();
                     }
                     catch
                     {
@@ -363,7 +343,6 @@ namespace BusTicketingSystem
                         }
                         catch
                         {
-                            // Ignore rollback errors.
                         }
 
                         throw;
@@ -372,16 +351,16 @@ namespace BusTicketingSystem
             }
         }
 
-        private string MaskAccountNumber(string accountNumber)
+        private string MaskNumber(string number)
         {
-            if (accountNumber.Length <= 4)
-                return accountNumber;
+            if (number.Length <= 4)
+                return number;
 
             return new string(
                        '*',
-                       accountNumber.Length - 4)
-                   + accountNumber.Substring(
-                       accountNumber.Length - 4);
+                       number.Length - 4)
+                   + number.Substring(
+                       number.Length - 4);
         }
 
         private void ClearFields()
@@ -392,21 +371,15 @@ namespace BusTicketingSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
+        private void label1_Click(object sender, EventArgs e) { }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
+        private void label2_Click(object sender, EventArgs e) { }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
+        private void label3_Click(object sender, EventArgs e) { }
 
         private void PaymentPanel1_Paint(
             object sender,

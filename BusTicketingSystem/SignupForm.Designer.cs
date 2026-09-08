@@ -47,6 +47,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
             this.textBox1.Location = new System.Drawing.Point(93, 401);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
@@ -56,6 +57,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.ForeColor = System.Drawing.Color.Black;
             this.textBox2.Location = new System.Drawing.Point(93, 228);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
@@ -65,6 +67,7 @@
             // 
             // textBox3
             // 
+            this.textBox3.ForeColor = System.Drawing.Color.Black;
             this.textBox3.Location = new System.Drawing.Point(93, 169);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
@@ -74,6 +77,7 @@
             // 
             // textBox4
             // 
+            this.textBox4.ForeColor = System.Drawing.Color.Black;
             this.textBox4.Location = new System.Drawing.Point(93, 342);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
@@ -83,6 +87,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.ForeColor = System.Drawing.Color.Black;
             this.textBox5.Location = new System.Drawing.Point(93, 283);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Name = "textBox5";
@@ -94,7 +99,7 @@
             // 
             this.labelSignup.AutoSize = true;
             this.labelSignup.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSignup.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSignup.ForeColor = System.Drawing.Color.Black;
             this.labelSignup.Location = new System.Drawing.Point(92, 14);
             this.labelSignup.Name = "labelSignup";
             this.labelSignup.Size = new System.Drawing.Size(311, 54);
@@ -106,7 +111,7 @@
             // 
             this.labelSub.AutoSize = true;
             this.labelSub.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSub.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelSub.ForeColor = System.Drawing.Color.Black;
             this.labelSub.Location = new System.Drawing.Point(78, 69);
             this.labelSub.Name = "labelSub";
             this.labelSub.Size = new System.Drawing.Size(330, 38);
@@ -117,7 +122,7 @@
             // 
             this.labelSname.AutoSize = true;
             this.labelSname.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
+            this.labelSname.ForeColor = System.Drawing.Color.Black;
             this.labelSname.Location = new System.Drawing.Point(96, 134);
             this.labelSname.Name = "labelSname";
             this.labelSname.Size = new System.Drawing.Size(138, 30);
@@ -128,7 +133,7 @@
             // 
             this.labelSphone.AutoSize = true;
             this.labelSphone.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSphone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
+            this.labelSphone.ForeColor = System.Drawing.Color.Black;
             this.labelSphone.Location = new System.Drawing.Point(96, 252);
             this.labelSphone.Name = "labelSphone";
             this.labelSphone.Size = new System.Drawing.Size(77, 30);
@@ -139,7 +144,7 @@
             // 
             this.labelSuser.AutoSize = true;
             this.labelSuser.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSuser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
+            this.labelSuser.ForeColor = System.Drawing.Color.Black;
             this.labelSuser.Location = new System.Drawing.Point(96, 192);
             this.labelSuser.Name = "labelSuser";
             this.labelSuser.Size = new System.Drawing.Size(112, 30);
@@ -151,7 +156,7 @@
             // 
             this.labelSpass.AutoSize = true;
             this.labelSpass.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSpass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
+            this.labelSpass.ForeColor = System.Drawing.Color.Black;
             this.labelSpass.Location = new System.Drawing.Point(96, 309);
             this.labelSpass.Name = "labelSpass";
             this.labelSpass.Size = new System.Drawing.Size(105, 30);
@@ -162,7 +167,7 @@
             // 
             this.labelScpass.AutoSize = true;
             this.labelScpass.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelScpass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
+            this.labelScpass.ForeColor = System.Drawing.Color.Black;
             this.labelScpass.Location = new System.Drawing.Point(96, 368);
             this.labelScpass.Name = "labelScpass";
             this.labelScpass.Size = new System.Drawing.Size(192, 30);
@@ -171,20 +176,21 @@
             // 
             // buttonSign
             // 
+            this.buttonSign.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonSign.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSign.ForeColor = System.Drawing.Color.Transparent;
             this.buttonSign.Location = new System.Drawing.Point(175, 475);
             this.buttonSign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSign.Name = "buttonSign";
             this.buttonSign.Size = new System.Drawing.Size(137, 57);
             this.buttonSign.TabIndex = 13;
             this.buttonSign.Text = "SIGN UP";
-            this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.UseVisualStyleBackColor = false;
             this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.BackgroundImage = global::BusTicketingSystem.Properties.Resources._2cec0fbe_212d_4597_a7b5_15f2085ac243;
+            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Controls.Add(this.labelSignup);
             this.panel1.Controls.Add(this.labelSub);
             this.panel1.Controls.Add(this.labelSname);
@@ -198,7 +204,7 @@
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.labelSphone);
             this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Location = new System.Drawing.Point(378, 67);
+            this.panel1.Location = new System.Drawing.Point(390, 60);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(498, 585);

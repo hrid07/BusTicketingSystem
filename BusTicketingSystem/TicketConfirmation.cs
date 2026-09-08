@@ -45,7 +45,7 @@ namespace BusTicketingSystem
                         b.PNR,
                         b.SeatNumbers,
                         b.TotalAmount,
-                        u.Name AS PassengerName,
+                        u.FullName AS PassengerName,
                         s.BusName,
                         s.Source,
                         s.Destination,

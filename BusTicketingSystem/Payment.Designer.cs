@@ -32,6 +32,9 @@
             this.Paymentlabel3 = new System.Windows.Forms.Label();
             this.Paymentlabel2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Paymentlabel6 = new System.Windows.Forms.Label();
+            this.Paymentlabel5 = new System.Windows.Forms.Label();
+            this.Paymentlabel4 = new System.Windows.Forms.Label();
             this.pnlSideBar = new System.Windows.Forms.Panel();
             this.buttonConfirmation = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,20 +43,17 @@
             this.buttonSelectSeat = new System.Windows.Forms.Button();
             this.butotnAvailableJourney = new System.Windows.Forms.Button();
             this.buttonDashboard = new System.Windows.Forms.Button();
-            this.Paymentlabel4 = new System.Windows.Forms.Label();
-            this.Paymentlabel5 = new System.Windows.Forms.Label();
-            this.Paymentlabel6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PaymentButton4 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PaymentButton3 = new System.Windows.Forms.RadioButton();
+            this.PaymentButton2 = new System.Windows.Forms.RadioButton();
+            this.PaymentButton1 = new System.Windows.Forms.RadioButton();
             this.Paymentlabel10 = new System.Windows.Forms.Label();
             this.Paymentlabel9 = new System.Windows.Forms.Label();
             this.Paymentlabel7 = new System.Windows.Forms.Label();
             this.Paymentlabel8 = new System.Windows.Forms.Label();
-            this.PaymentButton1 = new System.Windows.Forms.RadioButton();
-            this.PaymentButton2 = new System.Windows.Forms.RadioButton();
-            this.PaymentButton3 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.PaymentButton4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlSideBar.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,7 +62,7 @@
             // Paymentlabel1
             // 
             this.Paymentlabel1.AutoSize = true;
-            this.Paymentlabel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Paymentlabel1.BackColor = System.Drawing.Color.AliceBlue;
             this.Paymentlabel1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Paymentlabel1.Location = new System.Drawing.Point(537, 37);
             this.Paymentlabel1.Name = "Paymentlabel1";
@@ -95,7 +95,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Bisque;
+            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel1.Controls.Add(this.Paymentlabel6);
             this.panel1.Controls.Add(this.Paymentlabel5);
             this.panel1.Controls.Add(this.Paymentlabel4);
@@ -106,9 +106,39 @@
             this.panel1.Size = new System.Drawing.Size(388, 476);
             this.panel1.TabIndex = 5;
             // 
+            // Paymentlabel6
+            // 
+            this.Paymentlabel6.AutoSize = true;
+            this.Paymentlabel6.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Paymentlabel6.Location = new System.Drawing.Point(33, 372);
+            this.Paymentlabel6.Name = "Paymentlabel6";
+            this.Paymentlabel6.Size = new System.Drawing.Size(96, 23);
+            this.Paymentlabel6.TabIndex = 7;
+            this.Paymentlabel6.Text = "LabelFare:";
+            // 
+            // Paymentlabel5
+            // 
+            this.Paymentlabel5.AutoSize = true;
+            this.Paymentlabel5.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Paymentlabel5.Location = new System.Drawing.Point(33, 280);
+            this.Paymentlabel5.Name = "Paymentlabel5";
+            this.Paymentlabel5.Size = new System.Drawing.Size(60, 23);
+            this.Paymentlabel5.TabIndex = 6;
+            this.Paymentlabel5.Text = "Seats:";
+            // 
+            // Paymentlabel4
+            // 
+            this.Paymentlabel4.AutoSize = true;
+            this.Paymentlabel4.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Paymentlabel4.Location = new System.Drawing.Point(33, 173);
+            this.Paymentlabel4.Name = "Paymentlabel4";
+            this.Paymentlabel4.Size = new System.Drawing.Size(66, 23);
+            this.Paymentlabel4.TabIndex = 5;
+            this.Paymentlabel4.Text = "Route:";
+            // 
             // pnlSideBar
             // 
-            this.pnlSideBar.BackColor = System.Drawing.Color.SaddleBrown;
+            this.pnlSideBar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlSideBar.Controls.Add(this.buttonConfirmation);
             this.pnlSideBar.Controls.Add(this.button1);
             this.pnlSideBar.Controls.Add(this.buttonLogout);
@@ -124,13 +154,13 @@
             // 
             // buttonConfirmation
             // 
-            this.buttonConfirmation.BackColor = System.Drawing.Color.Transparent;
+            this.buttonConfirmation.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonConfirmation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirmation.ForeColor = System.Drawing.Color.Black;
-            this.buttonConfirmation.Location = new System.Drawing.Point(39, 442);
+            this.buttonConfirmation.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonConfirmation.Location = new System.Drawing.Point(31, 442);
             this.buttonConfirmation.Margin = new System.Windows.Forms.Padding(4);
             this.buttonConfirmation.Name = "buttonConfirmation";
-            this.buttonConfirmation.Size = new System.Drawing.Size(163, 46);
+            this.buttonConfirmation.Size = new System.Drawing.Size(200, 50);
             this.buttonConfirmation.TabIndex = 7;
             this.buttonConfirmation.Text = "CONFIRMATION";
             this.buttonConfirmation.UseVisualStyleBackColor = false;
@@ -149,103 +179,73 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.BackColor = System.Drawing.Color.Transparent;
+            this.buttonLogout.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogout.Location = new System.Drawing.Point(69, 518);
+            this.buttonLogout.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonLogout.Location = new System.Drawing.Point(31, 523);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(100, 46);
+            this.buttonLogout.Size = new System.Drawing.Size(200, 50);
             this.buttonLogout.TabIndex = 6;
             this.buttonLogout.Text = "LOGOUT";
             this.buttonLogout.UseVisualStyleBackColor = false;
             // 
             // buttonPayment
             // 
-            this.buttonPayment.BackColor = System.Drawing.Color.Transparent;
+            this.buttonPayment.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonPayment.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPayment.ForeColor = System.Drawing.Color.Black;
-            this.buttonPayment.Location = new System.Drawing.Point(57, 371);
+            this.buttonPayment.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonPayment.Location = new System.Drawing.Point(31, 357);
             this.buttonPayment.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPayment.Name = "buttonPayment";
-            this.buttonPayment.Size = new System.Drawing.Size(123, 47);
+            this.buttonPayment.Size = new System.Drawing.Size(200, 50);
             this.buttonPayment.TabIndex = 5;
             this.buttonPayment.Text = "PAYMENT";
             this.buttonPayment.UseVisualStyleBackColor = false;
             // 
             // buttonSelectSeat
             // 
-            this.buttonSelectSeat.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSelectSeat.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectSeat.ForeColor = System.Drawing.Color.Black;
-            this.buttonSelectSeat.Location = new System.Drawing.Point(39, 293);
+            this.buttonSelectSeat.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSelectSeat.Location = new System.Drawing.Point(31, 270);
             this.buttonSelectSeat.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelectSeat.Name = "buttonSelectSeat";
-            this.buttonSelectSeat.Size = new System.Drawing.Size(163, 45);
+            this.buttonSelectSeat.Size = new System.Drawing.Size(200, 50);
             this.buttonSelectSeat.TabIndex = 4;
             this.buttonSelectSeat.Text = "SELECT SEAT";
             this.buttonSelectSeat.UseVisualStyleBackColor = false;
             // 
             // butotnAvailableJourney
             // 
-            this.butotnAvailableJourney.BackColor = System.Drawing.Color.Transparent;
+            this.butotnAvailableJourney.BackColor = System.Drawing.Color.MidnightBlue;
             this.butotnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Black;
-            this.butotnAvailableJourney.Location = new System.Drawing.Point(16, 186);
+            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Transparent;
+            this.butotnAvailableJourney.Location = new System.Drawing.Point(31, 189);
             this.butotnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
             this.butotnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
             this.butotnAvailableJourney.Name = "butotnAvailableJourney";
-            this.butotnAvailableJourney.Size = new System.Drawing.Size(235, 55);
+            this.butotnAvailableJourney.Size = new System.Drawing.Size(200, 50);
             this.butotnAvailableJourney.TabIndex = 2;
             this.butotnAvailableJourney.Text = "AVAILABLE JOURNEY";
             this.butotnAvailableJourney.UseVisualStyleBackColor = false;
             // 
             // buttonDashboard
             // 
-            this.buttonDashboard.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.buttonDashboard.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(52)))), ((int)(((byte)(91)))));
-            this.buttonDashboard.Location = new System.Drawing.Point(57, 94);
+            this.buttonDashboard.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonDashboard.Location = new System.Drawing.Point(31, 102);
             this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(145, 39);
+            this.buttonDashboard.Size = new System.Drawing.Size(200, 50);
             this.buttonDashboard.TabIndex = 1;
             this.buttonDashboard.Text = "DASHBOARD";
             this.buttonDashboard.UseVisualStyleBackColor = false;
             // 
-            // Paymentlabel4
-            // 
-            this.Paymentlabel4.AutoSize = true;
-            this.Paymentlabel4.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel4.Location = new System.Drawing.Point(33, 173);
-            this.Paymentlabel4.Name = "Paymentlabel4";
-            this.Paymentlabel4.Size = new System.Drawing.Size(66, 23);
-            this.Paymentlabel4.TabIndex = 5;
-            this.Paymentlabel4.Text = "Route:";
-            // 
-            // Paymentlabel5
-            // 
-            this.Paymentlabel5.AutoSize = true;
-            this.Paymentlabel5.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel5.Location = new System.Drawing.Point(33, 280);
-            this.Paymentlabel5.Name = "Paymentlabel5";
-            this.Paymentlabel5.Size = new System.Drawing.Size(60, 23);
-            this.Paymentlabel5.TabIndex = 6;
-            this.Paymentlabel5.Text = "Seats:";
-            // 
-            // Paymentlabel6
-            // 
-            this.Paymentlabel6.AutoSize = true;
-            this.Paymentlabel6.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel6.Location = new System.Drawing.Point(33, 372);
-            this.Paymentlabel6.Name = "Paymentlabel6";
-            this.Paymentlabel6.Size = new System.Drawing.Size(96, 23);
-            this.Paymentlabel6.TabIndex = 7;
-            this.Paymentlabel6.Text = "LabelFare:";
-            // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Bisque;
+            this.panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel2.Controls.Add(this.PaymentButton4);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.textBox1);
@@ -261,6 +261,67 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(388, 476);
             this.panel2.TabIndex = 28;
+            // 
+            // PaymentButton4
+            // 
+            this.PaymentButton4.Location = new System.Drawing.Point(64, 382);
+            this.PaymentButton4.Name = "PaymentButton4";
+            this.PaymentButton4.Size = new System.Drawing.Size(194, 43);
+            this.PaymentButton4.TabIndex = 12;
+            this.PaymentButton4.Text = "PAY CONFIRM";
+            this.PaymentButton4.UseVisualStyleBackColor = true;
+            this.PaymentButton4.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(52, 300);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(224, 27);
+            this.textBox2.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(51, 244);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(224, 27);
+            this.textBox1.TabIndex = 8;
+            // 
+            // PaymentButton3
+            // 
+            this.PaymentButton3.AutoSize = true;
+            this.PaymentButton3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PaymentButton3.Location = new System.Drawing.Point(51, 160);
+            this.PaymentButton3.Name = "PaymentButton3";
+            this.PaymentButton3.Size = new System.Drawing.Size(57, 21);
+            this.PaymentButton3.TabIndex = 10;
+            this.PaymentButton3.TabStop = true;
+            this.PaymentButton3.Text = "Card";
+            this.PaymentButton3.UseVisualStyleBackColor = true;
+            // 
+            // PaymentButton2
+            // 
+            this.PaymentButton2.AutoSize = true;
+            this.PaymentButton2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PaymentButton2.Location = new System.Drawing.Point(51, 134);
+            this.PaymentButton2.Name = "PaymentButton2";
+            this.PaymentButton2.Size = new System.Drawing.Size(69, 21);
+            this.PaymentButton2.TabIndex = 9;
+            this.PaymentButton2.TabStop = true;
+            this.PaymentButton2.Text = "Nagad";
+            this.PaymentButton2.UseVisualStyleBackColor = true;
+            // 
+            // PaymentButton1
+            // 
+            this.PaymentButton1.AutoSize = true;
+            this.PaymentButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PaymentButton1.Location = new System.Drawing.Point(51, 108);
+            this.PaymentButton1.Name = "PaymentButton1";
+            this.PaymentButton1.Size = new System.Drawing.Size(66, 21);
+            this.PaymentButton1.TabIndex = 8;
+            this.PaymentButton1.TabStop = true;
+            this.PaymentButton1.Text = "bKash";
+            this.PaymentButton1.UseVisualStyleBackColor = true;
+            this.PaymentButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // Paymentlabel10
             // 
@@ -302,72 +363,11 @@
             this.Paymentlabel8.TabIndex = 4;
             this.Paymentlabel8.Text = "Local Payment Gateway";
             // 
-            // PaymentButton1
-            // 
-            this.PaymentButton1.AutoSize = true;
-            this.PaymentButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PaymentButton1.Location = new System.Drawing.Point(51, 108);
-            this.PaymentButton1.Name = "PaymentButton1";
-            this.PaymentButton1.Size = new System.Drawing.Size(66, 21);
-            this.PaymentButton1.TabIndex = 8;
-            this.PaymentButton1.TabStop = true;
-            this.PaymentButton1.Text = "bKash";
-            this.PaymentButton1.UseVisualStyleBackColor = true;
-            this.PaymentButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // PaymentButton2
-            // 
-            this.PaymentButton2.AutoSize = true;
-            this.PaymentButton2.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PaymentButton2.Location = new System.Drawing.Point(51, 134);
-            this.PaymentButton2.Name = "PaymentButton2";
-            this.PaymentButton2.Size = new System.Drawing.Size(69, 21);
-            this.PaymentButton2.TabIndex = 9;
-            this.PaymentButton2.TabStop = true;
-            this.PaymentButton2.Text = "Nagad";
-            this.PaymentButton2.UseVisualStyleBackColor = true;
-            // 
-            // PaymentButton3
-            // 
-            this.PaymentButton3.AutoSize = true;
-            this.PaymentButton3.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PaymentButton3.Location = new System.Drawing.Point(51, 160);
-            this.PaymentButton3.Name = "PaymentButton3";
-            this.PaymentButton3.Size = new System.Drawing.Size(57, 21);
-            this.PaymentButton3.TabIndex = 10;
-            this.PaymentButton3.TabStop = true;
-            this.PaymentButton3.Text = "Card";
-            this.PaymentButton3.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(51, 244);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 27);
-            this.textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(52, 300);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(224, 27);
-            this.textBox2.TabIndex = 11;
-            // 
-            // PaymentButton4
-            // 
-            this.PaymentButton4.Location = new System.Drawing.Point(64, 382);
-            this.PaymentButton4.Name = "PaymentButton4";
-            this.PaymentButton4.Size = new System.Drawing.Size(194, 43);
-            this.PaymentButton4.TabIndex = 12;
-            this.PaymentButton4.Text = "PAY CONFIRM";
-            this.PaymentButton4.UseVisualStyleBackColor = true;
-            this.PaymentButton4.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlSideBar);

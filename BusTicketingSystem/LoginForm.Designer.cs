@@ -45,8 +45,7 @@
             // panelLogin
             // 
             this.panelLogin.AutoSize = true;
-            this.panelLogin.BackColor = System.Drawing.Color.White;
-            this.panelLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLogin.BackgroundImage")));
+            this.panelLogin.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panelLogin.Controls.Add(this.labelSign);
             this.panelLogin.Controls.Add(this.buttonSign);
             this.panelLogin.Controls.Add(this.textPass);

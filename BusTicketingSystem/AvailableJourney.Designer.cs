@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AvailableJourney));
-            this.lblPageSubtitle = new System.Windows.Forms.Label();
             this.lblPageTitle = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.pnlJourney2 = new System.Windows.Forms.Panel();
@@ -79,39 +78,7 @@
             this.lblBusType3 = new System.Windows.Forms.Label();
             this.lblVerified3 = new System.Windows.Forms.Label();
             this.lblBusName3 = new System.Windows.Forms.Label();
-            this.pnlJourney1 = new System.Windows.Forms.Panel();
-            this.btnSelect1 = new System.Windows.Forms.Button();
-            this.lblPrice1 = new System.Windows.Forms.Label();
-            this.lblPriceTitle1 = new System.Windows.Forms.Label();
-            this.lblSeatsTitle1 = new System.Windows.Forms.Label();
-            this.lblSeats1 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.lblDepartureLocation1 = new System.Windows.Forms.Label();
-            this.lblDurationTitle1 = new System.Windows.Forms.Label();
-            this.lblArrivalTitle1 = new System.Windows.Forms.Label();
-            this.lblDuration1 = new System.Windows.Forms.Label();
-            this.lblDeparture1 = new System.Windows.Forms.Label();
-            this.lblArrival1 = new System.Windows.Forms.Label();
-            this.lblDepartureTitle1 = new System.Windows.Forms.Label();
-            this.lblWater1 = new System.Windows.Forms.Label();
-            this.lblAC1 = new System.Windows.Forms.Label();
-            this.lblWifi1 = new System.Windows.Forms.Label();
-            this.lblCharging1 = new System.Windows.Forms.Label();
-            this.lblVerified1 = new System.Windows.Forms.Label();
-            this.lblBusType1 = new System.Windows.Forms.Label();
-            this.lblBusName1 = new System.Windows.Forms.Label();
-            this.picBus1 = new System.Windows.Forms.PictureBox();
             this.lblAvailableBuses = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.labelTotalJourneys = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.labelToCity = new System.Windows.Forms.Label();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.labelFromCity = new System.Windows.Forms.Label();
             this.pnlSideBar = new System.Windows.Forms.Panel();
             this.buttonConfirmation = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
@@ -119,32 +86,51 @@
             this.buttonSelectSeat = new System.Windows.Forms.Button();
             this.butotnAvailableJourney = new System.Windows.Forms.Button();
             this.buttonDashboard = new System.Windows.Forms.Button();
+            this.picBus1 = new System.Windows.Forms.PictureBox();
+            this.lblBusName1 = new System.Windows.Forms.Label();
+            this.lblBusType1 = new System.Windows.Forms.Label();
+            this.lblVerified1 = new System.Windows.Forms.Label();
+            this.lblCharging1 = new System.Windows.Forms.Label();
+            this.lblWifi1 = new System.Windows.Forms.Label();
+            this.lblAC1 = new System.Windows.Forms.Label();
+            this.lblWater1 = new System.Windows.Forms.Label();
+            this.lblDepartureTitle1 = new System.Windows.Forms.Label();
+            this.lblArrival1 = new System.Windows.Forms.Label();
+            this.lblDeparture1 = new System.Windows.Forms.Label();
+            this.lblDuration1 = new System.Windows.Forms.Label();
+            this.lblArrivalTitle1 = new System.Windows.Forms.Label();
+            this.lblDurationTitle1 = new System.Windows.Forms.Label();
+            this.lblDepartureLocation1 = new System.Windows.Forms.Label();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lblSeats1 = new System.Windows.Forms.Label();
+            this.lblSeatsTitle1 = new System.Windows.Forms.Label();
+            this.lblPriceTitle1 = new System.Windows.Forms.Label();
+            this.lblPrice1 = new System.Windows.Forms.Label();
+            this.btnSelect1 = new System.Windows.Forms.Button();
+            this.pnlJourney1 = new System.Windows.Forms.Panel();
+            this.labelFromCity = new System.Windows.Forms.Label();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.labelToCity = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.labelDate = new System.Windows.Forms.Label();
+            this.labelTotalJourneys = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pnlJourney2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBus2)).BeginInit();
             this.pnlJourney3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            this.pnlJourney1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBus1)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.pnlSideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBus1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            this.pnlJourney1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblPageSubtitle
-            // 
-            this.lblPageSubtitle.AutoSize = true;
-            this.lblPageSubtitle.BackColor = System.Drawing.Color.PeachPuff;
-            this.lblPageSubtitle.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblPageSubtitle.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lblPageSubtitle.Location = new System.Drawing.Point(750, 46);
-            this.lblPageSubtitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPageSubtitle.Name = "lblPageSubtitle";
-            this.lblPageSubtitle.Size = new System.Drawing.Size(208, 19);
-            this.lblPageSubtitle.TabIndex = 25;
-            this.lblPageSubtitle.Text = " Choose a journey that suits you";
             // 
             // lblPageTitle
             // 
@@ -761,6 +747,371 @@
             this.lblBusName3.TabIndex = 10;
             this.lblBusName3.Text = "Symoli Paribahan";
             // 
+            // lblAvailableBuses
+            // 
+            this.lblAvailableBuses.AutoSize = true;
+            this.lblAvailableBuses.BackColor = System.Drawing.Color.PeachPuff;
+            this.lblAvailableBuses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvailableBuses.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lblAvailableBuses.Location = new System.Drawing.Point(305, 200);
+            this.lblAvailableBuses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAvailableBuses.Name = "lblAvailableBuses";
+            this.lblAvailableBuses.Size = new System.Drawing.Size(181, 28);
+            this.lblAvailableBuses.TabIndex = 30;
+            this.lblAvailableBuses.Text = "AVAILABLE BUSES";
+            // 
+            // pnlSideBar
+            // 
+            this.pnlSideBar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlSideBar.Controls.Add(this.buttonConfirmation);
+            this.pnlSideBar.Controls.Add(this.buttonBack);
+            this.pnlSideBar.Controls.Add(this.buttonLogout);
+            this.pnlSideBar.Controls.Add(this.buttonPayment);
+            this.pnlSideBar.Controls.Add(this.buttonSelectSeat);
+            this.pnlSideBar.Controls.Add(this.butotnAvailableJourney);
+            this.pnlSideBar.Controls.Add(this.buttonDashboard);
+            this.pnlSideBar.Location = new System.Drawing.Point(0, 2);
+            this.pnlSideBar.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSideBar.Name = "pnlSideBar";
+            this.pnlSideBar.Size = new System.Drawing.Size(267, 655);
+            this.pnlSideBar.TabIndex = 35;
+            // 
+            // buttonConfirmation
+            // 
+            this.buttonConfirmation.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonConfirmation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConfirmation.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonConfirmation.Location = new System.Drawing.Point(31, 431);
+            this.buttonConfirmation.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonConfirmation.Name = "buttonConfirmation";
+            this.buttonConfirmation.Size = new System.Drawing.Size(200, 50);
+            this.buttonConfirmation.TabIndex = 7;
+            this.buttonConfirmation.Text = "CONFIRMATION";
+            this.buttonConfirmation.UseVisualStyleBackColor = false;
+            // 
+            // buttonLogout
+            // 
+            this.buttonLogout.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogout.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonLogout.Location = new System.Drawing.Point(31, 510);
+            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(200, 50);
+            this.buttonLogout.TabIndex = 6;
+            this.buttonLogout.Text = "LOGOUT";
+            this.buttonLogout.UseVisualStyleBackColor = false;
+            // 
+            // buttonPayment
+            // 
+            this.buttonPayment.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonPayment.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPayment.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonPayment.Location = new System.Drawing.Point(31, 342);
+            this.buttonPayment.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPayment.Name = "buttonPayment";
+            this.buttonPayment.Size = new System.Drawing.Size(200, 50);
+            this.buttonPayment.TabIndex = 5;
+            this.buttonPayment.Text = "PAYMENT";
+            this.buttonPayment.UseVisualStyleBackColor = false;
+            // 
+            // buttonSelectSeat
+            // 
+            this.buttonSelectSeat.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSelectSeat.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSelectSeat.Location = new System.Drawing.Point(31, 258);
+            this.buttonSelectSeat.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSelectSeat.Name = "buttonSelectSeat";
+            this.buttonSelectSeat.Size = new System.Drawing.Size(200, 50);
+            this.buttonSelectSeat.TabIndex = 4;
+            this.buttonSelectSeat.Text = "SELECT SEAT";
+            this.buttonSelectSeat.UseVisualStyleBackColor = false;
+            // 
+            // butotnAvailableJourney
+            // 
+            this.butotnAvailableJourney.BackColor = System.Drawing.Color.MidnightBlue;
+            this.butotnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Transparent;
+            this.butotnAvailableJourney.Location = new System.Drawing.Point(31, 176);
+            this.butotnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
+            this.butotnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
+            this.butotnAvailableJourney.Name = "butotnAvailableJourney";
+            this.butotnAvailableJourney.Size = new System.Drawing.Size(200, 50);
+            this.butotnAvailableJourney.TabIndex = 2;
+            this.butotnAvailableJourney.Text = "AVAILABLE JOURNEY";
+            this.butotnAvailableJourney.UseVisualStyleBackColor = false;
+            // 
+            // buttonDashboard
+            // 
+            this.buttonDashboard.BackColor = System.Drawing.Color.MidnightBlue;
+            this.buttonDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDashboard.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonDashboard.Location = new System.Drawing.Point(31, 96);
+            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonDashboard.Name = "buttonDashboard";
+            this.buttonDashboard.Size = new System.Drawing.Size(200, 50);
+            this.buttonDashboard.TabIndex = 1;
+            this.buttonDashboard.Text = "DASHBOARD";
+            this.buttonDashboard.UseVisualStyleBackColor = false;
+            // 
+            // picBus1
+            // 
+            this.picBus1.Image = ((System.Drawing.Image)(resources.GetObject("picBus1.Image")));
+            this.picBus1.Location = new System.Drawing.Point(23, 20);
+            this.picBus1.Margin = new System.Windows.Forms.Padding(4);
+            this.picBus1.Name = "picBus1";
+            this.picBus1.Size = new System.Drawing.Size(133, 62);
+            this.picBus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBus1.TabIndex = 7;
+            this.picBus1.TabStop = false;
+            // 
+            // lblBusName1
+            // 
+            this.lblBusName1.AutoSize = true;
+            this.lblBusName1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBusName1.ForeColor = System.Drawing.Color.Black;
+            this.lblBusName1.Location = new System.Drawing.Point(167, 33);
+            this.lblBusName1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBusName1.Name = "lblBusName1";
+            this.lblBusName1.Size = new System.Drawing.Size(208, 25);
+            this.lblBusName1.TabIndex = 8;
+            this.lblBusName1.Text = " Green Line Paribahan";
+            // 
+            // lblBusType1
+            // 
+            this.lblBusType1.AutoSize = true;
+            this.lblBusType1.ForeColor = System.Drawing.Color.Black;
+            this.lblBusType1.Location = new System.Drawing.Point(217, 58);
+            this.lblBusType1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBusType1.Name = "lblBusType1";
+            this.lblBusType1.Size = new System.Drawing.Size(102, 16);
+            this.lblBusType1.TabIndex = 12;
+            this.lblBusType1.Text = "AC Sleeper Bus";
+            // 
+            // lblVerified1
+            // 
+            this.lblVerified1.AutoSize = true;
+            this.lblVerified1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(233)))), ((int)(((byte)(0)))));
+            this.lblVerified1.ForeColor = System.Drawing.Color.Black;
+            this.lblVerified1.Location = new System.Drawing.Point(385, 36);
+            this.lblVerified1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVerified1.Name = "lblVerified1";
+            this.lblVerified1.Size = new System.Drawing.Size(53, 16);
+            this.lblVerified1.TabIndex = 10;
+            this.lblVerified1.Text = "Verified";
+            // 
+            // lblCharging1
+            // 
+            this.lblCharging1.AutoSize = true;
+            this.lblCharging1.ForeColor = System.Drawing.Color.Black;
+            this.lblCharging1.Location = new System.Drawing.Point(277, 78);
+            this.lblCharging1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCharging1.Name = "lblCharging1";
+            this.lblCharging1.Size = new System.Drawing.Size(55, 16);
+            this.lblCharging1.TabIndex = 17;
+            this.lblCharging1.Text = "⚡Charging";
+            // 
+            // lblWifi1
+            // 
+            this.lblWifi1.AutoSize = true;
+            this.lblWifi1.ForeColor = System.Drawing.Color.Black;
+            this.lblWifi1.Location = new System.Drawing.Point(206, 78);
+            this.lblWifi1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWifi1.Name = "lblWifi1";
+            this.lblWifi1.Size = new System.Drawing.Size(39, 16);
+            this.lblWifi1.TabIndex = 16;
+            this.lblWifi1.Text = " ◉ Wi-Fi\n";
+            // 
+            // lblAC1
+            // 
+            this.lblAC1.AutoSize = true;
+            this.lblAC1.ForeColor = System.Drawing.Color.Black;
+            this.lblAC1.Location = new System.Drawing.Point(146, 78);
+            this.lblAC1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAC1.Name = "lblAC1";
+            this.lblAC1.Size = new System.Drawing.Size(35, 16);
+            this.lblAC1.TabIndex = 15;
+            this.lblAC1.Text = " ❄ AC";
+            // 
+            // lblWater1
+            // 
+            this.lblWater1.AutoSize = true;
+            this.lblWater1.ForeColor = System.Drawing.Color.Black;
+            this.lblWater1.Location = new System.Drawing.Point(367, 78);
+            this.lblWater1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWater1.Name = "lblWater1";
+            this.lblWater1.Size = new System.Drawing.Size(45, 16);
+            this.lblWater1.TabIndex = 19;
+            this.lblWater1.Text = "\"♢  Water";
+            // 
+            // lblDepartureTitle1
+            // 
+            this.lblDepartureTitle1.AutoSize = true;
+            this.lblDepartureTitle1.ForeColor = System.Drawing.Color.Black;
+            this.lblDepartureTitle1.Location = new System.Drawing.Point(476, 14);
+            this.lblDepartureTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDepartureTitle1.Name = "lblDepartureTitle1";
+            this.lblDepartureTitle1.Size = new System.Drawing.Size(92, 16);
+            this.lblDepartureTitle1.TabIndex = 24;
+            this.lblDepartureTitle1.Text = "DEPARTURE";
+            this.lblDepartureTitle1.Click += new System.EventHandler(this.lblDepartureTitle1_Click);
+            // 
+            // lblArrival1
+            // 
+            this.lblArrival1.AutoSize = true;
+            this.lblArrival1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArrival1.ForeColor = System.Drawing.Color.Black;
+            this.lblArrival1.Location = new System.Drawing.Point(617, 44);
+            this.lblArrival1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblArrival1.Name = "lblArrival1";
+            this.lblArrival1.Size = new System.Drawing.Size(102, 28);
+            this.lblArrival1.TabIndex = 34;
+            this.lblArrival1.Text = "03:00 PM";
+            // 
+            // lblDeparture1
+            // 
+            this.lblDeparture1.AutoSize = true;
+            this.lblDeparture1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeparture1.ForeColor = System.Drawing.Color.Black;
+            this.lblDeparture1.Location = new System.Drawing.Point(475, 47);
+            this.lblDeparture1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeparture1.Name = "lblDeparture1";
+            this.lblDeparture1.Size = new System.Drawing.Size(104, 28);
+            this.lblDeparture1.TabIndex = 33;
+            this.lblDeparture1.Text = "09:00 AM";
+            this.lblDeparture1.Click += new System.EventHandler(this.lblDeparture1_Click);
+            // 
+            // lblDuration1
+            // 
+            this.lblDuration1.AutoSize = true;
+            this.lblDuration1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuration1.ForeColor = System.Drawing.Color.Black;
+            this.lblDuration1.Location = new System.Drawing.Point(753, 49);
+            this.lblDuration1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDuration1.Name = "lblDuration1";
+            this.lblDuration1.Size = new System.Drawing.Size(101, 23);
+            this.lblDuration1.TabIndex = 32;
+            this.lblDuration1.Text = "◷  6h 00m";
+            // 
+            // lblArrivalTitle1
+            // 
+            this.lblArrivalTitle1.AutoSize = true;
+            this.lblArrivalTitle1.ForeColor = System.Drawing.Color.Black;
+            this.lblArrivalTitle1.Location = new System.Drawing.Point(618, 14);
+            this.lblArrivalTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblArrivalTitle1.Name = "lblArrivalTitle1";
+            this.lblArrivalTitle1.Size = new System.Drawing.Size(64, 16);
+            this.lblArrivalTitle1.TabIndex = 32;
+            this.lblArrivalTitle1.Text = "ARRIVAL";
+            // 
+            // lblDurationTitle1
+            // 
+            this.lblDurationTitle1.AutoSize = true;
+            this.lblDurationTitle1.ForeColor = System.Drawing.Color.Black;
+            this.lblDurationTitle1.Location = new System.Drawing.Point(760, 20);
+            this.lblDurationTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDurationTitle1.Name = "lblDurationTitle1";
+            this.lblDurationTitle1.Size = new System.Drawing.Size(78, 16);
+            this.lblDurationTitle1.TabIndex = 31;
+            this.lblDurationTitle1.Text = "DURATION";
+            // 
+            // lblDepartureLocation1
+            // 
+            this.lblDepartureLocation1.AutoSize = true;
+            this.lblDepartureLocation1.ForeColor = System.Drawing.Color.Black;
+            this.lblDepartureLocation1.Location = new System.Drawing.Point(479, 87);
+            this.lblDepartureLocation1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDepartureLocation1.Name = "lblDepartureLocation1";
+            this.lblDepartureLocation1.Size = new System.Drawing.Size(104, 16);
+            this.lblDepartureLocation1.TabIndex = 43;
+            this.lblDepartureLocation1.Text = " Dhaka (Gabtoli)";
+            this.lblDepartureLocation1.Click += new System.EventHandler(this.lblDepartureLocation1_Click);
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
+            this.pictureBox15.Location = new System.Drawing.Point(884, 55);
+            this.pictureBox15.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(139, 51);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox15.TabIndex = 46;
+            this.pictureBox15.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(627, 86);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(74, 16);
+            this.label19.TabIndex = 42;
+            this.label19.Text = " Chittagong";
+            // 
+            // lblSeats1
+            // 
+            this.lblSeats1.AutoSize = true;
+            this.lblSeats1.ForeColor = System.Drawing.Color.Black;
+            this.lblSeats1.Location = new System.Drawing.Point(917, 33);
+            this.lblSeats1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeats1.Name = "lblSeats1";
+            this.lblSeats1.Size = new System.Drawing.Size(59, 16);
+            this.lblSeats1.TabIndex = 48;
+            this.lblSeats1.Text = "18 Seats";
+            // 
+            // lblSeatsTitle1
+            // 
+            this.lblSeatsTitle1.AutoSize = true;
+            this.lblSeatsTitle1.ForeColor = System.Drawing.Color.Black;
+            this.lblSeatsTitle1.Location = new System.Drawing.Point(881, 9);
+            this.lblSeatsTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeatsTitle1.Name = "lblSeatsTitle1";
+            this.lblSeatsTitle1.Size = new System.Drawing.Size(129, 16);
+            this.lblSeatsTitle1.TabIndex = 49;
+            this.lblSeatsTitle1.Text = " SEATS AVAILABLE";
+            // 
+            // lblPriceTitle1
+            // 
+            this.lblPriceTitle1.AutoSize = true;
+            this.lblPriceTitle1.BackColor = System.Drawing.Color.Transparent;
+            this.lblPriceTitle1.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.lblPriceTitle1.ForeColor = System.Drawing.Color.Black;
+            this.lblPriceTitle1.Location = new System.Drawing.Point(1072, 9);
+            this.lblPriceTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPriceTitle1.Name = "lblPriceTitle1";
+            this.lblPriceTitle1.Size = new System.Drawing.Size(51, 20);
+            this.lblPriceTitle1.TabIndex = 19;
+            this.lblPriceTitle1.Text = " PRICE";
+            // 
+            // lblPrice1
+            // 
+            this.lblPrice1.AutoSize = true;
+            this.lblPrice1.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrice1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice1.ForeColor = System.Drawing.Color.Black;
+            this.lblPrice1.Location = new System.Drawing.Point(1071, 34);
+            this.lblPrice1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrice1.Name = "lblPrice1";
+            this.lblPrice1.Size = new System.Drawing.Size(70, 30);
+            this.lblPrice1.TabIndex = 50;
+            this.lblPrice1.Text = "৳700";
+            // 
+            // btnSelect1
+            // 
+            this.btnSelect1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(233)))), ((int)(((byte)(0)))));
+            this.btnSelect1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelect1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelect1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.btnSelect1.Location = new System.Drawing.Point(1061, 76);
+            this.btnSelect1.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelect1.Name = "btnSelect1";
+            this.btnSelect1.Size = new System.Drawing.Size(100, 28);
+            this.btnSelect1.TabIndex = 55;
+            this.btnSelect1.Text = "SELECT";
+            this.btnSelect1.UseVisualStyleBackColor = false;
+            // 
             // pnlJourney1
             // 
             this.pnlJourney1.BackColor = System.Drawing.Color.PeachPuff;
@@ -795,275 +1146,105 @@
             this.pnlJourney1.TabIndex = 32;
             this.pnlJourney1.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlJourney1_Paint);
             // 
-            // btnSelect1
+            // labelFromCity
             // 
-            this.btnSelect1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(233)))), ((int)(((byte)(0)))));
-            this.btnSelect1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelect1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.btnSelect1.Location = new System.Drawing.Point(1061, 76);
-            this.btnSelect1.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSelect1.Name = "btnSelect1";
-            this.btnSelect1.Size = new System.Drawing.Size(100, 28);
-            this.btnSelect1.TabIndex = 55;
-            this.btnSelect1.Text = "SELECT";
-            this.btnSelect1.UseVisualStyleBackColor = false;
+            this.labelFromCity.AutoSize = true;
+            this.labelFromCity.BackColor = System.Drawing.Color.Transparent;
+            this.labelFromCity.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.labelFromCity.ForeColor = System.Drawing.Color.Black;
+            this.labelFromCity.Location = new System.Drawing.Point(355, 28);
+            this.labelFromCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFromCity.Name = "labelFromCity";
+            this.labelFromCity.Size = new System.Drawing.Size(49, 20);
+            this.labelFromCity.TabIndex = 49;
+            this.labelFromCity.Text = "FROM";
             // 
-            // lblPrice1
+            // pictureBox18
             // 
-            this.lblPrice1.AutoSize = true;
-            this.lblPrice1.BackColor = System.Drawing.Color.Transparent;
-            this.lblPrice1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice1.ForeColor = System.Drawing.Color.Black;
-            this.lblPrice1.Location = new System.Drawing.Point(1071, 34);
-            this.lblPrice1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPrice1.Name = "lblPrice1";
-            this.lblPrice1.Size = new System.Drawing.Size(70, 30);
-            this.lblPrice1.TabIndex = 50;
-            this.lblPrice1.Text = "৳700";
+            this.pictureBox18.Location = new System.Drawing.Point(11, 127);
+            this.pictureBox18.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(36, 23);
+            this.pictureBox18.TabIndex = 16;
+            this.pictureBox18.TabStop = false;
             // 
-            // lblPriceTitle1
+            // labelToCity
             // 
-            this.lblPriceTitle1.AutoSize = true;
-            this.lblPriceTitle1.BackColor = System.Drawing.Color.Transparent;
-            this.lblPriceTitle1.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblPriceTitle1.ForeColor = System.Drawing.Color.Black;
-            this.lblPriceTitle1.Location = new System.Drawing.Point(1072, 9);
-            this.lblPriceTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblPriceTitle1.Name = "lblPriceTitle1";
-            this.lblPriceTitle1.Size = new System.Drawing.Size(51, 20);
-            this.lblPriceTitle1.TabIndex = 19;
-            this.lblPriceTitle1.Text = " PRICE";
+            this.labelToCity.AutoSize = true;
+            this.labelToCity.BackColor = System.Drawing.Color.Transparent;
+            this.labelToCity.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.labelToCity.ForeColor = System.Drawing.Color.Black;
+            this.labelToCity.Location = new System.Drawing.Point(488, 24);
+            this.labelToCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelToCity.Name = "labelToCity";
+            this.labelToCity.Size = new System.Drawing.Size(27, 20);
+            this.labelToCity.TabIndex = 50;
+            this.labelToCity.Text = "TO";
             // 
-            // lblSeatsTitle1
+            // label24
             // 
-            this.lblSeatsTitle1.AutoSize = true;
-            this.lblSeatsTitle1.ForeColor = System.Drawing.Color.Black;
-            this.lblSeatsTitle1.Location = new System.Drawing.Point(881, 9);
-            this.lblSeatsTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSeatsTitle1.Name = "lblSeatsTitle1";
-            this.lblSeatsTitle1.Size = new System.Drawing.Size(129, 16);
-            this.lblSeatsTitle1.TabIndex = 49;
-            this.lblSeatsTitle1.Text = " SEATS AVAILABLE";
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(487, 49);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(141, 28);
+            this.label24.TabIndex = 51;
+            this.label24.Text = "CHITTAGONG";
             // 
-            // lblSeats1
+            // label23
             // 
-            this.lblSeats1.AutoSize = true;
-            this.lblSeats1.ForeColor = System.Drawing.Color.Black;
-            this.lblSeats1.Location = new System.Drawing.Point(917, 33);
-            this.lblSeats1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSeats1.Name = "lblSeats1";
-            this.lblSeats1.Size = new System.Drawing.Size(59, 16);
-            this.lblSeats1.TabIndex = 48;
-            this.lblSeats1.Text = "18 Seats";
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(353, 52);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 28);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "DHAKA";
             // 
-            // label19
+            // labelDate
             // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(627, 86);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 16);
-            this.label19.TabIndex = 42;
-            this.label19.Text = " Chittagong";
+            this.labelDate.AutoSize = true;
+            this.labelDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.labelDate.ForeColor = System.Drawing.Color.Black;
+            this.labelDate.Location = new System.Drawing.Point(26, 11);
+            this.labelDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(208, 20);
+            this.labelDate.TabIndex = 55;
+            this.labelDate.Text = " 📅 25 August 2026 (Monday)";
             // 
-            // pictureBox15
+            // labelTotalJourneys
             // 
-            this.pictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox15.Image")));
-            this.pictureBox15.Location = new System.Drawing.Point(884, 55);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(139, 51);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox15.TabIndex = 46;
-            this.pictureBox15.TabStop = false;
+            this.labelTotalJourneys.AutoSize = true;
+            this.labelTotalJourneys.BackColor = System.Drawing.Color.Transparent;
+            this.labelTotalJourneys.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.labelTotalJourneys.ForeColor = System.Drawing.Color.Black;
+            this.labelTotalJourneys.Location = new System.Drawing.Point(840, 24);
+            this.labelTotalJourneys.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTotalJourneys.Name = "labelTotalJourneys";
+            this.labelTotalJourneys.Size = new System.Drawing.Size(124, 20);
+            this.labelTotalJourneys.TabIndex = 56;
+            this.labelTotalJourneys.Text = "TOTAL JOURNEYS";
             // 
-            // lblDepartureLocation1
+            // label20
             // 
-            this.lblDepartureLocation1.AutoSize = true;
-            this.lblDepartureLocation1.ForeColor = System.Drawing.Color.Black;
-            this.lblDepartureLocation1.Location = new System.Drawing.Point(479, 87);
-            this.lblDepartureLocation1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDepartureLocation1.Name = "lblDepartureLocation1";
-            this.lblDepartureLocation1.Size = new System.Drawing.Size(104, 16);
-            this.lblDepartureLocation1.TabIndex = 43;
-            this.lblDepartureLocation1.Text = " Dhaka (Gabtoli)";
-            this.lblDepartureLocation1.Click += new System.EventHandler(this.lblDepartureLocation1_Click);
-            // 
-            // lblDurationTitle1
-            // 
-            this.lblDurationTitle1.AutoSize = true;
-            this.lblDurationTitle1.ForeColor = System.Drawing.Color.Black;
-            this.lblDurationTitle1.Location = new System.Drawing.Point(760, 20);
-            this.lblDurationTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDurationTitle1.Name = "lblDurationTitle1";
-            this.lblDurationTitle1.Size = new System.Drawing.Size(78, 16);
-            this.lblDurationTitle1.TabIndex = 31;
-            this.lblDurationTitle1.Text = "DURATION";
-            // 
-            // lblArrivalTitle1
-            // 
-            this.lblArrivalTitle1.AutoSize = true;
-            this.lblArrivalTitle1.ForeColor = System.Drawing.Color.Black;
-            this.lblArrivalTitle1.Location = new System.Drawing.Point(618, 14);
-            this.lblArrivalTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblArrivalTitle1.Name = "lblArrivalTitle1";
-            this.lblArrivalTitle1.Size = new System.Drawing.Size(64, 16);
-            this.lblArrivalTitle1.TabIndex = 32;
-            this.lblArrivalTitle1.Text = "ARRIVAL";
-            // 
-            // lblDuration1
-            // 
-            this.lblDuration1.AutoSize = true;
-            this.lblDuration1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuration1.ForeColor = System.Drawing.Color.Black;
-            this.lblDuration1.Location = new System.Drawing.Point(753, 49);
-            this.lblDuration1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDuration1.Name = "lblDuration1";
-            this.lblDuration1.Size = new System.Drawing.Size(97, 23);
-            this.lblDuration1.TabIndex = 32;
-            this.lblDuration1.Text = "◷  6h 00m";
-            // 
-            // lblDeparture1
-            // 
-            this.lblDeparture1.AutoSize = true;
-            this.lblDeparture1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeparture1.ForeColor = System.Drawing.Color.Black;
-            this.lblDeparture1.Location = new System.Drawing.Point(475, 47);
-            this.lblDeparture1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDeparture1.Name = "lblDeparture1";
-            this.lblDeparture1.Size = new System.Drawing.Size(104, 28);
-            this.lblDeparture1.TabIndex = 33;
-            this.lblDeparture1.Text = "09:00 AM";
-            this.lblDeparture1.Click += new System.EventHandler(this.lblDeparture1_Click);
-            // 
-            // lblArrival1
-            // 
-            this.lblArrival1.AutoSize = true;
-            this.lblArrival1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArrival1.ForeColor = System.Drawing.Color.Black;
-            this.lblArrival1.Location = new System.Drawing.Point(617, 44);
-            this.lblArrival1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblArrival1.Name = "lblArrival1";
-            this.lblArrival1.Size = new System.Drawing.Size(102, 28);
-            this.lblArrival1.TabIndex = 34;
-            this.lblArrival1.Text = "03:00 PM";
-            // 
-            // lblDepartureTitle1
-            // 
-            this.lblDepartureTitle1.AutoSize = true;
-            this.lblDepartureTitle1.ForeColor = System.Drawing.Color.Black;
-            this.lblDepartureTitle1.Location = new System.Drawing.Point(476, 14);
-            this.lblDepartureTitle1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDepartureTitle1.Name = "lblDepartureTitle1";
-            this.lblDepartureTitle1.Size = new System.Drawing.Size(92, 16);
-            this.lblDepartureTitle1.TabIndex = 24;
-            this.lblDepartureTitle1.Text = "DEPARTURE";
-            this.lblDepartureTitle1.Click += new System.EventHandler(this.lblDepartureTitle1_Click);
-            // 
-            // lblWater1
-            // 
-            this.lblWater1.AutoSize = true;
-            this.lblWater1.ForeColor = System.Drawing.Color.Black;
-            this.lblWater1.Location = new System.Drawing.Point(367, 78);
-            this.lblWater1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblWater1.Name = "lblWater1";
-            this.lblWater1.Size = new System.Drawing.Size(60, 16);
-            this.lblWater1.TabIndex = 19;
-            this.lblWater1.Text = "\"♢  Water";
-            // 
-            // lblAC1
-            // 
-            this.lblAC1.AutoSize = true;
-            this.lblAC1.ForeColor = System.Drawing.Color.Black;
-            this.lblAC1.Location = new System.Drawing.Point(146, 78);
-            this.lblAC1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAC1.Name = "lblAC1";
-            this.lblAC1.Size = new System.Drawing.Size(43, 16);
-            this.lblAC1.TabIndex = 15;
-            this.lblAC1.Text = " ❄ AC";
-            // 
-            // lblWifi1
-            // 
-            this.lblWifi1.AutoSize = true;
-            this.lblWifi1.ForeColor = System.Drawing.Color.Black;
-            this.lblWifi1.Location = new System.Drawing.Point(206, 78);
-            this.lblWifi1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblWifi1.Name = "lblWifi1";
-            this.lblWifi1.Size = new System.Drawing.Size(52, 16);
-            this.lblWifi1.TabIndex = 16;
-            this.lblWifi1.Text = " ◉ Wi-Fi\n";
-            // 
-            // lblCharging1
-            // 
-            this.lblCharging1.AutoSize = true;
-            this.lblCharging1.ForeColor = System.Drawing.Color.Black;
-            this.lblCharging1.Location = new System.Drawing.Point(277, 78);
-            this.lblCharging1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCharging1.Name = "lblCharging1";
-            this.lblCharging1.Size = new System.Drawing.Size(73, 16);
-            this.lblCharging1.TabIndex = 17;
-            this.lblCharging1.Text = "⚡Charging";
-            // 
-            // lblVerified1
-            // 
-            this.lblVerified1.AutoSize = true;
-            this.lblVerified1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(233)))), ((int)(((byte)(0)))));
-            this.lblVerified1.ForeColor = System.Drawing.Color.Black;
-            this.lblVerified1.Location = new System.Drawing.Point(385, 36);
-            this.lblVerified1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblVerified1.Name = "lblVerified1";
-            this.lblVerified1.Size = new System.Drawing.Size(53, 16);
-            this.lblVerified1.TabIndex = 10;
-            this.lblVerified1.Text = "Verified";
-            // 
-            // lblBusType1
-            // 
-            this.lblBusType1.AutoSize = true;
-            this.lblBusType1.ForeColor = System.Drawing.Color.Black;
-            this.lblBusType1.Location = new System.Drawing.Point(217, 58);
-            this.lblBusType1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblBusType1.Name = "lblBusType1";
-            this.lblBusType1.Size = new System.Drawing.Size(102, 16);
-            this.lblBusType1.TabIndex = 12;
-            this.lblBusType1.Text = "AC Sleeper Bus";
-            // 
-            // lblBusName1
-            // 
-            this.lblBusName1.AutoSize = true;
-            this.lblBusName1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBusName1.ForeColor = System.Drawing.Color.Black;
-            this.lblBusName1.Location = new System.Drawing.Point(167, 33);
-            this.lblBusName1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblBusName1.Name = "lblBusName1";
-            this.lblBusName1.Size = new System.Drawing.Size(208, 25);
-            this.lblBusName1.TabIndex = 8;
-            this.lblBusName1.Text = " Green Line Paribahan";
-            // 
-            // picBus1
-            // 
-            this.picBus1.Image = ((System.Drawing.Image)(resources.GetObject("picBus1.Image")));
-            this.picBus1.Location = new System.Drawing.Point(23, 20);
-            this.picBus1.Margin = new System.Windows.Forms.Padding(4);
-            this.picBus1.Name = "picBus1";
-            this.picBus1.Size = new System.Drawing.Size(133, 62);
-            this.picBus1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picBus1.TabIndex = 7;
-            this.picBus1.TabStop = false;
-            // 
-            // lblAvailableBuses
-            // 
-            this.lblAvailableBuses.AutoSize = true;
-            this.lblAvailableBuses.BackColor = System.Drawing.Color.PeachPuff;
-            this.lblAvailableBuses.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvailableBuses.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lblAvailableBuses.Location = new System.Drawing.Point(305, 200);
-            this.lblAvailableBuses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAvailableBuses.Name = "lblAvailableBuses";
-            this.lblAvailableBuses.Size = new System.Drawing.Size(181, 28);
-            this.lblAvailableBuses.TabIndex = 30;
-            this.lblAvailableBuses.Text = "AVAILABLE BUSES";
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(891, 49);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 32);
+            this.label20.TabIndex = 57;
+            this.label20.Text = "3";
             // 
             // panel4
             // 
@@ -1084,208 +1265,12 @@
             this.panel4.TabIndex = 31;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(891, 49);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(28, 32);
-            this.label20.TabIndex = 57;
-            this.label20.Text = "3";
-            // 
-            // labelTotalJourneys
-            // 
-            this.labelTotalJourneys.AutoSize = true;
-            this.labelTotalJourneys.BackColor = System.Drawing.Color.Transparent;
-            this.labelTotalJourneys.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.labelTotalJourneys.ForeColor = System.Drawing.Color.Black;
-            this.labelTotalJourneys.Location = new System.Drawing.Point(840, 24);
-            this.labelTotalJourneys.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTotalJourneys.Name = "labelTotalJourneys";
-            this.labelTotalJourneys.Size = new System.Drawing.Size(124, 20);
-            this.labelTotalJourneys.TabIndex = 56;
-            this.labelTotalJourneys.Text = "TOTAL JOURNEYS";
-            // 
-            // labelDate
-            // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.BackColor = System.Drawing.Color.Transparent;
-            this.labelDate.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.labelDate.ForeColor = System.Drawing.Color.Black;
-            this.labelDate.Location = new System.Drawing.Point(26, 11);
-            this.labelDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(208, 20);
-            this.labelDate.TabIndex = 55;
-            this.labelDate.Text = " 📅 25 August 2026 (Monday)";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(353, 52);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(83, 28);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "DHAKA";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(487, 49);
-            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(141, 28);
-            this.label24.TabIndex = 51;
-            this.label24.Text = "CHITTAGONG";
-            // 
-            // labelToCity
-            // 
-            this.labelToCity.AutoSize = true;
-            this.labelToCity.BackColor = System.Drawing.Color.Transparent;
-            this.labelToCity.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.labelToCity.ForeColor = System.Drawing.Color.Black;
-            this.labelToCity.Location = new System.Drawing.Point(488, 24);
-            this.labelToCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelToCity.Name = "labelToCity";
-            this.labelToCity.Size = new System.Drawing.Size(27, 20);
-            this.labelToCity.TabIndex = 50;
-            this.labelToCity.Text = "TO";
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Location = new System.Drawing.Point(11, 127);
-            this.pictureBox18.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(36, 23);
-            this.pictureBox18.TabIndex = 16;
-            this.pictureBox18.TabStop = false;
-            // 
-            // labelFromCity
-            // 
-            this.labelFromCity.AutoSize = true;
-            this.labelFromCity.BackColor = System.Drawing.Color.Transparent;
-            this.labelFromCity.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.labelFromCity.ForeColor = System.Drawing.Color.Black;
-            this.labelFromCity.Location = new System.Drawing.Point(355, 28);
-            this.labelFromCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelFromCity.Name = "labelFromCity";
-            this.labelFromCity.Size = new System.Drawing.Size(49, 20);
-            this.labelFromCity.TabIndex = 49;
-            this.labelFromCity.Text = "FROM";
-            // 
-            // pnlSideBar
-            // 
-            this.pnlSideBar.BackColor = System.Drawing.Color.SaddleBrown;
-            this.pnlSideBar.Controls.Add(this.buttonConfirmation);
-            this.pnlSideBar.Controls.Add(this.buttonBack);
-            this.pnlSideBar.Controls.Add(this.buttonLogout);
-            this.pnlSideBar.Controls.Add(this.buttonPayment);
-            this.pnlSideBar.Controls.Add(this.buttonSelectSeat);
-            this.pnlSideBar.Controls.Add(this.butotnAvailableJourney);
-            this.pnlSideBar.Controls.Add(this.buttonDashboard);
-            this.pnlSideBar.Location = new System.Drawing.Point(0, 2);
-            this.pnlSideBar.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlSideBar.Name = "pnlSideBar";
-            this.pnlSideBar.Size = new System.Drawing.Size(267, 655);
-            this.pnlSideBar.TabIndex = 35;
-            // 
-            // buttonConfirmation
-            // 
-            this.buttonConfirmation.BackColor = System.Drawing.Color.Transparent;
-            this.buttonConfirmation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirmation.ForeColor = System.Drawing.Color.Black;
-            this.buttonConfirmation.Location = new System.Drawing.Point(39, 442);
-            this.buttonConfirmation.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonConfirmation.Name = "buttonConfirmation";
-            this.buttonConfirmation.Size = new System.Drawing.Size(163, 46);
-            this.buttonConfirmation.TabIndex = 7;
-            this.buttonConfirmation.Text = "CONFIRMATION";
-            this.buttonConfirmation.UseVisualStyleBackColor = false;
-            // 
-            // buttonLogout
-            // 
-            this.buttonLogout.BackColor = System.Drawing.Color.Transparent;
-            this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLogout.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogout.Location = new System.Drawing.Point(69, 518);
-            this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(100, 46);
-            this.buttonLogout.TabIndex = 6;
-            this.buttonLogout.Text = "LOGOUT";
-            this.buttonLogout.UseVisualStyleBackColor = false;
-            // 
-            // buttonPayment
-            // 
-            this.buttonPayment.BackColor = System.Drawing.Color.Transparent;
-            this.buttonPayment.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPayment.ForeColor = System.Drawing.Color.Black;
-            this.buttonPayment.Location = new System.Drawing.Point(57, 371);
-            this.buttonPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonPayment.Name = "buttonPayment";
-            this.buttonPayment.Size = new System.Drawing.Size(123, 47);
-            this.buttonPayment.TabIndex = 5;
-            this.buttonPayment.Text = "PAYMENT";
-            this.buttonPayment.UseVisualStyleBackColor = false;
-            // 
-            // buttonSelectSeat
-            // 
-            this.buttonSelectSeat.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectSeat.ForeColor = System.Drawing.Color.Black;
-            this.buttonSelectSeat.Location = new System.Drawing.Point(39, 293);
-            this.buttonSelectSeat.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSelectSeat.Name = "buttonSelectSeat";
-            this.buttonSelectSeat.Size = new System.Drawing.Size(163, 45);
-            this.buttonSelectSeat.TabIndex = 4;
-            this.buttonSelectSeat.Text = "SELECT SEAT";
-            this.buttonSelectSeat.UseVisualStyleBackColor = false;
-            // 
-            // butotnAvailableJourney
-            // 
-            this.butotnAvailableJourney.BackColor = System.Drawing.Color.Transparent;
-            this.butotnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Black;
-            this.butotnAvailableJourney.Location = new System.Drawing.Point(16, 186);
-            this.butotnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
-            this.butotnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
-            this.butotnAvailableJourney.Name = "butotnAvailableJourney";
-            this.butotnAvailableJourney.Size = new System.Drawing.Size(235, 55);
-            this.butotnAvailableJourney.TabIndex = 2;
-            this.butotnAvailableJourney.Text = "AVAILABLE JOURNEY";
-            this.butotnAvailableJourney.UseVisualStyleBackColor = false;
-            // 
-            // buttonDashboard
-            // 
-            this.buttonDashboard.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.buttonDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(52)))), ((int)(((byte)(91)))));
-            this.buttonDashboard.Location = new System.Drawing.Point(57, 94);
-            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(145, 39);
-            this.buttonDashboard.TabIndex = 1;
-            this.buttonDashboard.Text = "DASHBOARD";
-            this.buttonDashboard.UseVisualStyleBackColor = false;
-            // 
             // AvailableJourney
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1430, 653);
             this.Controls.Add(this.pnlSideBar);
-            this.Controls.Add(this.lblPageSubtitle);
             this.Controls.Add(this.lblPageTitle);
             this.Controls.Add(this.pnlJourney2);
             this.Controls.Add(this.pnlJourney3);
@@ -1303,21 +1288,20 @@
             this.pnlJourney3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            this.pnlSideBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBus1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             this.pnlJourney1.ResumeLayout(false);
             this.pnlJourney1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picBus1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
-            this.pnlSideBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblPageSubtitle;
         private System.Windows.Forms.Label lblPageTitle;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel pnlJourney2;
@@ -1367,39 +1351,7 @@
         private System.Windows.Forms.Label lblBusType3;
         private System.Windows.Forms.Label lblVerified3;
         private System.Windows.Forms.Label lblBusName3;
-        private System.Windows.Forms.Panel pnlJourney1;
-        private System.Windows.Forms.Button btnSelect1;
-        private System.Windows.Forms.Label lblPrice1;
-        private System.Windows.Forms.Label lblPriceTitle1;
-        private System.Windows.Forms.Label lblSeatsTitle1;
-        private System.Windows.Forms.Label lblSeats1;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.PictureBox pictureBox15;
-        private System.Windows.Forms.Label lblDepartureLocation1;
-        private System.Windows.Forms.Label lblDurationTitle1;
-        private System.Windows.Forms.Label lblArrivalTitle1;
-        private System.Windows.Forms.Label lblDuration1;
-        private System.Windows.Forms.Label lblDeparture1;
-        private System.Windows.Forms.Label lblArrival1;
-        private System.Windows.Forms.Label lblDepartureTitle1;
-        private System.Windows.Forms.Label lblWater1;
-        private System.Windows.Forms.Label lblAC1;
-        private System.Windows.Forms.Label lblWifi1;
-        private System.Windows.Forms.Label lblCharging1;
-        private System.Windows.Forms.Label lblVerified1;
-        private System.Windows.Forms.Label lblBusType1;
-        private System.Windows.Forms.Label lblBusName1;
-        private System.Windows.Forms.PictureBox picBus1;
         private System.Windows.Forms.Label lblAvailableBuses;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label labelTotalJourneys;
-        private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label labelToCity;
-        private System.Windows.Forms.PictureBox pictureBox18;
-        private System.Windows.Forms.Label labelFromCity;
         private System.Windows.Forms.Panel pnlSideBar;
         private System.Windows.Forms.Button buttonConfirmation;
         private System.Windows.Forms.Button buttonLogout;
@@ -1407,5 +1359,37 @@
         private System.Windows.Forms.Button buttonSelectSeat;
         private System.Windows.Forms.Button butotnAvailableJourney;
         private System.Windows.Forms.Button buttonDashboard;
+        private System.Windows.Forms.PictureBox picBus1;
+        private System.Windows.Forms.Label lblBusName1;
+        private System.Windows.Forms.Label lblBusType1;
+        private System.Windows.Forms.Label lblVerified1;
+        private System.Windows.Forms.Label lblCharging1;
+        private System.Windows.Forms.Label lblWifi1;
+        private System.Windows.Forms.Label lblAC1;
+        private System.Windows.Forms.Label lblWater1;
+        private System.Windows.Forms.Label lblDepartureTitle1;
+        private System.Windows.Forms.Label lblArrival1;
+        private System.Windows.Forms.Label lblDeparture1;
+        private System.Windows.Forms.Label lblDuration1;
+        private System.Windows.Forms.Label lblArrivalTitle1;
+        private System.Windows.Forms.Label lblDurationTitle1;
+        private System.Windows.Forms.Label lblDepartureLocation1;
+        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblSeats1;
+        private System.Windows.Forms.Label lblSeatsTitle1;
+        private System.Windows.Forms.Label lblPriceTitle1;
+        private System.Windows.Forms.Label lblPrice1;
+        private System.Windows.Forms.Button btnSelect1;
+        private System.Windows.Forms.Panel pnlJourney1;
+        private System.Windows.Forms.Label labelFromCity;
+        private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.Label labelToCity;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label labelDate;
+        private System.Windows.Forms.Label labelTotalJourneys;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel4;
     }
 }

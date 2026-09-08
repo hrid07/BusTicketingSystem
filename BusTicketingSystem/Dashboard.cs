@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace BusTicketingSystem
@@ -30,16 +31,14 @@ namespace BusTicketingSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            // Prevent selecting a past date
             dateTimePicker1.MinDate = DateTime.Today;
-
-            // Default date
             dateTimePicker1.Value = DateTime.Today;
+
+            LoadRoutes();
         }
 
-        // =========================
         // SEARCH JOURNEY
-        // =========================
+    
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -174,6 +173,54 @@ namespace BusTicketingSystem
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+        }
+        private void LoadRoutes()
+        {
+            try
+            {
+                using (SqlConnection con =
+                       DBConnection.GetConnection())
+                using (SqlCommand cmd =
+                       new SqlCommand(
+                           "SELECT DISTINCT Source, Destination " +
+                           "FROM Routes " +
+                           "ORDER BY Source",
+                           con))
+                {
+                    con.Open();
+
+                    using (SqlDataReader reader =
+                           cmd.ExecuteReader())
+                    {
+                        cmbFrom.Items.Clear();
+                        cmbTo.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            string source =
+                                reader["Source"].ToString();
+
+                            string destination =
+                                reader["Destination"].ToString();
+
+                            if (!cmbFrom.Items.Contains(source))
+                                cmbFrom.Items.Add(source);
+
+                            if (!cmbTo.Items.Contains(destination))
+                                cmbTo.Items.Add(destination);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Unable to load routes:\n\n" +
+                    ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
