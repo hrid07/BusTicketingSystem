@@ -16,5 +16,30 @@ namespace BusTicketingSystem
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JourneyManagement_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JMlabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void JMpanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
