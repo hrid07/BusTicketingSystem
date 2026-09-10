@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbSource = new System.Windows.Forms.ComboBox();
             this.cmbBus = new System.Windows.Forms.ComboBox();
             this.dtDeparture = new System.Windows.Forms.DateTimePicker();
             this.dtArrival = new System.Windows.Forms.DateTimePicker();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudFare = new System.Windows.Forms.NumericUpDown();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.JMlabel1 = new System.Windows.Forms.Label();
-            this.cmbDestination = new System.Windows.Forms.Label();
+            this.labelDeperture = new System.Windows.Forms.Label();
+            this.labelDestination = new System.Windows.Forms.Label();
             this.JMlabel = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.JMlabel3 = new System.Windows.Forms.Label();
-            this.JMpanel1 = new System.Windows.Forms.Panel();
-            this.JMlabel4 = new System.Windows.Forms.Label();
-            this.JMlabel5 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.cmbDestination = new System.Windows.Forms.ComboBox();
+            this.labelBus = new System.Windows.Forms.Label();
+            this.JMPanel = new System.Windows.Forms.Panel();
+            this.labelFare = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.labelArrivaldt = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.labelDepdt = new System.Windows.Forms.Label();
+            this.dgvJourneys = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,18 +55,18 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.JMpanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFare)).BeginInit();
+            this.JMPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJourneys)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cmbSource
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(75, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 24);
-            this.comboBox1.TabIndex = 0;
+            this.cmbSource.FormattingEnabled = true;
+            this.cmbSource.Location = new System.Drawing.Point(75, 68);
+            this.cmbSource.Name = "cmbSource";
+            this.cmbSource.Size = new System.Drawing.Size(186, 24);
+            this.cmbSource.TabIndex = 0;
             // 
             // cmbBus
             // 
@@ -90,12 +90,12 @@
             this.dtArrival.Size = new System.Drawing.Size(200, 22);
             this.dtArrival.TabIndex = 4;
             // 
-            // numericUpDown1
+            // nudFare
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(908, 206);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDown1.TabIndex = 5;
+            this.nudFare.Location = new System.Drawing.Point(908, 206);
+            this.nudFare.Name = "nudFare";
+            this.nudFare.Size = new System.Drawing.Size(120, 22);
+            this.nudFare.TabIndex = 5;
             // 
             // btnAdd
             // 
@@ -107,26 +107,26 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // JMlabel1
+            // labelDeperture
             // 
-            this.JMlabel1.AutoSize = true;
-            this.JMlabel1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JMlabel1.Location = new System.Drawing.Point(99, 37);
-            this.JMlabel1.Name = "JMlabel1";
-            this.JMlabel1.Size = new System.Drawing.Size(137, 25);
-            this.JMlabel1.TabIndex = 11;
-            this.JMlabel1.Text = "Departure City";
-            this.JMlabel1.Click += new System.EventHandler(this.JMlabel1_Click);
+            this.labelDeperture.AutoSize = true;
+            this.labelDeperture.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDeperture.Location = new System.Drawing.Point(99, 37);
+            this.labelDeperture.Name = "labelDeperture";
+            this.labelDeperture.Size = new System.Drawing.Size(137, 25);
+            this.labelDeperture.TabIndex = 11;
+            this.labelDeperture.Text = "Departure City";
+            this.labelDeperture.Click += new System.EventHandler(this.JMlabel1_Click);
             // 
-            // cmbDestination
+            // labelDestination
             // 
-            this.cmbDestination.AutoSize = true;
-            this.cmbDestination.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDestination.Location = new System.Drawing.Point(334, 37);
-            this.cmbDestination.Name = "cmbDestination";
-            this.cmbDestination.Size = new System.Drawing.Size(110, 25);
-            this.cmbDestination.TabIndex = 12;
-            this.cmbDestination.Text = "Destination";
+            this.labelDestination.AutoSize = true;
+            this.labelDestination.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDestination.Location = new System.Drawing.Point(334, 37);
+            this.labelDestination.Name = "labelDestination";
+            this.labelDestination.Size = new System.Drawing.Size(110, 25);
+            this.labelDestination.TabIndex = 12;
+            this.labelDestination.Text = "Destination";
             // 
             // JMlabel
             // 
@@ -138,77 +138,57 @@
             this.JMlabel.TabIndex = 13;
             this.JMlabel.Text = "JOURNEY MANAGEMENT";
             // 
-            // comboBox2
+            // cmbDestination
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(297, 68);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(186, 24);
-            this.comboBox2.TabIndex = 14;
+            this.cmbDestination.FormattingEnabled = true;
+            this.cmbDestination.Location = new System.Drawing.Point(297, 68);
+            this.cmbDestination.Name = "cmbDestination";
+            this.cmbDestination.Size = new System.Drawing.Size(186, 24);
+            this.cmbDestination.TabIndex = 14;
             // 
-            // JMlabel3
+            // labelBus
             // 
-            this.JMlabel3.AutoSize = true;
-            this.JMlabel3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JMlabel3.Location = new System.Drawing.Point(584, 40);
-            this.JMlabel3.Name = "JMlabel3";
-            this.JMlabel3.Size = new System.Drawing.Size(47, 25);
-            this.JMlabel3.TabIndex = 15;
-            this.JMlabel3.Text = "BUS";
-            this.JMlabel3.Click += new System.EventHandler(this.label1_Click);
+            this.labelBus.AutoSize = true;
+            this.labelBus.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBus.Location = new System.Drawing.Point(584, 40);
+            this.labelBus.Name = "labelBus";
+            this.labelBus.Size = new System.Drawing.Size(47, 25);
+            this.labelBus.TabIndex = 15;
+            this.labelBus.Text = "BUS";
+            this.labelBus.Click += new System.EventHandler(this.label1_Click);
             // 
-            // JMpanel1
+            // JMPanel
             // 
-            this.JMpanel1.Controls.Add(this.label1);
-            this.JMpanel1.Controls.Add(this.btnDelete);
-            this.JMpanel1.Controls.Add(this.JMlabel5);
-            this.JMpanel1.Controls.Add(this.numericUpDown1);
-            this.JMpanel1.Controls.Add(this.btnUpdate);
-            this.JMpanel1.Controls.Add(this.JMlabel4);
-            this.JMpanel1.Controls.Add(this.JMlabel3);
-            this.JMpanel1.Controls.Add(this.comboBox2);
-            this.JMpanel1.Controls.Add(this.cmbDestination);
-            this.JMpanel1.Controls.Add(this.btnAdd);
-            this.JMpanel1.Controls.Add(this.JMlabel1);
-            this.JMpanel1.Controls.Add(this.cmbBus);
-            this.JMpanel1.Controls.Add(this.comboBox1);
-            this.JMpanel1.Controls.Add(this.dtArrival);
-            this.JMpanel1.Controls.Add(this.dtDeparture);
-            this.JMpanel1.Location = new System.Drawing.Point(23, 87);
-            this.JMpanel1.Name = "JMpanel1";
-            this.JMpanel1.Size = new System.Drawing.Size(1128, 264);
-            this.JMpanel1.TabIndex = 16;
-            this.JMpanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.JMpanel1_Paint);
+            this.JMPanel.Controls.Add(this.labelFare);
+            this.JMPanel.Controls.Add(this.btnDelete);
+            this.JMPanel.Controls.Add(this.labelArrivaldt);
+            this.JMPanel.Controls.Add(this.nudFare);
+            this.JMPanel.Controls.Add(this.btnUpdate);
+            this.JMPanel.Controls.Add(this.labelDepdt);
+            this.JMPanel.Controls.Add(this.labelBus);
+            this.JMPanel.Controls.Add(this.cmbDestination);
+            this.JMPanel.Controls.Add(this.labelDestination);
+            this.JMPanel.Controls.Add(this.btnAdd);
+            this.JMPanel.Controls.Add(this.labelDeperture);
+            this.JMPanel.Controls.Add(this.cmbBus);
+            this.JMPanel.Controls.Add(this.cmbSource);
+            this.JMPanel.Controls.Add(this.dtArrival);
+            this.JMPanel.Controls.Add(this.dtDeparture);
+            this.JMPanel.Location = new System.Drawing.Point(23, 87);
+            this.JMPanel.Name = "JMPanel";
+            this.JMPanel.Size = new System.Drawing.Size(1128, 264);
+            this.JMPanel.TabIndex = 16;
+            this.JMPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.JMpanel1_Paint);
             // 
-            // JMlabel4
+            // labelFare
             // 
-            this.JMlabel4.AutoSize = true;
-            this.JMlabel4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JMlabel4.Location = new System.Drawing.Point(929, 38);
-            this.JMlabel4.Name = "JMlabel4";
-            this.JMlabel4.Size = new System.Drawing.Size(99, 25);
-            this.JMlabel4.TabIndex = 16;
-            this.JMlabel4.Text = "Departure";
-            // 
-            // JMlabel5
-            // 
-            this.JMlabel5.AutoSize = true;
-            this.JMlabel5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.JMlabel5.Location = new System.Drawing.Point(930, 106);
-            this.JMlabel5.Name = "JMlabel5";
-            this.JMlabel5.Size = new System.Drawing.Size(69, 25);
-            this.JMlabel5.TabIndex = 17;
-            this.JMlabel5.Text = "Arrival";
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(365, 198);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(82, 30);
-            this.btnUpdate.TabIndex = 17;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.labelFare.AutoSize = true;
+            this.labelFare.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFare.Location = new System.Drawing.Point(937, 178);
+            this.labelFare.Name = "labelFare";
+            this.labelFare.Size = new System.Drawing.Size(55, 25);
+            this.labelFare.TabIndex = 19;
+            this.labelFare.Text = "FARE";
             // 
             // btnDelete
             // 
@@ -220,25 +200,45 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelArrivaldt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(937, 178);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 25);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "FARE";
+            this.labelArrivaldt.AutoSize = true;
+            this.labelArrivaldt.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArrivaldt.Location = new System.Drawing.Point(930, 106);
+            this.labelArrivaldt.Name = "labelArrivaldt";
+            this.labelArrivaldt.Size = new System.Drawing.Size(69, 25);
+            this.labelArrivaldt.TabIndex = 17;
+            this.labelArrivaldt.Text = "Arrival";
             // 
-            // dataGridView1
+            // btnUpdate
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(365, 198);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(82, 30);
+            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // labelDepdt
+            // 
+            this.labelDepdt.AutoSize = true;
+            this.labelDepdt.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDepdt.Location = new System.Drawing.Point(929, 38);
+            this.labelDepdt.Name = "labelDepdt";
+            this.labelDepdt.Size = new System.Drawing.Size(99, 25);
+            this.labelDepdt.TabIndex = 16;
+            this.labelDepdt.Text = "Departure";
+            // 
+            // dgvJourneys
+            // 
+            this.dgvJourneys.AllowUserToAddRows = false;
+            this.dgvJourneys.AllowUserToDeleteRows = false;
+            this.dgvJourneys.AllowUserToResizeColumns = false;
+            this.dgvJourneys.AllowUserToResizeRows = false;
+            this.dgvJourneys.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvJourneys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJourneys.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -248,16 +248,16 @@
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dataGridView1.Location = new System.Drawing.Point(-3, 408);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1173, 233);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvJourneys.Location = new System.Drawing.Point(-3, 408);
+            this.dgvJourneys.MultiSelect = false;
+            this.dgvJourneys.Name = "dgvJourneys";
+            this.dgvJourneys.ReadOnly = true;
+            this.dgvJourneys.RowHeadersVisible = false;
+            this.dgvJourneys.RowHeadersWidth = 51;
+            this.dgvJourneys.RowTemplate.Height = 24;
+            this.dgvJourneys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvJourneys.Size = new System.Drawing.Size(1173, 233);
+            this.dgvJourneys.TabIndex = 10;
             // 
             // Column1
             // 
@@ -328,16 +328,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1182, 653);
-            this.Controls.Add(this.JMpanel1);
+            this.Controls.Add(this.JMPanel);
             this.Controls.Add(this.JMlabel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvJourneys);
             this.Name = "JourneyManagement";
             this.Text = "JourneyManagement";
             this.Load += new System.EventHandler(this.JourneyManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.JMpanel1.ResumeLayout(false);
-            this.JMpanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFare)).EndInit();
+            this.JMPanel.ResumeLayout(false);
+            this.JMPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJourneys)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,24 +345,24 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbSource;
         private System.Windows.Forms.ComboBox cmbBus;
         private System.Windows.Forms.DateTimePicker dtDeparture;
         private System.Windows.Forms.DateTimePicker dtArrival;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudFare;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label JMlabel1;
-        private System.Windows.Forms.Label cmbDestination;
+        private System.Windows.Forms.Label labelDeperture;
+        private System.Windows.Forms.Label labelDestination;
         private System.Windows.Forms.Label JMlabel;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label JMlabel3;
-        private System.Windows.Forms.Panel JMpanel1;
-        private System.Windows.Forms.Label JMlabel4;
-        private System.Windows.Forms.Label JMlabel5;
+        private System.Windows.Forms.ComboBox cmbDestination;
+        private System.Windows.Forms.Label labelBus;
+        private System.Windows.Forms.Panel JMPanel;
+        private System.Windows.Forms.Label labelDepdt;
+        private System.Windows.Forms.Label labelArrivaldt;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label labelFare;
+        private System.Windows.Forms.DataGridView dgvJourneys;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

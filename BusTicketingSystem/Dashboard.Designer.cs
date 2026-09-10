@@ -39,9 +39,7 @@
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblSearchTittle = new System.Windows.Forms.Label();
             this.pnlSideBar = new System.Windows.Forms.Panel();
-            this.btnConfirmation = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnPayment = new System.Windows.Forms.Button();
             this.btnSelectSeat = new System.Windows.Forms.Button();
             this.btnAvailableJourney = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
@@ -187,9 +185,7 @@
             // pnlSideBar
             // 
             this.pnlSideBar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pnlSideBar.Controls.Add(this.btnConfirmation);
             this.pnlSideBar.Controls.Add(this.btnLogout);
-            this.pnlSideBar.Controls.Add(this.btnPayment);
             this.pnlSideBar.Controls.Add(this.btnSelectSeat);
             this.pnlSideBar.Controls.Add(this.btnAvailableJourney);
             this.pnlSideBar.Controls.Add(this.btnDashboard);
@@ -199,19 +195,6 @@
             this.pnlSideBar.Size = new System.Drawing.Size(267, 650);
             this.pnlSideBar.TabIndex = 14;
             this.pnlSideBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSideBar_Paint);
-            // 
-            // btnConfirmation
-            // 
-            this.btnConfirmation.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnConfirmation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmation.ForeColor = System.Drawing.Color.Transparent;
-            this.btnConfirmation.Location = new System.Drawing.Point(32, 404);
-            this.btnConfirmation.Margin = new System.Windows.Forms.Padding(4);
-            this.btnConfirmation.Name = "btnConfirmation";
-            this.btnConfirmation.Size = new System.Drawing.Size(200, 50);
-            this.btnConfirmation.TabIndex = 7;
-            this.btnConfirmation.Text = "CONFIRMATION";
-            this.btnConfirmation.UseVisualStyleBackColor = false;
             // 
             // btnLogout
             // 
@@ -226,25 +209,12 @@
             this.btnLogout.Text = "LOGOUT";
             this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // btnPayment
-            // 
-            this.btnPayment.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnPayment.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.ForeColor = System.Drawing.Color.Transparent;
-            this.btnPayment.Location = new System.Drawing.Point(32, 322);
-            this.btnPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(200, 50);
-            this.btnPayment.TabIndex = 5;
-            this.btnPayment.Text = "PAYMENT";
-            this.btnPayment.UseVisualStyleBackColor = false;
-            // 
             // btnSelectSeat
             // 
             this.btnSelectSeat.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectSeat.ForeColor = System.Drawing.Color.Transparent;
-            this.btnSelectSeat.Location = new System.Drawing.Point(32, 242);
+            this.btnSelectSeat.Location = new System.Drawing.Point(32, 381);
             this.btnSelectSeat.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelectSeat.Name = "btnSelectSeat";
             this.btnSelectSeat.Size = new System.Drawing.Size(200, 50);
@@ -257,7 +227,7 @@
             this.btnAvailableJourney.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAvailableJourney.ForeColor = System.Drawing.Color.Transparent;
-            this.btnAvailableJourney.Location = new System.Drawing.Point(32, 173);
+            this.btnAvailableJourney.Location = new System.Drawing.Point(32, 275);
             this.btnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
             this.btnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
             this.btnAvailableJourney.Name = "btnAvailableJourney";
@@ -271,7 +241,7 @@
             this.btnDashboard.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.Transparent;
-            this.btnDashboard.Location = new System.Drawing.Point(32, 95);
+            this.btnDashboard.Location = new System.Drawing.Point(32, 173);
             this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(200, 50);
@@ -310,9 +280,7 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblSearchTittle;
         private System.Windows.Forms.Panel pnlSideBar;
-        private System.Windows.Forms.Button btnConfirmation;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button btnSelectSeat;
         private System.Windows.Forms.Button btnAvailableJourney;
         private System.Windows.Forms.Button btnDashboard;

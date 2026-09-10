@@ -36,6 +36,12 @@
             this.hScrollBarBuses = new System.Windows.Forms.HScrollBar();
             this.btnAddNewBus = new System.Windows.Forms.Button();
             this.dgvBuses = new System.Windows.Forms.DataGridView();
+            this.colBusID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.lblBusManagement = new System.Windows.Forms.Label();
             this.pnlAddEditBus = new System.Windows.Forms.Panel();
@@ -60,12 +66,6 @@
             this.btnBuses = new System.Windows.Forms.Button();
             this.btnRoutes = new System.Windows.Forms.Button();
             this.btnBookings = new System.Windows.Forms.Button();
-            this.colBusID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colBusName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFare = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pnlMainContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuses)).BeginInit();
             this.pnlTopBar.SuspendLayout();
@@ -84,7 +84,7 @@
             this.pnlMainContent.Controls.Add(this.btnAddNewBus);
             this.pnlMainContent.Controls.Add(this.dgvBuses);
             this.pnlMainContent.Location = new System.Drawing.Point(265, 104);
-            this.pnlMainContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlMainContent.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMainContent.Name = "pnlMainContent";
             this.pnlMainContent.Padding = new System.Windows.Forms.Padding(47, 37, 47, 37);
             this.pnlMainContent.Size = new System.Drawing.Size(548, 336);
@@ -121,7 +121,7 @@
             this.btnAddNewBus.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewBus.ForeColor = System.Drawing.Color.White;
             this.btnAddNewBus.Location = new System.Drawing.Point(2, 273);
-            this.btnAddNewBus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddNewBus.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddNewBus.Name = "btnAddNewBus";
             this.btnAddNewBus.Size = new System.Drawing.Size(163, 41);
             this.btnAddNewBus.TabIndex = 4;
@@ -168,7 +168,7 @@
             this.dgvBuses.EnableHeadersVisualStyles = false;
             this.dgvBuses.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvBuses.Location = new System.Drawing.Point(2, 8);
-            this.dgvBuses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvBuses.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBuses.MultiSelect = false;
             this.dgvBuses.Name = "dgvBuses";
             this.dgvBuses.ReadOnly = true;
@@ -179,6 +179,52 @@
             this.dgvBuses.Size = new System.Drawing.Size(548, 264);
             this.dgvBuses.TabIndex = 0;
             // 
+            // colBusID
+            // 
+            this.colBusID.HeaderText = "BUS ID";
+            this.colBusID.MinimumWidth = 6;
+            this.colBusID.Name = "colBusID";
+            this.colBusID.ReadOnly = true;
+            // 
+            // colBusName
+            // 
+            this.colBusName.HeaderText = "BUS NAME";
+            this.colBusName.MinimumWidth = 6;
+            this.colBusName.Name = "colBusName";
+            this.colBusName.ReadOnly = true;
+            // 
+            // colFare
+            // 
+            this.colFare.HeaderText = "FARE";
+            this.colFare.MinimumWidth = 6;
+            this.colFare.Name = "colFare";
+            this.colFare.ReadOnly = true;
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "STATUS";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
+            // 
+            // colEdit
+            // 
+            this.colEdit.HeaderText = "EDIT";
+            this.colEdit.MinimumWidth = 6;
+            this.colEdit.Name = "colEdit";
+            this.colEdit.ReadOnly = true;
+            this.colEdit.Text = "EDIT";
+            this.colEdit.UseColumnTextForButtonValue = true;
+            // 
+            // colDelete
+            // 
+            this.colDelete.HeaderText = "DELETE";
+            this.colDelete.MinimumWidth = 6;
+            this.colDelete.Name = "colDelete";
+            this.colDelete.ReadOnly = true;
+            this.colDelete.Text = "DELETE";
+            this.colDelete.UseColumnTextForButtonValue = true;
+            // 
             // pnlTopBar
             // 
             this.pnlTopBar.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -186,7 +232,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.ForeColor = System.Drawing.Color.Transparent;
             this.pnlTopBar.Location = new System.Drawing.Point(259, 0);
-            this.pnlTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlTopBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(923, 102);
             this.pnlTopBar.TabIndex = 4;
@@ -226,7 +272,7 @@
             this.pnlAddEditBus.Controls.Add(this.btnCancel);
             this.pnlAddEditBus.Controls.Add(this.lblBusName);
             this.pnlAddEditBus.Location = new System.Drawing.Point(821, 105);
-            this.pnlAddEditBus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlAddEditBus.Margin = new System.Windows.Forms.Padding(4);
             this.pnlAddEditBus.Name = "pnlAddEditBus";
             this.pnlAddEditBus.Size = new System.Drawing.Size(361, 548);
             this.pnlAddEditBus.TabIndex = 5;
@@ -236,7 +282,7 @@
             // 
             this.nudRouteNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.nudRouteNumber.Location = new System.Drawing.Point(21, 367);
-            this.nudRouteNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudRouteNumber.Margin = new System.Windows.Forms.Padding(4);
             this.nudRouteNumber.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -253,7 +299,7 @@
             this.pnlBusHeader.Controls.Add(this.btnClose);
             this.pnlBusHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBusHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlBusHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBusHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBusHeader.Name = "pnlBusHeader";
             this.pnlBusHeader.Size = new System.Drawing.Size(359, 62);
             this.pnlBusHeader.TabIndex = 12;
@@ -267,7 +313,7 @@
             this.lblAddEditTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblAddEditTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddEditTitle.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.lblAddEditTitle.ForeColor = System.Drawing.Color.White;
+            this.lblAddEditTitle.ForeColor = System.Drawing.Color.Black;
             this.lblAddEditTitle.Location = new System.Drawing.Point(0, -1);
             this.lblAddEditTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddEditTitle.Name = "lblAddEditTitle";
@@ -282,7 +328,7 @@
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(255, 4);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 32);
             this.btnClose.TabIndex = 7;
@@ -295,7 +341,7 @@
             this.txtTransactionPIN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTransactionPIN.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.txtTransactionPIN.Location = new System.Drawing.Point(21, 458);
-            this.txtTransactionPIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTransactionPIN.Margin = new System.Windows.Forms.Padding(4);
             this.txtTransactionPIN.Name = "txtTransactionPIN";
             this.txtTransactionPIN.Size = new System.Drawing.Size(266, 30);
             this.txtTransactionPIN.TabIndex = 19;
@@ -307,7 +353,7 @@
             this.txtAccountNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAccountNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtAccountNumber.Location = new System.Drawing.Point(22, 282);
-            this.txtAccountNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAccountNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtAccountNumber.Name = "txtAccountNumber";
             this.txtAccountNumber.Size = new System.Drawing.Size(266, 30);
             this.txtAccountNumber.TabIndex = 17;
@@ -334,7 +380,7 @@
             "Bandarban",
             "Cox\'s Bazar"});
             this.cmbRoute.Location = new System.Drawing.Point(96, 183);
-            this.cmbRoute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbRoute.Margin = new System.Windows.Forms.Padding(4);
             this.cmbRoute.Name = "cmbRoute";
             this.cmbRoute.Size = new System.Drawing.Size(165, 31);
             this.cmbRoute.TabIndex = 16;
@@ -344,7 +390,7 @@
             this.nudFare.BackColor = System.Drawing.Color.White;
             this.nudFare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.nudFare.Location = new System.Drawing.Point(140, 134);
-            this.nudFare.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nudFare.Margin = new System.Windows.Forms.Padding(4);
             this.nudFare.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -365,7 +411,7 @@
             this.txtBusName.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtBusName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.txtBusName.Location = new System.Drawing.Point(21, 95);
-            this.txtBusName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBusName.Margin = new System.Windows.Forms.Padding(4);
             this.txtBusName.Name = "txtBusName";
             this.txtBusName.Size = new System.Drawing.Size(265, 30);
             this.txtBusName.TabIndex = 14;
@@ -438,7 +484,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 8.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(21, 501);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 5;
@@ -453,7 +499,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 8.75F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.btnCancel.Location = new System.Drawing.Point(200, 500);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 6;
@@ -480,7 +526,7 @@
             this.pnlSidebar.Controls.Add(this.btnBookings);
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
-            this.pnlSidebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlSidebar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(259, 653);
             this.pnlSidebar.TabIndex = 7;
@@ -493,7 +539,7 @@
             this.btnBuses.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuses.ForeColor = System.Drawing.Color.Transparent;
             this.btnBuses.Location = new System.Drawing.Point(29, 141);
-            this.btnBuses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuses.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuses.Name = "btnBuses";
             this.btnBuses.Size = new System.Drawing.Size(200, 50);
             this.btnBuses.TabIndex = 0;
@@ -506,7 +552,7 @@
             this.btnRoutes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoutes.ForeColor = System.Drawing.Color.Transparent;
             this.btnRoutes.Location = new System.Drawing.Point(29, 240);
-            this.btnRoutes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRoutes.Margin = new System.Windows.Forms.Padding(4);
             this.btnRoutes.Name = "btnRoutes";
             this.btnRoutes.Size = new System.Drawing.Size(200, 50);
             this.btnRoutes.TabIndex = 1;
@@ -519,58 +565,12 @@
             this.btnBookings.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBookings.ForeColor = System.Drawing.Color.Transparent;
             this.btnBookings.Location = new System.Drawing.Point(29, 353);
-            this.btnBookings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBookings.Margin = new System.Windows.Forms.Padding(4);
             this.btnBookings.Name = "btnBookings";
             this.btnBookings.Size = new System.Drawing.Size(200, 50);
             this.btnBookings.TabIndex = 2;
             this.btnBookings.Text = "BOOKINGS";
             this.btnBookings.UseVisualStyleBackColor = false;
-            // 
-            // colBusID
-            // 
-            this.colBusID.HeaderText = "BUS ID";
-            this.colBusID.MinimumWidth = 6;
-            this.colBusID.Name = "colBusID";
-            this.colBusID.ReadOnly = true;
-            // 
-            // colBusName
-            // 
-            this.colBusName.HeaderText = "BUS NAME";
-            this.colBusName.MinimumWidth = 6;
-            this.colBusName.Name = "colBusName";
-            this.colBusName.ReadOnly = true;
-            // 
-            // colFare
-            // 
-            this.colFare.HeaderText = "FARE";
-            this.colFare.MinimumWidth = 6;
-            this.colFare.Name = "colFare";
-            this.colFare.ReadOnly = true;
-            // 
-            // colStatus
-            // 
-            this.colStatus.HeaderText = "STATUS";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            // 
-            // colEdit
-            // 
-            this.colEdit.HeaderText = "EDIT";
-            this.colEdit.MinimumWidth = 6;
-            this.colEdit.Name = "colEdit";
-            this.colEdit.ReadOnly = true;
-            this.colEdit.Text = "EDIT";
-            this.colEdit.UseColumnTextForButtonValue = true;
-            // 
-            // colDelete
-            // 
-            this.colDelete.HeaderText = "DELETE";
-            this.colDelete.MinimumWidth = 6;
-            this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
-            this.colDelete.Text = "DELETE";
-            this.colDelete.UseColumnTextForButtonValue = true;
             // 
             // BusManagement
             // 
@@ -581,7 +581,7 @@
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.pnlAddEditBus);
             this.Controls.Add(this.pnlSidebar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BusManagement";
             this.Text = "BusManagement";
             this.pnlMainContent.ResumeLayout(false);
