@@ -12,7 +12,7 @@ namespace BusTicketingSystem
         private readonly int bookingId;
         private readonly int userId;
 
-        private PrintDocument printDocument =
+        private readonly PrintDocument printDocument =
             new PrintDocument();
 
         public TicketConfirmation(int bookingId, int userId)
@@ -22,61 +22,72 @@ namespace BusTicketingSystem
             this.bookingId = bookingId;
             this.userId = userId;
 
-            button1.Click += button1_Click;
-            button2.Click += button2_Click;
-
             printDocument.PrintPage +=
                 printDocument_PrintPage;
 
             LoadTicket();
         }
 
-        // =========================
-        // LOAD TICKET
-        // =========================
-
         private void LoadTicket()
         {
             try
             {
                 string query = @"
-            SELECT
-                b.BookingID,
-                b.PNR,
-                b.SeatCount,
-                b.TotalFare,
-                b.Status,
-                u.FullName AS PassengerName,
-                bss.SeatNumbers,
-                s.BusName,
-                r.Source,
-                r.Destination,
-                s.DepartureTime,
-                s.Fare
-            FROM Bookings b
-            LEFT JOIN Users u
-                ON b.UserID = u.UserID
-            INNER JOIN Schedules s
-                ON b.ScheduleID = s.ScheduleID
-            INNER JOIN Routes r
-                ON s.RouteID = r.RouteID
-            LEFT JOIN
-            (
-                SELECT
-                    BookingID,
-                    STRING_AGG(SeatNumber, ', ') AS SeatNumbers
-                FROM BookingSeats
-                GROUP BY BookingID
-            ) bss
-                ON b.BookingID = bss.BookingID
-            WHERE b.BookingID = @BookingID
-              AND (@UserID = 0 OR b.UserID = @UserID)
-              AND b.Status = 'Confirmed'";
+                    SELECT
+                        b.BookingID,
+                        b.PNR,
+                        b.SeatCount,
+                        b.TotalFare,
+                        b.Status,
+
+                        u.FullName AS PassengerName,
+
+                        bss.SeatNumbers,
+
+                        bus.BusName AS BusName,
+
+                        r.Source AS Source,
+                        r.Destination AS Destination,
+
+                        s.DepartureTime AS DepartureTime,
+                        s.Fare AS Fare
+
+                    FROM Bookings b
+
+                    LEFT JOIN Users u
+                        ON b.UserID = u.UserID
+
+                    INNER JOIN Schedules s
+                        ON b.ScheduleID = s.ScheduleID
+
+                    INNER JOIN Buses bus
+                        ON s.BusID = bus.BusID
+
+                    INNER JOIN Routes r
+                        ON s.RouteID = r.RouteID
+
+                    LEFT JOIN
+                    (
+                        SELECT
+                            BookingID,
+                            STRING_AGG(
+                                CONVERT(varchar(max), SeatNumber),
+                                ', '
+                            ) AS SeatNumbers
+                        FROM BookingSeats
+                        GROUP BY BookingID
+                    ) bss
+                        ON b.BookingID = bss.BookingID
+
+                    WHERE b.BookingID = @BookingID
+                      AND (@UserID = 0 OR b.UserID = @UserID)
+                      AND b.Status = 'Confirmed';
+                ";
 
                 using (SqlConnection con =
-                       DBConnection.GetConnection())
+                    DBConnection.GetConnection())
                 using (SqlCommand cmd =
-                       new SqlCommand(query, con))
+                    new SqlCommand(query, con))
                 {
                     cmd.Parameters.Add(
                         "@BookingID",
@@ -89,7 +100,7 @@ namespace BusTicketingSystem
                     con.Open();
 
                     using (SqlDataReader reader =
-                           cmd.ExecuteReader())
+                        cmd.ExecuteReader())
                     {
                         if (!reader.Read())
                         {
@@ -99,57 +110,45 @@ namespace BusTicketingSystem
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
 
-                            Close();
                             return;
                         }
 
                         string passengerName =
-                            reader["PassengerName"] == DBNull.Value
-                            ? "Guest"
-                            : reader["PassengerName"].ToString();
+                            GetString(reader, "PassengerName", "Guest");
 
                         string pnr =
-                            reader["PNR"].ToString();
+                            GetString(reader, "PNR", "");
 
                         string seats =
-                            reader["SeatNumbers"] == DBNull.Value
-                            ? ""
-                            : reader["SeatNumbers"].ToString();
+                            GetString(reader, "SeatNumbers", "Not assigned");
 
                         string busName =
-                            reader["BusName"].ToString();
+                            GetString(reader, "BusName", "Unknown");
 
                         string source =
-                            reader["Source"].ToString();
+                            GetString(reader, "Source", "");
 
                         string destination =
-                            reader["Destination"].ToString();
+                            GetString(reader, "Destination", "");
 
                         DateTime departure =
-                            Convert.ToDateTime(
-                                reader["DepartureTime"]);
+                            GetDateTime(reader, "DepartureTime");
 
                         decimal fare =
-                            Convert.ToDecimal(
-                                reader["Fare"]);
+                            GetDecimal(reader, "Fare");
 
                         decimal total =
-                            Convert.ToDecimal(
-                                reader["TotalFare"]);
+                            GetDecimal(reader, "TotalFare");
 
                         int seatCount =
-                            Convert.ToInt32(
-                                reader["SeatCount"]);
+                            GetInt(reader, "SeatCount");
 
                         label1.Text =
-                            "Passenger Name: " +
-                            passengerName;
+                            "Passenger Name: " + passengerName;
 
                         label2.Text =
                             "Trip Details: " +
-                            source +
-                            " → " +
-                            destination;
+                            source + " → " + destination;
 
                         label3.Text =
                             "Time: " +
@@ -157,34 +156,29 @@ namespace BusTicketingSystem
 
                         label4.Text =
                             "Route: " +
-                            source +
-                            " → " +
-                            destination;
+                            source + " → " + destination;
 
                         label5.Text =
                             "Date: " +
                             departure.ToString("dd MMM yyyy");
 
                         label6.Text =
-                            "Seat NO: " +
-                            seats;
+                            "Seat NO: " + seats;
 
                         label7.Text =
-                            "Bus Name: " +
-                            busName;
+                            "Bus Name: " + busName;
 
                         label8.Text =
-                            "NO of seats: " +
-                            seatCount;
+                            "NO of seats: " + seatCount;
 
                         label9.Text =
                             "Fare: " +
-                            fare.ToString("0") +
+                            fare.ToString("0.00") +
                             " BDT";
 
                         label10.Text =
                             "Cost: " +
-                            total.ToString("0") +
+                            total.ToString("0.00") +
                             " BDT";
 
                         label11.Text =
@@ -193,8 +187,7 @@ namespace BusTicketingSystem
                             " BDT";
 
                         label13.Text =
-                            "INVOICE   |   PNR: " +
-                            pnr;
+                            "INVOICE   |   PNR: " + pnr;
                     }
                 }
             }
@@ -218,9 +211,57 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // PRINT TICKET
-        // =========================
+        private string GetString(
+            SqlDataReader reader,
+            string columnName,
+            string defaultValue)
+        {
+            if (reader[columnName] == DBNull.Value)
+            {
+                return defaultValue;
+            }
+
+            return reader[columnName].ToString();
+        }
+
+        private DateTime GetDateTime(
+            SqlDataReader reader,
+            string columnName)
+        {
+            if (reader[columnName] == DBNull.Value)
+            {
+                return DateTime.MinValue;
+            }
+
+            return Convert.ToDateTime(
+                reader[columnName]);
+        }
+
+        private decimal GetDecimal(
+            SqlDataReader reader,
+            string columnName)
+        {
+            if (reader[columnName] == DBNull.Value)
+            {
+                return 0;
+            }
+
+            return Convert.ToDecimal(
+                reader[columnName]);
+        }
+
+        private int GetInt(
+            SqlDataReader reader,
+            string columnName)
+        {
+            if (reader[columnName] == DBNull.Value)
+            {
+                return 0;
+            }
+
+            return Convert.ToInt32(
+                reader[columnName]);
+        }
 
         private void button1_Click(
             object sender,
@@ -228,16 +269,17 @@ namespace BusTicketingSystem
         {
             try
             {
-                PrintDialog printDialog =
-                    new PrintDialog();
-
-                printDialog.Document =
-                    printDocument;
-
-                if (printDialog.ShowDialog() ==
-                    DialogResult.OK)
+                using (PrintDialog printDialog =
+                    new PrintDialog())
                 {
-                    printDocument.Print();
+                    printDialog.Document =
+                        printDocument;
+
+                    if (printDialog.ShowDialog() ==
+                        DialogResult.OK)
+                    {
+                        printDocument.Print();
+                    }
                 }
             }
             catch (Exception ex)
@@ -251,68 +293,63 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // PRINT PAGE
-        // =========================
-
         private void printDocument_PrintPage(
             object sender,
             PrintPageEventArgs e)
         {
-            Bitmap ticketImage =
+            using (Bitmap ticketImage =
                 new Bitmap(
                     panel1.Width,
-                    panel1.Height);
+                    panel1.Height))
+            {
+                panel1.DrawToBitmap(
+                    ticketImage,
+                    new Rectangle(
+                        0,
+                        0,
+                        panel1.Width,
+                        panel1.Height));
 
-            panel1.DrawToBitmap(
-                ticketImage,
-                new Rectangle(
-                    0,
-                    0,
-                    panel1.Width,
-                    panel1.Height));
+                float pageWidth =
+                    e.PageBounds.Width;
 
-            float pageWidth =
-                e.PageBounds.Width;
+                float pageHeight =
+                    e.PageBounds.Height;
 
-            float pageHeight =
-                e.PageBounds.Height;
+                float scaleX =
+                    pageWidth / ticketImage.Width;
 
-            float scaleX =
-                pageWidth / ticketImage.Width;
+                float scaleY =
+                    pageHeight / ticketImage.Height;
 
-            float scaleY =
-                pageHeight / ticketImage.Height;
+                float scale =
+                    Math.Min(scaleX, scaleY) * 0.85f;
 
-            float scale =
-                Math.Min(scaleX, scaleY) * 0.85f;
+                int width =
+                    (int)(ticketImage.Width * scale);
 
-            int width =
-                (int)(ticketImage.Width * scale);
+                int height =
+                    (int)(ticketImage.Height * scale);
 
-            int height =
-                (int)(ticketImage.Height * scale);
+                int x =
+                    (e.PageBounds.Width - width) / 2;
 
-            int x =
-                (e.PageBounds.Width - width) / 2;
+                int y =
+                    (e.PageBounds.Height - height) / 2;
 
-            int y =
-                (e.PageBounds.Height - height) / 2;
-
-            e.Graphics.DrawImage(
-                ticketImage,
-                new Rectangle(x, y, width, height));
-
-            ticketImage.Dispose();
+                e.Graphics.DrawImage(
+                    ticketImage,
+                    new Rectangle(
+                        x,
+                        y,
+                        width,
+                        height));
+            }
         }
 
-        // =========================
-        // BACK TO DASHBOARD
-        // =========================
-
         private void button2_Click(
-     object sender,
-     EventArgs e)
+            object sender,
+            EventArgs e)
         {
             Close();
         }

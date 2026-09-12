@@ -43,10 +43,6 @@ namespace BusTicketingSystem
             WireEvents();
         }
 
-        // ==========================================
-        // EVENTS
-        // ==========================================
-
         private void WireEvents()
         {
             
@@ -65,9 +61,7 @@ namespace BusTicketingSystem
                 SearchChanged;
         }
 
-        // ==========================================
-        // FORM LOAD
-        // ==========================================
+
 
         private void AvailableJourney_Load_1(
             object sender,
@@ -95,9 +89,6 @@ namespace BusTicketingSystem
             LoadJourneys();
         }
 
-        // ==========================================
-        // LOAD ROUTES
-        // ==========================================
 
         private void LoadRoutes()
         {
@@ -152,9 +143,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // ==========================================
-        // SEARCH WHEN FILTER CHANGES
-        // ==========================================
+      
 
         private void SearchChanged(
             object sender,
@@ -171,10 +160,6 @@ namespace BusTicketingSystem
 
             LoadJourneys();
         }
-
-        // ==========================================
-        // LOAD JOURNEYS
-        // ==========================================
 
         private void LoadJourneys()
         {
@@ -244,10 +229,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // ==========================================
-        // DISPLAY DATA
-        // ==========================================
-
         private void DisplayJourneys(DataTable table)
         {
             dataGridView1.Rows.Clear();
@@ -307,7 +288,6 @@ namespace BusTicketingSystem
                     .Cells["Column10"].Value =
                     "SELECT";
 
-                // Store ScheduleID in the row
                 dataGridView1.Rows[index].Tag =
                     Convert.ToInt32(
                         row["ScheduleID"]);
@@ -322,10 +302,6 @@ namespace BusTicketingSystem
                     MessageBoxIcon.Information);
             }
         }
-
-        // ==========================================
-        // SELECT JOURNEY
-        // ==========================================
 
         private void dataGridView1_CellContentClick(
             object sender,
@@ -371,15 +347,11 @@ namespace BusTicketingSystem
 
             seat.ShowDialog();
 
-            // Refresh after returning
+           
             LoadJourneys();
         }
 
 
-
-        // ==========================================
-        // BACK
-        // ==========================================
 
         private void buttonBack_Click(
       object sender,
@@ -388,9 +360,7 @@ namespace BusTicketingSystem
             Close();
         }
 
-        // ==========================================
-        // LOGOUT
-        // ==========================================
+     
 
         private void buttonLogout_Click(
             object sender,
@@ -412,6 +382,11 @@ namespace BusTicketingSystem
             login.Show();
 
             Hide();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
