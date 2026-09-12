@@ -40,23 +40,38 @@ namespace BusTicketingSystem
             try
             {
                 string query = @"
-                    SELECT
-                        b.BookingID,
-                        b.PNR,
-                        b.SeatNumbers,
-                        b.TotalAmount,
-                        u.FullName AS PassengerName,
-                        s.BusName,
-                        s.Source,
-                        s.Destination,
-                        s.DepartureTime,
-                        s.Fare
-                    FROM Bookings b
-                    LEFT JOIN Users u
-                        ON b.UserID = u.UserID
-                    INNER JOIN Schedules s
-                        ON b.ScheduleID = s.ScheduleID
-                    WHERE b.BookingID = @BookingID";
+            SELECT
+                b.BookingID,
+                b.PNR,
+                b.SeatCount,
+                b.TotalFare,
+                b.Status,
+                u.FullName AS PassengerName,
+                bss.SeatNumbers,
+                s.BusName,
+                r.Source,
+                r.Destination,
+                s.DepartureTime,
+                s.Fare
+            FROM Bookings b
+            LEFT JOIN Users u
+                ON b.UserID = u.UserID
+            INNER JOIN Schedules s
+                ON b.ScheduleID = s.ScheduleID
+            INNER JOIN Routes r
+                ON s.RouteID = r.RouteID
+            LEFT JOIN
+            (
+                SELECT
+                    BookingID,
+                    STRING_AGG(SeatNumber, ', ') AS SeatNumbers
+                FROM BookingSeats
+                GROUP BY BookingID
+            ) bss
+                ON b.BookingID = bss.BookingID
+            WHERE b.BookingID = @BookingID
+              AND (@UserID = 0 OR b.UserID = @UserID)
+              AND b.Status = 'Confirmed'";
 
                 using (SqlConnection con =
                        DBConnection.GetConnection())
@@ -65,8 +80,11 @@ namespace BusTicketingSystem
                 {
                     cmd.Parameters.Add(
                         "@BookingID",
-                        SqlDbType.Int).Value =
-                        bookingId;
+                        SqlDbType.Int).Value = bookingId;
+
+                    cmd.Parameters.Add(
+                        "@UserID",
+                        SqlDbType.Int).Value = userId;
 
                     con.Open();
 
@@ -76,7 +94,7 @@ namespace BusTicketingSystem
                         if (!reader.Read())
                         {
                             MessageBox.Show(
-                                "Ticket information could not be found.",
+                                "Confirmed ticket information could not be found.",
                                 "Ticket Error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
@@ -94,7 +112,9 @@ namespace BusTicketingSystem
                             reader["PNR"].ToString();
 
                         string seats =
-                            reader["SeatNumbers"].ToString();
+                            reader["SeatNumbers"] == DBNull.Value
+                            ? ""
+                            : reader["SeatNumbers"].ToString();
 
                         string busName =
                             reader["BusName"].ToString();
@@ -115,82 +135,63 @@ namespace BusTicketingSystem
 
                         decimal total =
                             Convert.ToDecimal(
-                                reader["TotalAmount"]);
+                                reader["TotalFare"]);
 
-                        int seatCount = 0;
+                        int seatCount =
+                            Convert.ToInt32(
+                                reader["SeatCount"]);
 
-                        if (!string.IsNullOrWhiteSpace(seats))
-                        {
-                            seatCount =
-                                seats.Split(
-                                    new char[] { ',' },
-                                    StringSplitOptions.RemoveEmptyEntries
-                                ).Length;
-                        }
-
-                        // Passenger
                         label1.Text =
                             "Passenger Name: " +
                             passengerName;
 
-                        // Trip
                         label2.Text =
                             "Trip Details: " +
                             source +
                             " → " +
                             destination;
 
-                        // Time
                         label3.Text =
                             "Time: " +
                             departure.ToString("hh:mm tt");
 
-                        // Route
                         label4.Text =
                             "Route: " +
                             source +
                             " → " +
                             destination;
 
-                        // Date
                         label5.Text =
                             "Date: " +
                             departure.ToString("dd MMM yyyy");
 
-                        // Seats
                         label6.Text =
                             "Seat NO: " +
                             seats;
 
-                        // Bus
                         label7.Text =
                             "Bus Name: " +
                             busName;
 
-                        // Number of seats
                         label8.Text =
                             "NO of seats: " +
                             seatCount;
 
-                        // Fare per seat
                         label9.Text =
                             "Fare: " +
                             fare.ToString("0") +
                             " BDT";
 
-                        // Cost
                         label10.Text =
                             "Cost: " +
-                            (fare * seatCount).ToString("0") +
+                            total.ToString("0") +
                             " BDT";
 
-                        // Total
                         label11.Text =
                             "Total: " +
                             total.ToString("0.00") +
                             " BDT";
 
-                        // Show PNR in the title area
                         label13.Text =
                             "INVOICE   |   PNR: " +
                             pnr;
@@ -310,14 +311,9 @@ namespace BusTicketingSystem
         // =========================
 
         private void button2_Click(
-            object sender,
-            EventArgs e)
+     object sender,
+     EventArgs e)
         {
-            Dashboard dashboard =
-                new Dashboard(userId);
-
-            dashboard.Show();
-
             Close();
         }
 

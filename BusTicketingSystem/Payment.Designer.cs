@@ -36,13 +36,7 @@
             this.Paymentlabel5 = new System.Windows.Forms.Label();
             this.Paymentlabel4 = new System.Windows.Forms.Label();
             this.pnlSideBar = new System.Windows.Forms.Panel();
-            this.buttonConfirmation = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
-            this.buttonPayment = new System.Windows.Forms.Button();
-            this.buttonSelectSeat = new System.Windows.Forms.Button();
-            this.butotnAvailableJourney = new System.Windows.Forms.Button();
-            this.buttonDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PaymentButton4 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -139,109 +133,25 @@
             // pnlSideBar
             // 
             this.pnlSideBar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pnlSideBar.Controls.Add(this.buttonConfirmation);
-            this.pnlSideBar.Controls.Add(this.button1);
             this.pnlSideBar.Controls.Add(this.buttonLogout);
-            this.pnlSideBar.Controls.Add(this.buttonPayment);
-            this.pnlSideBar.Controls.Add(this.buttonSelectSeat);
-            this.pnlSideBar.Controls.Add(this.butotnAvailableJourney);
-            this.pnlSideBar.Controls.Add(this.buttonDashboard);
             this.pnlSideBar.Location = new System.Drawing.Point(1, 2);
             this.pnlSideBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSideBar.Name = "pnlSideBar";
             this.pnlSideBar.Size = new System.Drawing.Size(267, 655);
             this.pnlSideBar.TabIndex = 37;
             // 
-            // buttonConfirmation
-            // 
-            this.buttonConfirmation.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonConfirmation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirmation.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonConfirmation.Location = new System.Drawing.Point(31, 442);
-            this.buttonConfirmation.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonConfirmation.Name = "buttonConfirmation";
-            this.buttonConfirmation.Size = new System.Drawing.Size(200, 50);
-            this.buttonConfirmation.TabIndex = 7;
-            this.buttonConfirmation.Text = "CONFIRMATION";
-            this.buttonConfirmation.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(25)))));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(39, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 28);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "<- BACK TO SEARCH";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // buttonLogout
             // 
             this.buttonLogout.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLogout.Location = new System.Drawing.Point(31, 523);
+            this.buttonLogout.Location = new System.Drawing.Point(23, 270);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(200, 50);
             this.buttonLogout.TabIndex = 6;
             this.buttonLogout.Text = "LOGOUT";
             this.buttonLogout.UseVisualStyleBackColor = false;
-            // 
-            // buttonPayment
-            // 
-            this.buttonPayment.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonPayment.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPayment.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonPayment.Location = new System.Drawing.Point(31, 357);
-            this.buttonPayment.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonPayment.Name = "buttonPayment";
-            this.buttonPayment.Size = new System.Drawing.Size(200, 50);
-            this.buttonPayment.TabIndex = 5;
-            this.buttonPayment.Text = "PAYMENT";
-            this.buttonPayment.UseVisualStyleBackColor = false;
-            // 
-            // buttonSelectSeat
-            // 
-            this.buttonSelectSeat.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSelectSeat.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSelectSeat.Location = new System.Drawing.Point(31, 270);
-            this.buttonSelectSeat.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSelectSeat.Name = "buttonSelectSeat";
-            this.buttonSelectSeat.Size = new System.Drawing.Size(200, 50);
-            this.buttonSelectSeat.TabIndex = 4;
-            this.buttonSelectSeat.Text = "SELECT SEAT";
-            this.buttonSelectSeat.UseVisualStyleBackColor = false;
-            // 
-            // butotnAvailableJourney
-            // 
-            this.butotnAvailableJourney.BackColor = System.Drawing.Color.MidnightBlue;
-            this.butotnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Transparent;
-            this.butotnAvailableJourney.Location = new System.Drawing.Point(31, 189);
-            this.butotnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
-            this.butotnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
-            this.butotnAvailableJourney.Name = "butotnAvailableJourney";
-            this.butotnAvailableJourney.Size = new System.Drawing.Size(200, 50);
-            this.butotnAvailableJourney.TabIndex = 2;
-            this.butotnAvailableJourney.Text = "AVAILABLE JOURNEY";
-            this.butotnAvailableJourney.UseVisualStyleBackColor = false;
-            // 
-            // buttonDashboard
-            // 
-            this.buttonDashboard.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDashboard.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonDashboard.Location = new System.Drawing.Point(31, 102);
-            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(200, 50);
-            this.buttonDashboard.TabIndex = 1;
-            this.buttonDashboard.Text = "DASHBOARD";
-            this.buttonDashboard.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -391,13 +301,7 @@
         private System.Windows.Forms.Label Paymentlabel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlSideBar;
-        private System.Windows.Forms.Button buttonConfirmation;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Button buttonPayment;
-        private System.Windows.Forms.Button buttonSelectSeat;
-        private System.Windows.Forms.Button butotnAvailableJourney;
-        private System.Windows.Forms.Button buttonDashboard;
         private System.Windows.Forms.Label Paymentlabel4;
         private System.Windows.Forms.Label Paymentlabel5;
         private System.Windows.Forms.Label Paymentlabel6;

@@ -169,8 +169,8 @@ namespace BusTicketingSystem
         }
 
         private void ProcessPayment(
-            string paymentMethod,
-            string accountNumber)
+    string paymentMethod,
+    string accountNumber)
         {
             using (SqlConnection con = DBConnection.GetConnection())
             {
@@ -181,11 +181,13 @@ namespace BusTicketingSystem
                 {
                     try
                     {
-                        // Check booking
                         string checkBooking = @"
-                            SELECT COUNT(*)
-                            FROM Bookings
-                            WHERE BookingID = @BookingID";
+                    SELECT Status, TotalFare
+                    FROM Bookings WITH (UPDLOCK, HOLDLOCK)
+                    WHERE BookingID = @BookingID
+                      AND (@UserID = 0 OR UserID = @UserID)";
+
+                        decimal bookingAmount;
 
                         using (SqlCommand cmd =
                                new SqlCommand(
@@ -197,36 +199,40 @@ namespace BusTicketingSystem
                                 "@BookingID",
                                 SqlDbType.Int).Value = bookingId;
 
-                            if (Convert.ToInt32(
-                                cmd.ExecuteScalar()) == 0)
+                            cmd.Parameters.Add(
+                                "@UserID",
+                                SqlDbType.Int).Value = userId;
+
+                            using (SqlDataReader reader =
+                                   cmd.ExecuteReader())
                             {
-                                throw new Exception(
-                                    "Booking was not found.");
+                                if (!reader.Read())
+                                {
+                                    throw new Exception(
+                                        "Booking was not found.");
+                                }
+
+                                string status =
+                                    reader["Status"].ToString();
+
+                                if (!status.Equals(
+                                    "Pending",
+                                    StringComparison.OrdinalIgnoreCase))
+                                {
+                                    throw new Exception(
+                                        "This booking is no longer pending.");
+                                }
+
+                                bookingAmount =
+                                    Convert.ToDecimal(
+                                        reader["TotalFare"]);
                             }
                         }
 
-                        // Prevent duplicate payment
-                        string checkPayment = @"
-                            SELECT COUNT(*)
-                            FROM Payments
-                            WHERE BookingID = @BookingID";
-
-                        using (SqlCommand cmd =
-                               new SqlCommand(
-                                   checkPayment,
-                                   con,
-                                   transaction))
+                        if (bookingAmount != totalAmount)
                         {
-                            cmd.Parameters.Add(
-                                "@BookingID",
-                                SqlDbType.Int).Value = bookingId;
-
-                            if (Convert.ToInt32(
-                                cmd.ExecuteScalar()) > 0)
-                            {
-                                throw new Exception(
-                                    "This booking has already been paid.");
-                            }
+                            throw new Exception(
+                                "Payment amount does not match the booking.");
                         }
 
                         string transactionRef =
@@ -234,30 +240,25 @@ namespace BusTicketingSystem
                             DateTime.Now.ToString(
                                 "yyyyMMddHHmmssfff");
 
-                        string maskedNumber =
-                            MaskNumber(accountNumber);
-
-                        // IMPORTANT:
-                        // These are the actual database columns.
                         string insertPayment = @"
-                            INSERT INTO Payments
-                            (
-                                BookingID,
-                                Amount,
-                                Method,
-                                TransactionRef,
-                                Status,
-                                PaidAt
-                            )
-                            VALUES
-                            (
-                                @BookingID,
-                                @Amount,
-                                @Method,
-                                @TransactionRef,
-                                'Paid',
-                                GETDATE()
-                            )";
+                    INSERT INTO Payments
+                    (
+                        BookingID,
+                        Amount,
+                        Method,
+                        TransactionRef,
+                        Status,
+                        PaidAt
+                    )
+                    VALUES
+                    (
+                        @BookingID,
+                        @Amount,
+                        @Method,
+                        @TransactionRef,
+                        'Paid',
+                        GETDATE()
+                    )";
 
                         using (SqlCommand cmd =
                                new SqlCommand(
@@ -280,22 +281,22 @@ namespace BusTicketingSystem
 
                             cmd.Parameters.Add(
                                 "@Method",
-                                SqlDbType.VarChar,
-                                20).Value = paymentMethod;
+                                SqlDbType.VarChar, 20).Value =
+                                paymentMethod;
 
                             cmd.Parameters.Add(
                                 "@TransactionRef",
-                                SqlDbType.VarChar,
-                                50).Value = transactionRef;
+                                SqlDbType.VarChar, 50).Value =
+                                transactionRef;
 
                             cmd.ExecuteNonQuery();
                         }
 
-                        // Confirm booking
                         string updateBooking = @"
-                            UPDATE Bookings
-                            SET Status = 'Confirmed'
-                            WHERE BookingID = @BookingID";
+                    UPDATE Bookings
+                    SET Status = 'Confirmed'
+                    WHERE BookingID = @BookingID
+                      AND Status = 'Pending'";
 
                         using (SqlCommand cmd =
                                new SqlCommand(
@@ -307,7 +308,11 @@ namespace BusTicketingSystem
                                 "@BookingID",
                                 SqlDbType.Int).Value = bookingId;
 
-                            cmd.ExecuteNonQuery();
+                            if (cmd.ExecuteNonQuery() != 1)
+                            {
+                                throw new Exception(
+                                    "Booking could not be confirmed.");
+                            }
                         }
 
                         transaction.Commit();
@@ -323,8 +328,6 @@ namespace BusTicketingSystem
                             "Payment Successful",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-
-                        ClearFields();
 
                         TicketConfirmation ticket =
                             new TicketConfirmation(

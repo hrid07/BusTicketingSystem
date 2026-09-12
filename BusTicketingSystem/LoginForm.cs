@@ -93,12 +93,17 @@ namespace BusTicketingSystem
                         }
 
                         int userId =
-                            Convert.ToInt32(reader["UserID"]);
+     Convert.ToInt32(reader["UserID"]);
 
-                        Dashboard dashboard =
-                            new Dashboard(userId);
+                        AvailableJourney journey =
+                            new AvailableJourney(userId);
 
-                        dashboard.Show();
+                        journey.FormClosed += (s, args) =>
+                        {
+                            this.Show();
+                        };
+
+                        journey.Show();
 
                         this.Hide();
                     }

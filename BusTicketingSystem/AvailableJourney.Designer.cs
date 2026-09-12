@@ -28,14 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonBack = new System.Windows.Forms.Button();
             this.pnlSideBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.buttonSelectSeat = new System.Windows.Forms.Button();
-            this.butotnAvailableJourney = new System.Windows.Forms.Button();
-            this.buttonDashboard = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -63,27 +60,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonBack
-            // 
-            this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(25)))));
-            this.buttonBack.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonBack.Location = new System.Drawing.Point(39, 35);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(192, 28);
-            this.buttonBack.TabIndex = 27;
-            this.buttonBack.Text = "<- BACK TO SEARCH";
-            this.buttonBack.UseVisualStyleBackColor = false;
-            // 
             // pnlSideBar
             // 
             this.pnlSideBar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlSideBar.Controls.Add(this.panel1);
-            this.pnlSideBar.Controls.Add(this.buttonBack);
             this.pnlSideBar.Controls.Add(this.buttonLogout);
             this.pnlSideBar.Controls.Add(this.buttonSelectSeat);
-            this.pnlSideBar.Controls.Add(this.butotnAvailableJourney);
-            this.pnlSideBar.Controls.Add(this.buttonDashboard);
             this.pnlSideBar.Location = new System.Drawing.Point(0, 2);
             this.pnlSideBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlSideBar.Name = "pnlSideBar";
@@ -110,7 +92,7 @@
             this.buttonLogout.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonLogout.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogout.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonLogout.Location = new System.Drawing.Point(31, 510);
+            this.buttonLogout.Location = new System.Drawing.Point(31, 375);
             this.buttonLogout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(200, 50);
@@ -123,40 +105,13 @@
             this.buttonSelectSeat.BackColor = System.Drawing.Color.MidnightBlue;
             this.buttonSelectSeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSelectSeat.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSelectSeat.Location = new System.Drawing.Point(31, 389);
+            this.buttonSelectSeat.Location = new System.Drawing.Point(31, 215);
             this.buttonSelectSeat.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSelectSeat.Name = "buttonSelectSeat";
             this.buttonSelectSeat.Size = new System.Drawing.Size(200, 50);
             this.buttonSelectSeat.TabIndex = 4;
             this.buttonSelectSeat.Text = "SELECT SEAT";
             this.buttonSelectSeat.UseVisualStyleBackColor = false;
-            // 
-            // butotnAvailableJourney
-            // 
-            this.butotnAvailableJourney.BackColor = System.Drawing.Color.MidnightBlue;
-            this.butotnAvailableJourney.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butotnAvailableJourney.ForeColor = System.Drawing.Color.Transparent;
-            this.butotnAvailableJourney.Location = new System.Drawing.Point(31, 273);
-            this.butotnAvailableJourney.Margin = new System.Windows.Forms.Padding(4);
-            this.butotnAvailableJourney.MaximumSize = new System.Drawing.Size(240, 55);
-            this.butotnAvailableJourney.Name = "butotnAvailableJourney";
-            this.butotnAvailableJourney.Size = new System.Drawing.Size(200, 50);
-            this.butotnAvailableJourney.TabIndex = 2;
-            this.butotnAvailableJourney.Text = "AVAILABLE JOURNEY";
-            this.butotnAvailableJourney.UseVisualStyleBackColor = false;
-            // 
-            // buttonDashboard
-            // 
-            this.buttonDashboard.BackColor = System.Drawing.Color.MidnightBlue;
-            this.buttonDashboard.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDashboard.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonDashboard.Location = new System.Drawing.Point(31, 159);
-            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(200, 50);
-            this.buttonDashboard.TabIndex = 1;
-            this.buttonDashboard.Text = "DASHBOARD";
-            this.buttonDashboard.UseVisualStyleBackColor = false;
             // 
             // comboBox1
             // 
@@ -380,12 +335,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Panel pnlSideBar;
         private System.Windows.Forms.Button buttonLogout;
         private System.Windows.Forms.Button buttonSelectSeat;
-        private System.Windows.Forms.Button butotnAvailableJourney;
-        private System.Windows.Forms.Button buttonDashboard;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;

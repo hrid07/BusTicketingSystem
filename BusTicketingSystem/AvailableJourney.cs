@@ -49,8 +49,7 @@ namespace BusTicketingSystem
 
         private void WireEvents()
         {
-            buttonBack.Click += buttonBack_Click;
-            buttonDashboard.Click += buttonDashboard_Click;
+            
             buttonLogout.Click += buttonLogout_Click;
 
             dataGridView1.CellContentClick +=
@@ -376,36 +375,17 @@ namespace BusTicketingSystem
             LoadJourneys();
         }
 
-        // ==========================================
-        // DASHBOARD
-        // ==========================================
 
-        private void buttonDashboard_Click(
-            object sender,
-            EventArgs e)
-        {
-            Dashboard dashboard =
-                new Dashboard(userId);
-
-            dashboard.Show();
-
-            Hide();
-        }
 
         // ==========================================
         // BACK
         // ==========================================
 
         private void buttonBack_Click(
-            object sender,
-            EventArgs e)
+      object sender,
+      EventArgs e)
         {
-            Dashboard dashboard =
-                new Dashboard(userId);
-
-            dashboard.Show();
-
-            Hide();
+            Close();
         }
 
         // ==========================================
