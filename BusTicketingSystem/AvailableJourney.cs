@@ -139,7 +139,6 @@ namespace BusTicketingSystem
                 isLoading = false;
             }
 
-            // Search only if both locations selected
             if (comboBox1.SelectedIndex != -1 &&
                 comboBox2.SelectedIndex != -1)
             {
@@ -153,7 +152,6 @@ namespace BusTicketingSystem
             comboBox1.Items.Clear();
             comboBox2.Items.Clear();
 
-            // Only these locations are allowed
             comboBox1.Items.Add("Dhaka");
             comboBox1.Items.Add("Chittagong");
             comboBox1.Items.Add("Sylhet");
@@ -164,8 +162,7 @@ namespace BusTicketingSystem
 
             comboBox2.Enabled = false;
         }
-
-        // WHEN FROM CHANGES
+        
         private void comboBox1_SelectedIndexChanged(
             object sender,
             EventArgs e)
@@ -275,7 +272,6 @@ namespace BusTicketingSystem
                 DateTime travelDate =
                     dateTimePicker1.Value.Date;
 
-                // Booking date validation
                 if (travelDate < DateTime.Today ||
                     travelDate > DateTime.Today.AddDays(3))
                 {
@@ -445,7 +441,6 @@ namespace BusTicketingSystem
                     .Cells["Column10"].Value =
                     "SELECT";
 
-                // Store ScheduleID for seat selection
                 dataGridView1.Rows[index].Tag =
                     Convert.ToInt32(
                         row["ScheduleID"]);
@@ -492,19 +487,17 @@ namespace BusTicketingSystem
             return location;
         }
 
-        // SELECT SEAT BUTTON
+        // Select seat button
         private void dataGridView1_CellContentClick(
-            object sender,
-            DataGridViewCellEventArgs e)
+         object sender,
+         DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
 
             if (e.ColumnIndex !=
                 dataGridView1.Columns["Column10"].Index)
-            {
                 return;
-            }
 
             DataGridViewRow row =
                 dataGridView1.Rows[e.RowIndex];
@@ -515,21 +508,6 @@ namespace BusTicketingSystem
             int scheduleId =
                 Convert.ToInt32(row.Tag);
 
-            int availableSeats =
-                Convert.ToInt32(
-                    row.Cells["Column8"].Value);
-
-            if (availableSeats <= 0)
-            {
-                MessageBox.Show(
-                    "No seats are available for this journey.",
-                    "Journey Full",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                return;
-            }
-
             SelectSeat seat =
                 new SelectSeat(
                     scheduleId,
@@ -537,11 +515,10 @@ namespace BusTicketingSystem
 
             seat.ShowDialog();
 
-            // Refresh available seats after booking
             LoadJourneys();
         }
 
-        
+
         private void buttonBack_Click(
             object sender,
             EventArgs e)
