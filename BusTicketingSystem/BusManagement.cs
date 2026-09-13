@@ -28,8 +28,7 @@ namespace BusTicketingSystem
 
             btnBuses.Click += btnBuses_Click;
 
-            // We will use this existing button
-            // to open journey management.
+           
             btnRoutes.Text = "JOURNEYS";
             btnRoutes.Click += btnRoutes_Click;
 
@@ -45,9 +44,7 @@ namespace BusTicketingSystem
             HideEditor();
         }
 
-        // =========================
-        // LOAD BUSES
-        // =========================
+       
 
         private void LoadBuses()
         {
@@ -109,9 +106,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // ADD
-        // =========================
 
         private void btnAddNewBus_Click(
             object sender,
@@ -131,10 +125,6 @@ namespace BusTicketingSystem
 
             ShowEditor();
         }
-
-        // =========================
-        // SAVE
-        // =========================
 
         private void btnSave_Click(
             object sender,
@@ -305,9 +295,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // EDIT / DELETE
-        // =========================
 
         private void dgvBuses_CellContentClick(
             object sender,
@@ -441,9 +428,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // JOURNEYS
-        // =========================
 
         private void btnRoutes_Click(
             object sender,
@@ -457,10 +441,7 @@ namespace BusTicketingSystem
             LoadBuses();
         }
 
-        // =========================
-        // OTHER BUTTONS
-        // =========================
-
+     
         private void btnBuses_Click(
             object sender,
             EventArgs e)
@@ -491,9 +472,7 @@ namespace BusTicketingSystem
                 MessageBoxIcon.Information);
         }
 
-        // =========================
-        // EDITOR
-        // =========================
+        
 
         private void ShowEditor()
         {

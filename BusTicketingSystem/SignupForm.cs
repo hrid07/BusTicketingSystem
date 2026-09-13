@@ -20,10 +20,8 @@ namespace BusTicketingSystem
             string password = textBox4.Text;
             string confirmPassword = textBox1.Text;
 
-            // =========================
-            // REQUIRED FIELD VALIDATION
-            // =========================
-
+      
+           
             if (string.IsNullOrWhiteSpace(fullName))
             {
                 MessageBox.Show(
@@ -96,9 +94,6 @@ namespace BusTicketingSystem
                 return;
             }
 
-            // =========================
-            // PHONE VALIDATION
-            // =========================
 
             if (phone.Length != 11 ||
                 !long.TryParse(phone, out _))

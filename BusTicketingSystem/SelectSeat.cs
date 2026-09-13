@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace BusTicketingSystem
@@ -12,13 +11,15 @@ namespace BusTicketingSystem
     {
         private readonly int scheduleId;
         private readonly int userId;
+
         private decimal farePerSeat;
 
         private readonly List<string> selectedSeats =
             new List<string>();
 
         private readonly Dictionary<string, Button> seatButtons =
-            new Dictionary<string, Button>();
+            new Dictionary<string, Button>(
+                StringComparer.OrdinalIgnoreCase);
 
         private static readonly Color AvailableColor =
             Color.DarkSeaGreen;
@@ -29,10 +30,12 @@ namespace BusTicketingSystem
         private static readonly Color SelectedColor =
             Color.MidnightBlue;
 
+
         public SelectSeat(int scheduleId)
             : this(scheduleId, 0)
         {
         }
+
 
         public SelectSeat(int scheduleId, int userId)
         {
@@ -43,58 +46,72 @@ namespace BusTicketingSystem
 
             FindSeatButtons();
 
+            buttonConfirmbooking.Click -=
+                buttonConfirmbooking_Click;
+
             buttonConfirmbooking.Click +=
                 buttonConfirmbooking_Click;
+
+            buttonBack.Click -=
+                buttonBack_Click;
 
             buttonBack.Click +=
                 buttonBack_Click;
         }
 
-        // =========================
-        // FORM LOAD
-        // =========================
 
-        private void SelectSeat_Load(object sender, EventArgs e)
+        // =========================================
+        // FORM LOAD
+        // =========================================
+
+        private void SelectSeat_Load(
+            object sender,
+            EventArgs e)
         {
             LoadSchedule();
             LoadSeats();
         }
 
-        // =========================
+
+        // =========================================
         // FIND SEAT BUTTONS
-        // =========================
+        // =========================================
 
         private void FindSeatButtons()
         {
-            Regex pattern =
-                new Regex(@"^[A-H][1-3]$");
+            seatButtons.Clear();
 
-            foreach (Control control in GetControls(this))
+            Button[] buttons =
             {
-                if (control is Button button &&
-                    pattern.IsMatch(button.Text))
-                {
-                    seatButtons[button.Text] = button;
+                button2, button3, button4,
+                button5, button6, button7,
+                button8, button9, button10,
+                button11, button12, button13,
+                button14, button15, button16,
+                button17, button18, button19,
+                button20, button21, button22,
+                button23, button24, button25
+            };
 
-                    button.Click += SeatButton_Click;
-                }
+            foreach (Button button in buttons)
+            {
+                string seat =
+                    button.Text.Trim().ToUpper();
+
+                if (string.IsNullOrEmpty(seat))
+                    continue;
+
+                seatButtons[seat] = button;
+
+                button.Click -= SeatButton_Click;
+                button.Click += SeatButton_Click;
             }
         }
 
-        private IEnumerable<Control> GetControls(Control parent)
-        {
-            foreach (Control control in parent.Controls)
-            {
-                yield return control;
 
-                foreach (Control child in GetControls(control))
-                    yield return child;
-            }
-        }
-
-        // =========================
-        // LOAD SCHEDULE
-        // =========================
+        // =========================================
+        // LOAD JOURNEY
+        // =========================================
 
         private void LoadSchedule()
         {
@@ -103,12 +120,15 @@ namespace BusTicketingSystem
                 using (SqlConnection con =
                        DBConnection.GetConnection())
                 using (SqlCommand cmd =
-                       new SqlCommand("sp_GetAllSchedules", con))
+                       new SqlCommand(
+                           "sp_GetAllSchedules",
+                           con))
                 {
                     cmd.CommandType =
                         CommandType.StoredProcedure;
 
-                    DataTable table = new DataTable();
+                    DataTable table =
+                        new DataTable();
 
                     using (SqlDataAdapter adapter =
                            new SqlDataAdapter(cmd))
@@ -118,7 +138,8 @@ namespace BusTicketingSystem
 
                     DataRow[] rows =
                         table.Select(
-                            "ScheduleID = " + scheduleId);
+                            "ScheduleID = " +
+                            scheduleId);
 
                     if (rows.Length == 0)
                     {
@@ -135,7 +156,8 @@ namespace BusTicketingSystem
                     DataRow row = rows[0];
 
                     farePerSeat =
-                        Convert.ToDecimal(row["Fare"]);
+                        Convert.ToDecimal(
+                            row["Fare"]);
 
                     labelBus.Text =
                         row["BusName"] +
@@ -175,9 +197,10 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
+
+        // =========================================
         // LOAD SEATS
-        // =========================
+        // =========================================
 
         private void LoadSeats()
         {
@@ -202,8 +225,10 @@ namespace BusTicketingSystem
 
                     con.Open();
 
-                    Dictionary<string, string> statuses =
-                        new Dictionary<string, string>();
+                    Dictionary<string, string>
+                        statuses =
+                        new Dictionary<string, string>(
+                            StringComparer.OrdinalIgnoreCase);
 
                     using (SqlDataReader reader =
                            cmd.ExecuteReader())
@@ -211,10 +236,15 @@ namespace BusTicketingSystem
                         while (reader.Read())
                         {
                             string seat =
-                                reader["SeatNumber"].ToString();
+                                reader["SeatNumber"]
+                                .ToString()
+                                .Trim()
+                                .ToUpper();
 
                             string status =
-                                reader["Status"].ToString();
+                                reader["Status"]
+                                .ToString()
+                                .Trim();
 
                             statuses[seat] = status;
                         }
@@ -227,17 +257,30 @@ namespace BusTicketingSystem
 
                         bool booked =
                             statuses.ContainsKey(seat) &&
-                            statuses[seat]
-                                .Equals(
-                                    "Booked",
-                                    StringComparison.OrdinalIgnoreCase);
+                            statuses[seat].Equals(
+                                "Booked",
+                                StringComparison.OrdinalIgnoreCase);
 
-                        button.BackColor =
-                            booked
-                            ? BookedColor
-                            : AvailableColor;
+                        if (booked)
+                        {
+                            button.BackColor =
+                                BookedColor;
 
-                        button.Enabled = !booked;
+                            button.ForeColor =
+                                Color.White;
+
+                            button.Enabled = false;
+                        }
+                        else
+                        {
+                            button.BackColor =
+                                AvailableColor;
+
+                            button.ForeColor =
+                                Color.Black;
+
+                            button.Enabled = true;
+                        }
                     }
                 }
             }
@@ -254,44 +297,63 @@ namespace BusTicketingSystem
             UpdateTotal();
         }
 
-        // =========================
+
+        // =========================================
         // SELECT / UNSELECT SEAT
-        // =========================
+        // =========================================
 
         private void SeatButton_Click(
             object sender,
             EventArgs e)
         {
-            Button button = (Button)sender;
+            Button button =
+                sender as Button;
 
-            string seat = button.Text;
+            if (button == null ||
+                !button.Enabled)
+            {
+                return;
+            }
+
+            string seat =
+                button.Text.Trim().ToUpper();
 
             if (selectedSeats.Contains(seat))
             {
+                // UNSELECT
                 selectedSeats.Remove(seat);
 
                 button.BackColor =
                     AvailableColor;
+
+                button.ForeColor =
+                    Color.Black;
             }
             else
             {
+                // SELECT
                 selectedSeats.Add(seat);
 
                 button.BackColor =
                     SelectedColor;
+
+                button.ForeColor =
+                    Color.White;
             }
 
             UpdateTotal();
         }
 
-        // =========================
-        // TOTAL FARE
-        // =========================
+
+        // =========================================
+        // TOTAL PRICE
+        // =========================================
 
         private void UpdateTotal()
         {
             decimal total =
-                selectedSeats.Count * farePerSeat;
+                selectedSeats.Count *
+                farePerSeat;
 
             string seatText =
                 selectedSeats.Count == 1
@@ -308,9 +370,8 @@ namespace BusTicketingSystem
                 ")";
         }
 
-        // =========================
-        // CONFIRM BOOKING
-        // =========================
+
+      
 
         private void buttonConfirmbooking_Click(
             object sender,
@@ -353,7 +414,7 @@ namespace BusTicketingSystem
 
                     cmd.Parameters.Add(
                         "@SeatNumbers",
-                        SqlDbType.VarChar,
+                        SqlDbType.NVarChar,
                         200).Value =
                         string.Join(
                             ",",
@@ -435,9 +496,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // BACK
-        // =========================
+
 
         private void buttonBack_Click(
             object sender,
@@ -446,9 +505,8 @@ namespace BusTicketingSystem
             Close();
         }
 
-        // =========================
-        // DESIGNER EVENT
-        // =========================
+
+       
 
         private void labelTotalPrice_Click(
             object sender,

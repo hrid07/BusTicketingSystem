@@ -17,7 +17,7 @@ namespace BusTicketingSystem
             string username = textName.Text.Trim();
             string password = textPass.Text;
 
-            // ADMIN LOGIN
+        
             if (username.Equals("admin",
                 StringComparison.OrdinalIgnoreCase)
                 && password == "admin123")

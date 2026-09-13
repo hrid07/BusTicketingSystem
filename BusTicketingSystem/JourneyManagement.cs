@@ -37,9 +37,7 @@ namespace BusTicketingSystem
             dtArrival.CustomFormat = "dd/MM/yyyy hh:mm tt";
         }
 
-        // =========================
-        // LOAD BUSES
-        // =========================
+      
         private void LoadBuses()
         {
             try
@@ -63,9 +61,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // LOAD ROUTES
-        // =========================
+       
         private void LoadRoutes()
         {
             try
@@ -94,9 +90,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // LOAD JOURNEYS
-        // =========================
+       
         private void LoadJourneys()
         {
             try
@@ -159,9 +153,9 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // ADD JOURNEY
-        // =========================
+      
+        // Add journey
+   
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -189,7 +183,7 @@ namespace BusTicketingSystem
                 SqlConnection con = new SqlConnection(connectionString);
                 con.Open();
 
-                // Find RouteID
+                // Find routeid
                 string routeQuery = @"
                     SELECT RouteID 
                     FROM Routes 
@@ -262,9 +256,9 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // UPDATE JOURNEY
-        // =========================
+       
+        // Update journey
+       
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -346,9 +340,9 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // DELETE JOURNEY
-        // =========================
+       
+        // Delete journey
+      
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -418,9 +412,9 @@ namespace BusTicketingSystem
             }
         }
 
-        // =========================
-        // SELECT ROW
-        // =========================
+       
+        // Select row
+        
         private void dgvJourneys_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -448,9 +442,7 @@ namespace BusTicketingSystem
                 Convert.ToDecimal(row.Cells["Fare"].Value);
         }
 
-        // =========================
-        // CLEAR
-        // =========================
+       
         private void ClearFields()
         {
             scheduleID = 0;

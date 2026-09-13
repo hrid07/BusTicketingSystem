@@ -18,7 +18,7 @@ namespace BusTicketingSystem
 
         private bool isLoading = false;
 
-        // Normal constructor
+        
         public AvailableJourney(int userId)
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace BusTicketingSystem
             WireEvents();
         }
 
-        // Constructor when coming from another search form
+        
         public AvailableJourney(
             string from,
             string to,
@@ -48,7 +48,7 @@ namespace BusTicketingSystem
             WireEvents();
         }
 
-        // Connect form controls
+        
         private void WireEvents()
         {
             buttonLogout.Click -= buttonLogout_Click;
@@ -79,7 +79,7 @@ namespace BusTicketingSystem
                 SearchChanged;
         }
 
-        // FORM LOAD
+        
         private void AvailableJourney_Load_1(
             object sender,
             EventArgs e)
@@ -88,7 +88,7 @@ namespace BusTicketingSystem
 
             try
             {
-                // Allow booking from today up to 3 days
+                
                 dateTimePicker1.MinDate =
                     DateTime.Today;
 
@@ -147,7 +147,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // LOAD ROUTES
+       
         private void LoadRoutes()
         {
             comboBox1.Items.Clear();
@@ -176,7 +176,7 @@ namespace BusTicketingSystem
             LoadDestinations();
         }
 
-        // LOAD VALID DESTINATIONS
+       
         private void LoadDestinations()
         {
             comboBox2.Items.Clear();
@@ -220,7 +220,7 @@ namespace BusTicketingSystem
             dataGridView1.Rows.Clear();
         }
 
-        // SET COMBOBOX VALUE
+        
         private void SetComboBoxValue(
             ComboBox comboBox,
             string value)
@@ -237,7 +237,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // SEARCH WHEN TO OR DATE CHANGES
+        
         private void SearchChanged(
             object sender,
             EventArgs e)
@@ -258,7 +258,7 @@ namespace BusTicketingSystem
             LoadJourneys();
         }
 
-        // LOAD JOURNEYS FROM DATABASE
+        
         private void LoadJourneys()
         {
             if (isLoading)
@@ -295,7 +295,7 @@ namespace BusTicketingSystem
                 string to =
                     comboBox2.Text.Trim();
 
-                // Validate allowed routes
+                
                 bool validRoute = false;
 
                 if (from.Equals(
@@ -383,7 +383,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // DISPLAY JOURNEYS IN DATAGRIDVIEW
         private void DisplayJourneys(
             DataTable table)
         {
@@ -463,7 +462,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // FORMAT LOCATION NAMES
+       
         private string FormatLocation(
             string location)
         {
@@ -542,7 +541,7 @@ namespace BusTicketingSystem
             LoadJourneys();
         }
 
-        // BACK BUTTON
+        
         private void buttonBack_Click(
             object sender,
             EventArgs e)
@@ -550,7 +549,7 @@ namespace BusTicketingSystem
             Close();
         }
 
-        // LOGOUT BUTTON
+        
         private void buttonLogout_Click(
             object sender,
             EventArgs e)

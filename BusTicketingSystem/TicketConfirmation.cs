@@ -293,7 +293,7 @@ namespace BusTicketingSystem
                 reader[columnName]);
         }
 
-        // PRINT TICKET BUTTON
+        // Print Ticket Button
 
         private void button1_Click(
             object sender,
@@ -325,7 +325,6 @@ namespace BusTicketingSystem
             }
         }
 
-        // PRINT PAGE
 
         private void printDocument_PrintPage(
             object sender,
@@ -381,7 +380,7 @@ namespace BusTicketingSystem
             }
         }
 
-        // BACK TO DASHBOARD BUTTON
+        
 
         private void button2_Click(
             object sender,
