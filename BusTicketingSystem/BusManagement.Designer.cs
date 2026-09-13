@@ -52,9 +52,7 @@
             this.txtTransactionPIN = new System.Windows.Forms.TextBox();
             this.txtAccountNumber = new System.Windows.Forms.TextBox();
             this.cmbRoute = new System.Windows.Forms.ComboBox();
-            this.nudFare = new System.Windows.Forms.NumericUpDown();
             this.txtBusName = new System.Windows.Forms.TextBox();
-            this.lblFare = new System.Windows.Forms.Label();
             this.lblRoute = new System.Windows.Forms.Label();
             this.lblAccountNumber = new System.Windows.Forms.Label();
             this.lblTransactionPIN = new System.Windows.Forms.Label();
@@ -72,7 +70,6 @@
             this.pnlAddEditBus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRouteNumber)).BeginInit();
             this.pnlBusHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFare)).BeginInit();
             this.pnlSidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -261,9 +258,7 @@
             this.pnlAddEditBus.Controls.Add(this.txtTransactionPIN);
             this.pnlAddEditBus.Controls.Add(this.txtAccountNumber);
             this.pnlAddEditBus.Controls.Add(this.cmbRoute);
-            this.pnlAddEditBus.Controls.Add(this.nudFare);
             this.pnlAddEditBus.Controls.Add(this.txtBusName);
-            this.pnlAddEditBus.Controls.Add(this.lblFare);
             this.pnlAddEditBus.Controls.Add(this.lblRoute);
             this.pnlAddEditBus.Controls.Add(this.lblAccountNumber);
             this.pnlAddEditBus.Controls.Add(this.lblTransactionPIN);
@@ -385,26 +380,6 @@
             this.cmbRoute.Size = new System.Drawing.Size(165, 31);
             this.cmbRoute.TabIndex = 16;
             // 
-            // nudFare
-            // 
-            this.nudFare.BackColor = System.Drawing.Color.White;
-            this.nudFare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
-            this.nudFare.Location = new System.Drawing.Point(140, 134);
-            this.nudFare.Margin = new System.Windows.Forms.Padding(4);
-            this.nudFare.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nudFare.Name = "nudFare";
-            this.nudFare.Size = new System.Drawing.Size(160, 22);
-            this.nudFare.TabIndex = 15;
-            this.nudFare.Value = new decimal(new int[] {
-            1200,
-            0,
-            0,
-            0});
-            // 
             // txtBusName
             // 
             this.txtBusName.BackColor = System.Drawing.Color.White;
@@ -415,18 +390,6 @@
             this.txtBusName.Name = "txtBusName";
             this.txtBusName.Size = new System.Drawing.Size(265, 30);
             this.txtBusName.TabIndex = 14;
-            // 
-            // lblFare
-            // 
-            this.lblFare.AutoSize = true;
-            this.lblFare.Font = new System.Drawing.Font("Segoe UI", 10.75F, System.Drawing.FontStyle.Bold);
-            this.lblFare.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
-            this.lblFare.Location = new System.Drawing.Point(17, 133);
-            this.lblFare.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFare.Name = "lblFare";
-            this.lblFare.Size = new System.Drawing.Size(47, 25);
-            this.lblFare.TabIndex = 13;
-            this.lblFare.Text = "Fare";
             // 
             // lblRoute
             // 
@@ -472,9 +435,9 @@
             this.lblRouteNumber.Location = new System.Drawing.Point(18, 329);
             this.lblRouteNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRouteNumber.Name = "lblRouteNumber";
-            this.lblRouteNumber.Size = new System.Drawing.Size(90, 23);
+            this.lblRouteNumber.Size = new System.Drawing.Size(43, 23);
             this.lblRouteNumber.TabIndex = 8;
-            this.lblRouteNumber.Text = "Route No.";
+            this.lblRouteNumber.Text = "Fare";
             // 
             // btnSave
             // 
@@ -594,7 +557,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudRouteNumber)).EndInit();
             this.pnlBusHeader.ResumeLayout(false);
             this.pnlBusHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudFare)).EndInit();
             this.pnlSidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -615,9 +577,7 @@
         private System.Windows.Forms.TextBox txtTransactionPIN;
         private System.Windows.Forms.TextBox txtAccountNumber;
         private System.Windows.Forms.ComboBox cmbRoute;
-        private System.Windows.Forms.NumericUpDown nudFare;
         private System.Windows.Forms.TextBox txtBusName;
-        private System.Windows.Forms.Label lblFare;
         private System.Windows.Forms.Label lblRoute;
         private System.Windows.Forms.Label lblAccountNumber;
         private System.Windows.Forms.Label lblTransactionPIN;

@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.Paymentlabel1 = new System.Windows.Forms.Label();
-            this.Paymentlabel3 = new System.Windows.Forms.Label();
-            this.Paymentlabel2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Paymentlabel6 = new System.Windows.Forms.Label();
-            this.Paymentlabel5 = new System.Windows.Forms.Label();
-            this.Paymentlabel4 = new System.Windows.Forms.Label();
             this.pnlSideBar = new System.Windows.Forms.Panel();
             this.buttonLogout = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -48,7 +42,6 @@
             this.Paymentlabel9 = new System.Windows.Forms.Label();
             this.Paymentlabel7 = new System.Windows.Forms.Label();
             this.Paymentlabel8 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.pnlSideBar.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -64,71 +57,6 @@
             this.Paymentlabel1.TabIndex = 0;
             this.Paymentlabel1.Text = "SELECT PAYMENT METHOD";
             this.Paymentlabel1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // Paymentlabel3
-            // 
-            this.Paymentlabel3.AutoSize = true;
-            this.Paymentlabel3.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel3.Location = new System.Drawing.Point(33, 70);
-            this.Paymentlabel3.Name = "Paymentlabel3";
-            this.Paymentlabel3.Size = new System.Drawing.Size(46, 23);
-            this.Paymentlabel3.TabIndex = 4;
-            this.Paymentlabel3.Text = "Bus:";
-            this.Paymentlabel3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // Paymentlabel2
-            // 
-            this.Paymentlabel2.AutoSize = true;
-            this.Paymentlabel2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel2.Location = new System.Drawing.Point(86, 5);
-            this.Paymentlabel2.Name = "Paymentlabel2";
-            this.Paymentlabel2.Size = new System.Drawing.Size(188, 31);
-            this.Paymentlabel2.TabIndex = 3;
-            this.Paymentlabel2.Text = "TRIP SUMMARY";
-            this.Paymentlabel2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel1.Controls.Add(this.Paymentlabel6);
-            this.panel1.Controls.Add(this.Paymentlabel5);
-            this.panel1.Controls.Add(this.Paymentlabel4);
-            this.panel1.Controls.Add(this.Paymentlabel2);
-            this.panel1.Controls.Add(this.Paymentlabel3);
-            this.panel1.Location = new System.Drawing.Point(341, 99);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(388, 476);
-            this.panel1.TabIndex = 5;
-            // 
-            // Paymentlabel6
-            // 
-            this.Paymentlabel6.AutoSize = true;
-            this.Paymentlabel6.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel6.Location = new System.Drawing.Point(33, 372);
-            this.Paymentlabel6.Name = "Paymentlabel6";
-            this.Paymentlabel6.Size = new System.Drawing.Size(96, 23);
-            this.Paymentlabel6.TabIndex = 7;
-            this.Paymentlabel6.Text = "LabelFare:";
-            // 
-            // Paymentlabel5
-            // 
-            this.Paymentlabel5.AutoSize = true;
-            this.Paymentlabel5.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel5.Location = new System.Drawing.Point(33, 280);
-            this.Paymentlabel5.Name = "Paymentlabel5";
-            this.Paymentlabel5.Size = new System.Drawing.Size(60, 23);
-            this.Paymentlabel5.TabIndex = 6;
-            this.Paymentlabel5.Text = "Seats:";
-            // 
-            // Paymentlabel4
-            // 
-            this.Paymentlabel4.AutoSize = true;
-            this.Paymentlabel4.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel4.Location = new System.Drawing.Point(33, 173);
-            this.Paymentlabel4.Name = "Paymentlabel4";
-            this.Paymentlabel4.Size = new System.Drawing.Size(66, 23);
-            this.Paymentlabel4.TabIndex = 5;
-            this.Paymentlabel4.Text = "Route:";
             // 
             // pnlSideBar
             // 
@@ -167,16 +95,16 @@
             this.panel2.Controls.Add(this.Paymentlabel7);
             this.panel2.Controls.Add(this.Paymentlabel8);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(755, 99);
+            this.panel2.Location = new System.Drawing.Point(544, 99);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(388, 476);
             this.panel2.TabIndex = 28;
             // 
             // PaymentButton4
             // 
-            this.PaymentButton4.Location = new System.Drawing.Point(64, 382);
+            this.PaymentButton4.Location = new System.Drawing.Point(106, 376);
             this.PaymentButton4.Name = "PaymentButton4";
-            this.PaymentButton4.Size = new System.Drawing.Size(194, 43);
+            this.PaymentButton4.Size = new System.Drawing.Size(172, 35);
             this.PaymentButton4.TabIndex = 12;
             this.PaymentButton4.Text = "PAY CONFIRM";
             this.PaymentButton4.UseVisualStyleBackColor = true;
@@ -184,14 +112,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(52, 300);
+            this.textBox2.Location = new System.Drawing.Point(53, 300);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(224, 27);
             this.textBox2.TabIndex = 11;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(51, 244);
+            this.textBox1.Location = new System.Drawing.Point(52, 244);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(224, 27);
             this.textBox1.TabIndex = 8;
@@ -237,7 +165,7 @@
             // 
             this.Paymentlabel10.AutoSize = true;
             this.Paymentlabel10.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel10.Location = new System.Drawing.Point(48, 274);
+            this.Paymentlabel10.Location = new System.Drawing.Point(49, 274);
             this.Paymentlabel10.Name = "Paymentlabel10";
             this.Paymentlabel10.Size = new System.Drawing.Size(150, 23);
             this.Paymentlabel10.TabIndex = 6;
@@ -247,7 +175,7 @@
             // 
             this.Paymentlabel9.AutoSize = true;
             this.Paymentlabel9.Font = new System.Drawing.Font("Segoe UI Black", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Paymentlabel9.Location = new System.Drawing.Point(47, 218);
+            this.Paymentlabel9.Location = new System.Drawing.Point(48, 218);
             this.Paymentlabel9.Name = "Paymentlabel9";
             this.Paymentlabel9.Size = new System.Drawing.Size(158, 23);
             this.Paymentlabel9.TabIndex = 5;
@@ -281,12 +209,9 @@
             this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlSideBar);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.Paymentlabel1);
             this.Name = "Payment";
             this.Text = "Payment";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlSideBar.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -297,14 +222,8 @@
 
         #endregion
         private System.Windows.Forms.Label Paymentlabel1;
-        private System.Windows.Forms.Label Paymentlabel3;
-        private System.Windows.Forms.Label Paymentlabel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlSideBar;
         private System.Windows.Forms.Button buttonLogout;
-        private System.Windows.Forms.Label Paymentlabel4;
-        private System.Windows.Forms.Label Paymentlabel5;
-        private System.Windows.Forms.Label Paymentlabel6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Paymentlabel10;
         private System.Windows.Forms.Label Paymentlabel9;

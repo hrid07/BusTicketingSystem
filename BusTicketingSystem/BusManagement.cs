@@ -120,7 +120,7 @@ namespace BusTicketingSystem
             selectedBusId = 0;
 
             txtBusName.Clear();
-            nudFare.Value = 1200;
+            
             cmbRoute.SelectedIndex = -1;
             nudRouteNumber.Value = 24;
 

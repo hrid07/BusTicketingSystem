@@ -24,10 +24,10 @@ namespace BusTicketingSystem
             Color.DarkSeaGreen;
 
         private static readonly Color BookedColor =
-            Color.SaddleBrown;
+            Color.DimGray;
 
         private static readonly Color SelectedColor =
-            Color.DimGray;
+            Color.MidnightBlue;
 
         public SelectSeat(int scheduleId)
             : this(scheduleId, 0)

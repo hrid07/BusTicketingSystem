@@ -19,8 +19,6 @@ namespace BusTicketingSystem
             this.userId = userId;
             this.totalAmount = totalAmount;
 
-            Paymentlabel6.Text =
-                "Amount: " + totalAmount.ToString("0.00") + " BDT";
         }
 
         private void Payment_Load(object sender, EventArgs e)
